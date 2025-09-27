@@ -964,6 +964,7 @@ body input {
 .menu .menu-container .menu-content {
   padding: 0;
   display: flex;
+  align-items: baseline;
 }
 @media (min-width: 576px) {
   .menu .menu-container .menu-content {
@@ -982,7 +983,10 @@ body input {
   margin: 5px 10px;
 }
 .menu .menu-container .menu-content .menu-item a.active {
-  text-decoration: line-through;
+  font-weight: bold;
+  font-size: 1.5em;
+  border-bottom: 3px solid #c0d673;
+  padding-bottom: 4px;
 }
 .menu .menu-container .menu-close {
   position: absolute;
