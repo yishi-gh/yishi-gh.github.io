@@ -1,0 +1,443 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>计算机网络笔记 - 亦适yishi 的碎碎念</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="
+开发导向的计网主要集中在传输层、应用层和少量网络层
+...">
+  <meta name="author" content="yishi">
+  <link rel="icon" href="/images/icons/favicon.ico" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon.ico" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/favicon.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/web-app-manifest-192x192.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      galleries: {
+        enable: true
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '我在开了灯的床头下，想问问自己的心啊。',
+          typing: true,
+          api: 'https://v2.jinrishici.com/one.json',
+          data_contents: '["data","content"]'
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'url',
+        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: false,
+        path: ''
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 8.0.0"></head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+    </div>
+    <div class="center">计算机网络笔记</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+      <div id="qrcode-navbar"></div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/galleries/ " class="underline "> 摄影</a>
+      </li><li class="menu-item">
+        <a href="/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">计算机网络笔记</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>三月 31, 2026</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>2763</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        
+        <blockquote>
+<p>开发导向的计网主要集中在传输层、应用层和少量网络层</p>
+</blockquote>
+<h1 id="计网架构"><a href="#计网架构" class="headerlink" title="计网架构"></a>计网架构</h1><p>速记 OSI 七层架构：物联网叔会使用<br>物理层-&gt;数据链接层-&gt;网络层-&gt;运输层-&gt;会话层-&gt;表示层-&gt;应用层<br>TCP&#x2F;IP 四层：<br>网路接口层-&gt;</p>
+<p>下层为上层提供服务</p>
+<p>osi的会话和表示太空洞，物理和数据链接层又太复杂。<br>tcpip的物理层和数据层分不清，且没有区分服务接口协议等概念，链路层也只是一个接口，但是已经被广泛使用<br>故常用五层架构：物联网<br>物理层-&gt;链路层-&gt;网络层-&gt;运输层-&gt;应用层</p>
+<p>逻辑上各层之间都有互相通信的协议，但实际上是从上到下一直到物理层通信，再从下到上，走一个u字</p>
+<h1 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h1><p>OSI模型中，物理层是最底层，指的是物理信道，其作用是管理传输介质上的接口特性和规范，而不仅是传输介质本身</p>
+<h2 id="传输介质"><a href="#传输介质" class="headerlink" title="传输介质"></a>传输介质</h2><p>常见有线传输介质：</p>
+<ul>
+<li>双绞线（Twisted Pair）：两个铜线绞在一起，互相抵消波的影响。使用铝箔包裹的叫有屏蔽的双绞线（STP），没有的叫 UTP。入户一般是超5类的UTP，速率在1Gbps</li>
+<li>光纤（Fiber）：光纤传输系统由光源，传输介质和检测器组成</li>
+<li>同轴电缆（Co-axial）</li>
+</ul>
+<p>传输标准命名规则：<br>1000  BASE  - T  X<br>传输速率  调制方式  传输媒介  编码体系</p>
+<p>BASE ：baseband，基带信号，一根线缆只传输一个信号<br>BROAD：broadband，宽频信号，一根线缆可传输多个信号</p>
+<p>T：双绞线<br>F：光纤<br>C：同轴电缆</p>
+<p>空：曼彻斯特编码<br>x：快速以太网使用 4B&#x2F;5B 为分组码<br>X：千兆以太网使用 8B&#x2F;10B 为分组码<br>R： 使用 64B&#x2F;66B 为分组码</p>
+<h2 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h2><p>归零编码（RZ编码，Return-to-Zero Code）：正电平代表逻辑1，负电平代表逻辑0，输送完一位电平归零<br>不归零编码（NRZ）：输送完不归零<br>反向不归零编码（NRZI）：相比于前一电位，信号翻转表示0，不翻转表示1<br>曼彻斯特编码：升平表示1，降平表示0<br>差分曼彻斯特编码：相比于前一电位，有翻转为0，无翻转为1</p>
+<h2 id="数字调制"><a href="#数字调制" class="headerlink" title="数字调制"></a>数字调制</h2><p>使用模拟信号表示比特（数字信息），将比特和信号之间的映射过程称为数字调制</p>
+<p>码元是在固定时长里在信道上传输的电平状态，一个码元可以代表一或多个比特</p>
+<p>波特率：单位时间传输的码元个数，单位波特 Baud，表示物理信号的变化，即通信的速率。而比特率则关注实际传输的数据量，即有用信息的速率<br>$$C&#x3D; B\log_2(N)$$<br>其中 B 为波特率， C 为比特率， N 为码元的离散状态数（每个码元所能表示的不同状态数量）</p>
+<p>调平方法有：调幅（波动幅度），调频（频率），调相（波形平移）</p>
+<p>正交振幅调制（QAM）：频率相同，结合调幅和调相<br>$$C&#x3D; B\log_2(MN)$$<br>其中 M 是相位数， N 是振幅数</p>
+<p>奈奎斯特定理<br>$$B&#x3D;2H$$<br>无噪声下的码元速率极限值 B 和信道带宽 H 的关系<br>无噪声信道传输速率：<br>$$C&#x3D; 2H\log_2(N)$$<br>香农公式<br>$$C&#x3D; H\log_2(1+S&#x2F;N)$$<br>一条带宽为 H ，有噪声信道的最大传输速率。其中 S 是信号功率， N 是噪声功率， S&#x2F;N 是信噪比</p>
+<h1 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h1><p>负责寻址和路由</p>
+<ul>
+<li><p>无连接服务<br>每个数据包（数据报）都携带了足够的，独立的信息，不需要维护连接，每个数据包独立选择路径。但是缺点是不保证可靠性，数据包可能重复、丢失、乱序。常运用于能够接受丢包的场景，如视频通话或直播。</p>
+</li>
+<li><p>有连接服务<br>发送方和接收方确定一条虚拟的通信路径（虚电路）。虚电路在通信过程中始终存在。特点是建立连接、可靠传输、固定路径。适用于可靠性要求高的场景。</p>
+</li>
+<li><p>路由<br>指的是在网络层选择数据包从源到目的地的最佳路径的过程。路由涉及到路由表的维护和更新，通常由协议动态计算。由管理员手动修改路由表的，叫静态路由。</p>
+</li>
+<li><p>转发<br>在路由选择完成后，设备将数据包从一个接口转发到另一个接口的过程。</p>
+</li>
+<li><p>距离向量路由算法（DV）</p>
+<blockquote>
+<p>告诉邻居我所知道的全网信息（整张路由表）</p>
+</blockquote>
+</li>
+</ul>
+<p>每个路由器维护一个路由表，路由表中有到达其他路由器的最短路径。通过定期与邻居交换路由表信息更新自己的路由信息。本质上是基于贝尔曼算法</p>
+<ol>
+<li>初始化：每个路由器只知道直连网络距离为1，其余都为不可达</li>
+<li>周期性广播：定期把自己的路由表发给所有邻居</li>
+<li>路由表更新</li>
+<li>收敛：若干轮交换后，每个路由器都知道到达所有目标的最短路径<br>缺点是容易出现路由环路问题（无穷计数），收敛慢，对拓扑变化敏感（不具备快速检测故障和重新收敛的能力）</li>
+</ol>
+<ul>
+<li>链路状态路由算法<blockquote>
+<p>告诉全网我所知道的邻居信息（和邻居的链路状态）</p>
+</blockquote>
+</li>
+</ul>
+<p>每个路由器向全网广播自己与邻居的链路状态（如带宽、延迟），所有路由器都最终构建出相同的网络拓扑图。每个路由器用 D 算法计算出到各节点的最短路径即路由表</p>
+<ol>
+<li>邻居发现，找出谁是自己的邻居</li>
+<li>测量链路状态，路由器到达邻居的成本可以自动设置，也可以由运营商配置</li>
+<li>生成链路状态数据包</li>
+<li>泛洪数据包给全网，其中每一个新数据包发出都有序号递增，从而管理包的先后顺序</li>
+<li>本地运行 D 算法构建最短路径树，生成路由表</li>
+</ol>
+<ul>
+<li>IP数据报<br>20~60字节的首部+65535字节的数据部分<br>首部构成：4bit版本+4bit首部长度+8bit服务类型+16bit数据报长度（字节）+16bit标识+3bit标志+13bit片偏移量+8bit生存时间+8bit上层协议+16bit首部校验和+32bit源IP地址+32bit目标IP地址+选项（可选，长度可变）<br>除了数据报中最后一个分片，其他分片都必须是8字节的倍数</li>
+</ul>
+<h2 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h2><p>32位二进制确定的网络中每台设备的唯一标识符。一个IP不是指向一个主机，而是一个网络接口。</p>
+<ul>
+<li><p>点分十进制表示法<br>四个0~255的十进制数组成，转换成二进制是32个数，分为网络号（标识子网归属）和主机号（标识具体设备），以子网掩码分界<br>将IP地址与子网掩码按位与，可以得到网络号</p>
+</li>
+<li><p>特殊IP地址：<br>0.0.0.0 本机地址，默认路由<br>255.255.255.255 表示网络中的所有主机（路由器不转发）<br>127.x.x.x 回环地址，用于本地软件的回环测试<br>有一部分地址保留用于内部网络，称为私有地址。这部分地址不被公共转发，也不在公共互联网使用，</p>
+</li>
+<li><p>子网划分<br>将一个地址块划分为几部分，将一个大的网络分割成多个小的子网，供多个内部网络使用，但对于外部仍然像单个网络</p>
+</li>
+<li><p>CIDR 无分类域间路由选择<br>CIDR使用一个斜杠后跟网络前缀长度（即网络部分的位数）来表示IP地址和子网的关系，这种方法不拘泥于以整个字节划分，而是可以落在32位中的任何位置</p>
+</li>
+</ul>
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>yishi</li>
+    <li><strong>本文链接：</strong><a href="https://yishi-gh.github.io/2026/03/31/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/index.html" title="https:&#x2F;&#x2F;yishi-gh.github.io&#x2F;2026&#x2F;03&#x2F;31&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C&#x2F;index.html">https:&#x2F;&#x2F;yishi-gh.github.io&#x2F;2026&#x2F;03&#x2F;31&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+        
+  <nav class="nav">
+    <a></a>
+    <a href="/2026/03/23/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库笔记<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E7%BD%91%E6%9E%B6%E6%9E%84"><span class="toc-text">计网架构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%89%A9%E7%90%86%E5%B1%82"><span class="toc-text">物理层</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%A0%E8%BE%93%E4%BB%8B%E8%B4%A8"><span class="toc-text">传输介质</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E7%A0%81"><span class="toc-text">编码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6"><span class="toc-text">数字调制</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82"><span class="toc-text">网络层</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#IP%E5%9C%B0%E5%9D%80"><span class="toc-text">IP地址</span></a></li></ol></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="tencent://message/?Menu=yes&uin=894519210 "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#12B7F5'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconQQ "></i>
+      </a><a 
+        href="javascript:; "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#09BB07'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconwechat-fill "></i>
+      </a><a 
+        href="https://www.instagram.com/izhaoo/ "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#DA2E76'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconinstagram "></i>
+      </a><a 
+        href="https://github.com/zhaoo "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:izhaoo@163.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color=#FF3B00" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail"></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
