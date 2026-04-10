@@ -1,208 +1,305 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-CN" color-mode=light>
+<html lang="zh-CN">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>数据结构 课程笔记 - 亦适yishi 的碎碎念</title>
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="google" content="notranslate" />
-  
-  <meta name="description" content="数据结构 课程笔记前言本笔记是笔者备考南邮 数据结构（...">
-  <meta name="author" content="yishi">
-  <link rel="icon" href="/images/icons/favicon.ico" type="image/png" sizes="16x16">
-  <link rel="icon" href="/images/icons/favicon.ico" type="image/png" sizes="32x32">
-  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
-  <meta rel="mask-icon" href="/images/icons/favicon.svg" color="#333333">
-  
-    <meta rel="msapplication-TileImage" content="/images/icons/web-app-manifest-192x192.png">
-    <meta rel="msapplication-TileColor" content="#000000">
-  
-
-  
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="亦适yishi">
+    
+    <title>
+        
+            数据结构 课程笔记 |
+        
+        亦适yishi 的碎碎念
+    </title>
+    
 <link rel="stylesheet" href="/css/style.css">
 
-
-  
     
-<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
-
-  
-
-  
+        <link rel="shortcut icon" href="/images/yishi_favicon.svg">
     
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
-
-  
-
-  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/regular.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/solid.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/font/css/brands.min.css">
     
-      
-        
-        
-<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
-
-      
-        
-        
-<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
-
-      
-  
-
-  <script>
-    var CONFIG = window.CONFIG || {};
-    var ZHAOO = window.ZHAOO || {};
-    CONFIG = {
-      isHome: false,
-      fancybox: true,
-      pjax: false,
-      loading: {
-        gif: '/images/theme/loading.gif',
-        lottie: ''
-      },
-      lazyload: {
-        enable: true,
-        only_post: 'false',
-        loading: {
-          gif: '/images/theme/loading.gif',
-          lottie: ''
-        }
-      },
-      galleries: {
-        enable: true
-      },
-      fab: {
-        enable: true,
-        always_show: false
-      },
-      carrier: {
-        enable: true
-      },
-      daovoice: {
-        enable: false
-      },
-      preview: {
-        background: {
-          default: '',
-          api: ''
-        },
-        motto: {
-          default: '我在开了灯的床头下，想问问自己的心啊。',
-          typing: true,
-          api: 'https://v2.jinrishici.com/one.json',
-          data_contents: '["data","content"]'
-        },
-      },
-      qrcode: {
-        enable: true,
-        type: 'url',
-        image: 'https://pic.izhaoo.com/weapp-code.jpg',
-      },
-      toc: {
-        enable: true
-      },
-      scrollbar: {
-        type: 'default'
-      },
-      notification: {
-        enable: false,
-        delay: 4500,
-        list: '',
-        page_white_list: '',
-        page_black_list: ''
-      },
-      search: {
-        enable: false,
-        path: ''
-      }
-    }
+    <script class="keep-theme-configurations">
+    const KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"yishi-gh.github.io","root":"/","language":"zh-CN","path":"search.json"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#f0f3bd","title":"亦适yishi 的碎碎念","author":"亦适yishi","avatar":"/images/yishi_favicon.svg","logo":"/images/yishi_favicon.svg","favicon":"/images/yishi_favicon.svg"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories","about":"/about"},"first_screen":{"enable":true,"background_img":"/images/IMG_20250926_223509.jpg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/yishi-gh","weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":"yishi.alr@gmail.com"}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"updated","post_datetime_format":"YYYY年MM月DD日 HH:mm"},"post":{"author_badge":{"enable":false,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY 年 MM 月 DD 日 HH:mm","copyright_info":true,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":false,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2025,"word_count":true,"site_deploy":{"enable":true,"provider":"vercel","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":false,"css":[null],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
+    KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
+    KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
   </script>
-
-  
-
-  
-
 <meta name="generator" content="Hexo 8.0.0"></head>
 
-<body class="lock-screen">
-  <div class="loading" id="loading"></div>
-  
+
+<body>
+<div class="progress-bar-container">
     
 
+    
+        <span class="pjax-progress-bar"></span>
+        <i class="pjax-progress-icon fas fa-circle-notch fa-spin"></i>
+    
+</div>
 
-  <nav class="navbar">
-    <div class="left">
-      
-        <i class="iconfont iconhome j-navbar-back-home"></i>
-      
-      
-        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
-      
-      
-        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
-      
-      
-    </div>
-    <div class="center">数据结构 课程笔记</div>
-    <div class="right">
-      <i class="iconfont iconmenu j-navbar-menu"></i>
-    </div>
-    
-      <div id="qrcode-navbar"></div>
-    
-  </nav>
 
-  
-  
 
-<nav class="menu">
-  <div class="menu-container">
-    <div class="menu-close">
-      <i class="iconfont iconbaseline-close-px"></i>
-    </div>
-    <ul class="menu-content"><li class="menu-item">
-        <a href="/ " class="underline "> 首页</a>
-      </li><li class="menu-item">
-        <a href="/galleries/ " class="underline "> 摄影</a>
-      </li><li class="menu-item">
-        <a href="/archives/ " class="underline "> 归档</a>
-      </li><li class="menu-item">
-        <a href="/tags/ " class="underline "> 标签</a>
-      </li><li class="menu-item">
-        <a href="/categories/ " class="underline "> 分类</a>
-      </li><li class="menu-item">
-        <a href="/about/ " class="underline "> 关于</a>
-      </li></ul>
+<main class="page-container border-box">
+    <!-- home first screen  -->
     
-      <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
-    
-  </div>
-</nav>
-  <main id="main">
-  <div class="article-wrap">
-    <div class="row container">
-      <div class="col-xl-3"></div>
-      <div class="col-xl-6"><article class="article">
-  <div class="wrap">
-    <section class="head">
-  <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
-  <div class="head-mask">
-    <h1 class="head-title">数据结构 课程笔记</h1>
-    <div class="head-info">
-      <span class="post-info-item"><i class="iconfont iconcalendar"></i>一月 27, 2026</span>
-      
-      <span class="post-info-item"><i class="iconfont iconfont-size"></i>13660</span>
+
+    <!-- page content -->
+    <div class="page-main-content border-box">
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="border-box header-content">
+        <div class="left flex-start border-box">
+            
+                <a class="logo-image border-box" href="/">
+                    <img src="/images/yishi_favicon.svg">
+                </a>
+            
+            <a class="site-name border-box" href="/">
+               亦适yishi 的碎碎念
+            </a>
+        </div>
+
+        <div class="right border-box">
+            <div class="pc border-box">
+                <ul class="menu-list border-box">
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/">
+                                
+                                首页
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/archives">
+                                
+                                归档
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/tags">
+                                
+                                标签
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/categories">
+                                
+                                分类
+                                
+                            </a>
+                            
+                        </li>
+                    
+                        
+                        <li class="menu-item flex-start border-box">
+                            <a class="menu-text-color border-box" href="/about">
+                                
+                                关于
+                                
+                            </a>
+                            
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="menu-text-color fas search fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile border-box flex-start">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</section>
-    <section class="main">
-      <section class="content">
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list border-box">
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/">
+                            
+                            首页
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/archives">
+                            
+                            归档
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/tags">
+                            
+                            标签
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/categories">
+                            
+                            分类
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+                
+                <li class="drawer-menu-item border-box not-sub-menu">
+                    <label class="drawer-menu-label border-box">
+                        <a class="drawer-menu-text-color left-side flex-start border-box" href="/about">
+                            
+                            关于
+                        </a>
+                        
+                    </label>
+                    
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle border-box">
+
+            <div class="main-content border-box">
+                
+
+                    
+<div class="fade-in-down-animation">
+    <div class="post-page-container border-box">
+        <div class="post-content-container border-box">
+            
+
+            <div class="post-content-bottom border-box">
+                
+                    <div class="post-title">
+                        数据结构 课程笔记
+                    </div>
+                
+
+                
+                    <div class="post-header border-box">
+                        
+                            <div class="avatar-box border-box">
+                                <img src="/images/yishi_favicon.svg">
+                            </div>
+                        
+                        <div class="info-box">
+                            <div class="author border-box">
+                                <span class="name">亦适yishi</span>
+                                
+                            </div>
+                            <div class="meta-info border-box">
+                                
+
+<div class="post-meta-info-container border-box post">
+    <div class="post-meta-info border-box">
         
-        <h1 id="数据结构-课程笔记"><a href="#数据结构-课程笔记" class="headerlink" title="数据结构 课程笔记"></a>数据结构 课程笔记</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本笔记是笔者备考南邮 <strong>数据结构（混合式） 25-26秋期末考试</strong> 的笔记，</p>
+
+        
+            <span class="meta-info-item post-create-date">
+                <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
+                <span class="datetime">2026 年 01 月 27 日 16:40</span>
+            </span>
+
+            
+                <span class="meta-info-item post-update-date">
+                    <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                    <span class="datetime" data-updated="Tue Jan 27 2026 17:54:58 GMT+0800">2026 年 01 月 27 日 17:54</span>
+                </span>
+            
+        
+
+        
+
+        
+
+        
+        
+            <span class="meta-info-item post-wordcount">
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>10k 字</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-min2read">
+                <i class="icon fas fa-clock"></i>&nbsp;<span>36 分钟</span>
+            </span>
+        
+        
+            <span class="meta-info-item post-pv">
+                <i class="icon fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+            </span>
+        
+    </div>
+
+    
+</div>
+
+                            </div>
+                        </div>
+                    </div>
+                
+
+                <div class="post-content keep-markdown-body ">
+                    
+
+                    
+                         <h1 id="数据结构-课程笔记"><a href="#数据结构-课程笔记" class="headerlink" title="数据结构 课程笔记"></a>数据结构 课程笔记</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本笔记是笔者备考南邮 <strong>数据结构（混合式） 25-26秋期末考试</strong> 的笔记，</p>
 <p>所使用的教材是 <strong>数据结构（C语言） 第2版 慕课版 王海艳主编 人民邮电出版社</strong>。</p>
 <h2 id="题型"><a href="#题型" class="headerlink" title="题型"></a>题型</h2><p>一、填空题(每空2分,5道题,共20分)</p>
 <p>二、选择题(每题2分,10道题,共20分)</p>
@@ -587,163 +684,420 @@
 <p>2.将初始归并段的头部数据读入内存的输入缓冲区。在内存中进行多路归并，将最小（或最大）的元素选出送入输出缓冲区。输出缓冲区满了就写回磁盘，输入缓冲区空了就从磁盘补充对应的归并段数据。重复直到所有归并段合并成一个完整的有序文件。</p>
 <hr>
 
-      </section>
-      <section class="extra">
-        
-          <ul class="copyright">
-  
-    <li><strong>本文作者：</strong>yishi</li>
-    <li><strong>本文链接：</strong><a href="https://yishi-gh.github.io/2026/01/27/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.html" title="https:&#x2F;&#x2F;yishi-gh.github.io&#x2F;2026&#x2F;01&#x2F;27&#x2F;%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#x2F;index.html">https:&#x2F;&#x2F;yishi-gh.github.io&#x2F;2026&#x2F;01&#x2F;27&#x2F;%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84&#x2F;index.html</a></li>
-    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
-  
-</ul>
-        
-        
-        
-  <nav class="nav">
-    <a href="/2026/03/23/%E6%95%B0%E6%8D%AE%E5%BA%93/"><i class="iconfont iconleft"></i>数据库笔记</a>
-    <a href="/2025/12/09/%E6%95%B0%E6%A8%A1/">数模<i class="iconfont iconright"></i></a>
-  </nav>
+                    
+                </div>
 
-      </section>
-      
-    </section>
-  </div>
-</article></div>
-      <div class="col-xl-3">
-        
-          
-  <aside class="toc-wrap">
-    <h3 class="toc-title">文章目录：</h3>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0"><span class="toc-text">数据结构 课程笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E5%9E%8B"><span class="toc-text">题型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E7%AE%97%E6%B3%95%E4%B8%8E%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-text">1 算法与复杂度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E7%AE%97%E6%B3%95"><span class="toc-text">1.1 算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E6%95%B0%E6%8D%AE"><span class="toc-text">1.2 数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-text">1.3 时间复杂度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="toc-text">1.4 空间复杂度</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%BA%BF%E6%80%A7%E8%A1%A8"><span class="toc-text">2 线性表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E9%A1%BA%E5%BA%8F%E8%A1%A8"><span class="toc-text">2.1 顺序表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%8D%95%E9%93%BE%E8%A1%A8"><span class="toc-text">2.2 单链表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E6%8F%92%E5%85%A5"><span class="toc-text">2.3 双向链表的插入</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97"><span class="toc-text">3 栈与队列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E5%A0%86%E6%A0%88Stack"><span class="toc-text">3.1 堆栈Stack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E9%98%9F%E5%88%97Queue"><span class="toc-text">3.2 队列Queue</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%95%B0%E7%BB%84%E4%B8%8E%E7%A8%80%E7%96%8F%E7%9F%A9%E9%98%B5"><span class="toc-text">4 数组与稀疏矩阵</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E6%95%B0%E7%BB%84"><span class="toc-text">4.1 数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E7%A8%80%E7%96%8F%E7%9F%A9%E9%98%B5"><span class="toc-text">4.2 稀疏矩阵</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%A0%91%E4%B8%8E%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-text">5 树与二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E6%A0%91"><span class="toc-text">5.1 树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-text">5.2 二叉树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-text">5.3 完全二叉树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-text">5.4 树的遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%BA%BF%E7%B4%A2%E5%8C%96"><span class="toc-text">5.5 二叉树的线索化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-6-%E6%A3%AE%E6%9E%97%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2"><span class="toc-text">5.6 森林和二叉树的相互转换</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E5%A0%86%E4%B8%8E%E5%93%88%E5%A4%AB%E6%9B%BC%E7%AE%97%E6%B3%95"><span class="toc-text">6 堆与哈夫曼算法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-%E5%A0%86"><span class="toc-text">6.1 堆</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-%E5%93%88%E5%A4%AB%E6%9B%BC%E7%AE%97%E6%B3%95"><span class="toc-text">6.2 哈夫曼算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E9%9B%86%E5%90%88%E4%B8%8E%E6%90%9C%E7%B4%A2"><span class="toc-text">7 集合与搜索</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#7-1-%E5%AF%B9%E5%8D%8A%E6%90%9C%E7%B4%A2"><span class="toc-text">7.1 对半搜索</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-2-%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="toc-text">7.2 搜索树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-3-%E4%BA%8C%E5%8F%89%E5%B9%B3%E8%A1%A1%E6%A0%91"><span class="toc-text">7.3 二叉平衡树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-4-m%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="toc-text">7.4 m叉搜索树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-5-B-%E6%A0%91"><span class="toc-text">7.5 B-树</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%E6%95%A3%E5%88%97%E8%A1%A8"><span class="toc-text">8 散列表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#8-1-%E6%8B%89%E9%93%BE%E6%B3%95"><span class="toc-text">8.1 拉链法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-2-%E5%BC%80%E5%9C%B0%E5%9D%80%E6%B3%95"><span class="toc-text">8.2 开地址法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%E5%9B%BE"><span class="toc-text">9 图</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#9-1-%E5%9B%BE%E7%9A%84%E5%9F%BA%E7%A1%80"><span class="toc-text">9.1 图的基础</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-2-%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-text">9.2 图的遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-3-%E5%9B%BE%E7%9A%84%E7%AE%97%E6%B3%95"><span class="toc-text">9.3 图的算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%E6%8E%92%E5%BA%8F"><span class="toc-text">10 排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#10-1-%E5%86%85%E6%8E%92%E5%BA%8F%E5%85%AD%E5%A4%A7%E7%AE%97%E6%B3%95"><span class="toc-text">10.1 内排序六大算法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-2-%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E5%88%A4%E5%AE%9A"><span class="toc-text">10.2 排序算法判定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-3-%E5%A4%96%E6%8E%92%E5%BA%8F"><span class="toc-text">10.3 外排序</span></a></li></ol></li></ol></li></ol>
-  </aside>
+                
+                        
+<div class="post-copyright-info-container border-box">
+    <div class="copyright-info-content border-box">
+        <div class="copyright-info-top border-box">
+            <div class="copyright-post-title border-box text-ellipsis">
+                数据结构 课程笔记
+            </div>
 
-        
-      </div>
+            <div class="copyright-post-link border-box text-ellipsis">
+                2026/01/27/数据结构/
+            </div>
+        </div>
+
+        <div class="copyright-info-bottom border-box">
+            <div class="copyright-post-author bottom-item">
+                <div class="type">
+                    作者
+                </div>
+                <div class="content">亦适yishi</div>
+            </div>
+
+            <div class="post-time bottom-item">
+                <div class="type">
+                    发布于
+                </div>
+                <div class="content">2026-01-27 16:40</div>
+            </div>
+
+
+            <div class="post-license bottom-item">
+                <div class="type">
+                    许可
+                </div>
+                <div class="content tooltip" data-tooltip-content="CC BY-NC-SA 4.0">
+                    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" target="_blank">
+                        
+                            <i class="fa-brands fa-creative-commons"></i>
+                            <i class="fa-brands fa-creative-commons-by"></i>
+                            <i class="fa-brands fa-creative-commons-nc"></i>
+                            <i class="fa-brands fa-creative-commons-sa"></i>
+                        
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <i class="copyright-bg fa-solid fa-copyright"></i>
     </div>
-  </div>
-</main>
-  
+    <div class="copy-copyright-info flex-center tooltip" data-tooltip-content="复制版权信息" data-tooltip-offset-y="-2px">
+        <i class="fa-solid fa-copy"></i>
+    </div>
+</div>
 
-<footer class="footer">
-  <div class="footer-social"><a 
-        href="tencent://message/?Menu=yes&uin=894519210 "
-        target="_blank"
-        class="footer-social-item"
-        onMouseOver="this.style.color= '#12B7F5'" 
-        onMouseOut="this.style.color='#33333D'">
-          <i class="iconfont  iconQQ "></i>
-      </a><a 
-        href="javascript:; "
-        target="_blank"
-        class="footer-social-item"
-        onMouseOver="this.style.color= '#09BB07'" 
-        onMouseOut="this.style.color='#33333D'">
-          <i class="iconfont  iconwechat-fill "></i>
-      </a><a 
-        href="https://www.instagram.com/izhaoo/ "
-        target="_blank"
-        class="footer-social-item"
-        onMouseOver="this.style.color= '#DA2E76'" 
-        onMouseOut="this.style.color='#33333D'">
-          <i class="iconfont  iconinstagram "></i>
-      </a><a 
-        href="https://github.com/zhaoo "
-        target="_blank"
-        class="footer-social-item"
-        onMouseOver="this.style.color= '#9f7be1'" 
-        onMouseOut="this.style.color='#33333D'">
-          <i class="iconfont  icongithub-fill "></i>
-      </a><a 
-        href="mailto:izhaoo@163.com "
-        target="_blank"
-        class="footer-social-item"
-        onMouseOver="this.style.color=#FF3B00" 
-        onMouseOut="this.style.color='#33333D'">
-          <i class="iconfont  iconmail"></i>
-      </a></div>
-  
-    <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
-  
-</footer>
-  
-      <div class="fab fab-plus">
-    <i class="iconfont iconplus"></i>
-  </div>
-  
-  
-  
-  <div class="fab fab-up">
-    <i class="iconfont iconcaret-up"></i>
-  </div>
-  
-  
-  
+                
+
+                <div class="post-bottom-tags-and-share border-box">
+                    <div>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
+
+                
+
+                
+                    <div class="post-nav border-box">
+                        
+                            <div class="prev-post">
+                                <a class="prev"
+                                   rel="prev"
+                                   href="/2026/03/23/%E6%95%B0%E6%8D%AE%E5%BA%93/"
+                                   title="数据库笔记"
+                                >
+                                    <span class="left arrow-icon flex-center">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </span>
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">数据库笔记</span>
+                                        <span class="post-nav-item">上一篇</span>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                        
+                            <div class="next-post">
+                                <a class="next"
+                                   rel="next"
+                                   href="/2025/12/09/%E6%95%B0%E6%A8%A1/"
+                                   title="数模"
+                                >
+                                    <span class="title flex-center">
+                                        <span class="post-nav-title-item text-ellipsis">数模</span>
+                                        <span class="post-nav-item">下一篇</span>
+                                    </span>
+                                    <span class="right arrow-icon flex-center">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        
+                    </div>
+                
+
+                
+                    
+
+
+
+
+
+
+                
+            </div>
+        </div>
+
+        
+            <div class="pc-post-toc right-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0"><span class="nav-text">数据结构 课程笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E5%9E%8B"><span class="nav-text">题型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%AE%97%E6%B3%95%E4%B8%8E%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-text">1 算法与复杂度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E7%AE%97%E6%B3%95"><span class="nav-text">1.1 算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E6%95%B0%E6%8D%AE"><span class="nav-text">1.2 数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-text">1.3 时间复杂度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-text">1.4 空间复杂度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%BA%BF%E6%80%A7%E8%A1%A8"><span class="nav-text">2 线性表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E9%A1%BA%E5%BA%8F%E8%A1%A8"><span class="nav-text">2.1 顺序表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%8D%95%E9%93%BE%E8%A1%A8"><span class="nav-text">2.2 单链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E6%8F%92%E5%85%A5"><span class="nav-text">2.3 双向链表的插入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97"><span class="nav-text">3 栈与队列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E5%A0%86%E6%A0%88Stack"><span class="nav-text">3.1 堆栈Stack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E9%98%9F%E5%88%97Queue"><span class="nav-text">3.2 队列Queue</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%95%B0%E7%BB%84%E4%B8%8E%E7%A8%80%E7%96%8F%E7%9F%A9%E9%98%B5"><span class="nav-text">4 数组与稀疏矩阵</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E6%95%B0%E7%BB%84"><span class="nav-text">4.1 数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E7%A8%80%E7%96%8F%E7%9F%A9%E9%98%B5"><span class="nav-text">4.2 稀疏矩阵</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E6%A0%91%E4%B8%8E%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-text">5 树与二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E6%A0%91"><span class="nav-text">5.1 树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-text">5.2 二叉树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-text">5.3 完全二叉树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86"><span class="nav-text">5.4 树的遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-5-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%BA%BF%E7%B4%A2%E5%8C%96"><span class="nav-text">5.5 二叉树的线索化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-6-%E6%A3%AE%E6%9E%97%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2"><span class="nav-text">5.6 森林和二叉树的相互转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E5%A0%86%E4%B8%8E%E5%93%88%E5%A4%AB%E6%9B%BC%E7%AE%97%E6%B3%95"><span class="nav-text">6 堆与哈夫曼算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-%E5%A0%86"><span class="nav-text">6.1 堆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-%E5%93%88%E5%A4%AB%E6%9B%BC%E7%AE%97%E6%B3%95"><span class="nav-text">6.2 哈夫曼算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E9%9B%86%E5%90%88%E4%B8%8E%E6%90%9C%E7%B4%A2"><span class="nav-text">7 集合与搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-%E5%AF%B9%E5%8D%8A%E6%90%9C%E7%B4%A2"><span class="nav-text">7.1 对半搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="nav-text">7.2 搜索树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3-%E4%BA%8C%E5%8F%89%E5%B9%B3%E8%A1%A1%E6%A0%91"><span class="nav-text">7.3 二叉平衡树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-4-m%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="nav-text">7.4 m叉搜索树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-5-B-%E6%A0%91"><span class="nav-text">7.5 B-树</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-%E6%95%A3%E5%88%97%E8%A1%A8"><span class="nav-text">8 散列表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1-%E6%8B%89%E9%93%BE%E6%B3%95"><span class="nav-text">8.1 拉链法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-2-%E5%BC%80%E5%9C%B0%E5%9D%80%E6%B3%95"><span class="nav-text">8.2 开地址法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-%E5%9B%BE"><span class="nav-text">9 图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#9-1-%E5%9B%BE%E7%9A%84%E5%9F%BA%E7%A1%80"><span class="nav-text">9.1 图的基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-2-%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86"><span class="nav-text">9.2 图的遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-3-%E5%9B%BE%E7%9A%84%E7%AE%97%E6%B3%95"><span class="nav-text">9.3 图的算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-%E6%8E%92%E5%BA%8F"><span class="nav-text">10 排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#10-1-%E5%86%85%E6%8E%92%E5%BA%8F%E5%85%AD%E5%A4%A7%E7%AE%97%E6%B3%95"><span class="nav-text">10.1 内排序六大算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-2-%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E5%88%A4%E5%AE%9A"><span class="nav-text">10.2 排序算法判定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-3-%E5%A4%96%E6%8E%92%E5%BA%8F"><span class="nav-text">10.3 外排序</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+        </div>
+
+        <div class="page-main-content-bottom border-box">
+            
+<footer class="footer border-box">
+    <div class="copyright-info info-item">
+    &copy;&nbsp;<span>2025</span>&nbsp;-&nbsp;2026
     
-<script src="/js/color-mode.js"></script>
+            &nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;&nbsp;<a href="/">亦适yishi</a>
+        
+    </div>
 
-  
-  
+    <div class="theme-info info-item">
+        由&nbsp;<a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;驱动&nbsp;&&nbsp;主题&nbsp;<a class="keep-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep</a>
+    </div>
+
+    
+        
+        <div class="deploy-info info-item">
+            
+            本站由 <span class="tooltip" data-tooltip-content="Vercel"><img src="/images/brands/vercel.png"></span> 提供部署服务
+            
+        </div>
+    
+
+    
+        <div class="count-info info-item">
+            
+                <span class="count-item border-box word">
+                    <span class="item-type border-box">总字数</span>
+                    <span class="item-value border-box word">22.7k</span>
+                </span>
+            
+
+            
+                <span class="count-item border-box uv">
+                    <span class="item-type border-box">访客数</span>
+                    <span class="item-value border-box uv" id="busuanzi_value_site_uv"></span>
+                </span>
+            
+
+            
+                <span class="count-item border-box pv">
+                    <span class="item-type border-box">访问量</span>
+                    <span class="item-value border-box pv" id="busuanzi_value_site_pv"></span>
+                </span>
+            
+        </div>
+    
+
+    
+</footer>
+
+        </div>
+    </div>
+
+    <!-- post tools -->
+    
+        <div class="post-tools right-toc">
+            <div class="post-tools-container border-box">
+    <ul class="post-tools-list border-box">
+        <!-- PC encrypt again -->
+        
+
+        <!-- PC TOC show toggle -->
+        
+            <li class="tools-item flex-center toggle-show-toc">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        <!-- PC go comment -->
+        
+
+        <!-- PC full screen -->
+        <li class="tools-item flex-center full-screen">
+            <i class="fa-solid fa-expand"></i>
+        </li>
+    </ul>
+</div>
+
+        </div>
+    
+
+    <!-- side tools -->
+    <div class="side-tools">
+        <div class="side-tools-container border-box ">
+    <ul class="side-tools-list side-tools-show-handle border-box">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <!-- toggle mode -->
+        
+            <li class="tools-item tool-toggle-theme-mode flex-center">
+                <i class="fas fa-moon"></i>
+            </li>
+        
+
+        <!-- rss -->
+        
+
+        <!-- to bottom -->
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list border-box">
+        
+            <li class="tools-item toggle-show-toc-tablet flex-center">
+                <i class="fas fa-list"></i>
+            </li>
+        
+
+        
+
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+
+        <li class="tools-item tool-scroll-to-top flex-center show-arrow">
+            <i class="arrow fas fa-arrow-up"></i>
+            <span class="percent"></span>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+    <!-- image mask -->
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    <!-- local search -->
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="close-popup-btn">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <!-- tablet toc -->
+    
+        <div class="tablet-post-toc-mask">
+            <div class="tablet-post-toc">
+                <div class="post-toc-wrap border-box">
+    <div class="post-toc border-box">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0"><span class="nav-text">数据结构 课程笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E5%9E%8B"><span class="nav-text">题型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E7%AE%97%E6%B3%95%E4%B8%8E%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-text">1 算法与复杂度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E7%AE%97%E6%B3%95"><span class="nav-text">1.1 算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E6%95%B0%E6%8D%AE"><span class="nav-text">1.2 数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-text">1.3 时间复杂度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6"><span class="nav-text">1.4 空间复杂度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E7%BA%BF%E6%80%A7%E8%A1%A8"><span class="nav-text">2 线性表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E9%A1%BA%E5%BA%8F%E8%A1%A8"><span class="nav-text">2.1 顺序表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%8D%95%E9%93%BE%E8%A1%A8"><span class="nav-text">2.2 单链表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8%E7%9A%84%E6%8F%92%E5%85%A5"><span class="nav-text">2.3 双向链表的插入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97"><span class="nav-text">3 栈与队列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E5%A0%86%E6%A0%88Stack"><span class="nav-text">3.1 堆栈Stack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E9%98%9F%E5%88%97Queue"><span class="nav-text">3.2 队列Queue</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E6%95%B0%E7%BB%84%E4%B8%8E%E7%A8%80%E7%96%8F%E7%9F%A9%E9%98%B5"><span class="nav-text">4 数组与稀疏矩阵</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E6%95%B0%E7%BB%84"><span class="nav-text">4.1 数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E7%A8%80%E7%96%8F%E7%9F%A9%E9%98%B5"><span class="nav-text">4.2 稀疏矩阵</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E6%A0%91%E4%B8%8E%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-text">5 树与二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E6%A0%91"><span class="nav-text">5.1 树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-text">5.2 二叉树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="nav-text">5.3 完全二叉树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-%E6%A0%91%E7%9A%84%E9%81%8D%E5%8E%86"><span class="nav-text">5.4 树的遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-5-%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%BA%BF%E7%B4%A2%E5%8C%96"><span class="nav-text">5.5 二叉树的线索化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-6-%E6%A3%AE%E6%9E%97%E5%92%8C%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2"><span class="nav-text">5.6 森林和二叉树的相互转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E5%A0%86%E4%B8%8E%E5%93%88%E5%A4%AB%E6%9B%BC%E7%AE%97%E6%B3%95"><span class="nav-text">6 堆与哈夫曼算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-%E5%A0%86"><span class="nav-text">6.1 堆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-%E5%93%88%E5%A4%AB%E6%9B%BC%E7%AE%97%E6%B3%95"><span class="nav-text">6.2 哈夫曼算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E9%9B%86%E5%90%88%E4%B8%8E%E6%90%9C%E7%B4%A2"><span class="nav-text">7 集合与搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-%E5%AF%B9%E5%8D%8A%E6%90%9C%E7%B4%A2"><span class="nav-text">7.1 对半搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="nav-text">7.2 搜索树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3-%E4%BA%8C%E5%8F%89%E5%B9%B3%E8%A1%A1%E6%A0%91"><span class="nav-text">7.3 二叉平衡树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-4-m%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91"><span class="nav-text">7.4 m叉搜索树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-5-B-%E6%A0%91"><span class="nav-text">7.5 B-树</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-%E6%95%A3%E5%88%97%E8%A1%A8"><span class="nav-text">8 散列表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1-%E6%8B%89%E9%93%BE%E6%B3%95"><span class="nav-text">8.1 拉链法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-2-%E5%BC%80%E5%9C%B0%E5%9D%80%E6%B3%95"><span class="nav-text">8.2 开地址法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-%E5%9B%BE"><span class="nav-text">9 图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#9-1-%E5%9B%BE%E7%9A%84%E5%9F%BA%E7%A1%80"><span class="nav-text">9.1 图的基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-2-%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86"><span class="nav-text">9.2 图的遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-3-%E5%9B%BE%E7%9A%84%E7%AE%97%E6%B3%95"><span class="nav-text">9.3 图的算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-%E6%8E%92%E5%BA%8F"><span class="nav-text">10 排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#10-1-%E5%86%85%E6%8E%92%E5%BA%8F%E5%85%AD%E5%A4%A7%E7%AE%97%E6%B3%95"><span class="nav-text">10.1 内排序六大算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-2-%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E5%88%A4%E5%AE%9A"><span class="nav-text">10.2 排序算法判定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-3-%E5%A4%96%E6%8E%92%E5%BA%8F"><span class="nav-text">10.3 外排序</span></a></li></ol></li></ol></li></ol>
+    </div>
+</div>
+
+            </div>
+        </div>
+    
+</main>
+
+
+
+
+
+<!-- common js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/utils.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/header-shrink.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/back2top.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/toggle-theme.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/code-block.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/main.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/libs/anime.min.js"></script>
+
+<!-- local search -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/local-search.min.js"></script>
+
+
+<!-- lazyload -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/lazyload.min.js"></script>
+
+
+<div class="pjax">
+    <!-- home page -->
+    
+
+    <!-- post page -->
+    
+        <!-- post-helper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/post/post-helper.min.js"></script>
+
+        <!-- toc -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/post/toc.min.js"></script>
+        
+
+        <!-- copyright-info -->
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/post/copyright-info.min.js"></script>
+        
+
+        <!-- share -->
+        
+    
+
+    <!-- categories page -->
+    
+
+    <!-- links page -->
+    
+
+    <!-- photos page -->
+    
+
+    <!-- tools page -->
+    
+</div>
+
+<!-- mermaid -->
+
+
+<!-- pjax -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-theme-keep/4.2.5/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart()
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd()
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'))
+            KEEP.initExecute()
+        });
+    });
+</script>
+
+
+
+
 </body>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-
-
-
-
-  
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
-
-
-
-
-  
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-
-
-
-
-
-
-  
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
-
-
-
-
-<script src="/js/utils.js"></script>
-<script src="/js/script.js"></script>
-
-
-
-
-
-
-
-  <script>
-    (function () {
-      var bp = document.createElement('script');
-      var curProtocol = window.location.protocol.split(':')[0];
-      if (curProtocol === 'https') {
-        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-      } else {
-        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-      }
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(bp, s);
-    })();
-  </script>
-
-
-
-
-
-
-
-
-
-
-
-
 </html>
