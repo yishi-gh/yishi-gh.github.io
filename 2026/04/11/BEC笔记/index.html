@@ -260,7 +260,7 @@
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Sat Apr 11 2026 17:58:59 GMT+0800">2026 年 04 月 11 日 17:58</span>
+                    <span class="datetime" data-updated="Sat Apr 11 2026 19:16:15 GMT+0800">2026 年 04 月 11 日 19:16</span>
                 </span>
             
         
@@ -277,7 +277,7 @@
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>11 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>10 分钟</span>
             </span>
         
         
@@ -299,36 +299,135 @@
                     
 
                     
-                         <h2 id="全梯度下降（FG）"><a href="#全梯度下降（FG）" class="headerlink" title="全梯度下降（FG）"></a>全梯度下降（FG）</h2><p>是梯度下降法最常用的形式，具体做法是在更新参数时使用所有的样本来进行更新。计算训练集所有样本误差，对其求和再取平均值作为目标函数。由于求梯度的结果是精确的，得到的参数更新方向也是确定的，能够稳定收敛到最优解（若损失函数是非凸的，则有可能落到局部最优解）。</p>
+                         <h2 id="全梯度下降fg">全梯度下降（FG）</h2>
+<p>是梯度下降法最常用的形式，具体做法是在更新参数时使用所有的样本来进行更新。计算训练集所有样本误差，对其求和再取平均值作为目标函数。由于求梯度的结果是精确的，得到的参数更新方向也是确定的，能够稳定收敛到最优解（若损失函数是非凸的，则有可能落到局部最优解）。</p>
 <p>然而缺点也很显著，一方面他需要计算所有样本的梯度，<strong>极其耗时</strong>；另一方面是不能中途添加样本，也即<strong>无法实现在线学习</strong>。</p>
-<p>进一步地，残差梯度算法本质上就是希望对 <strong>平均平方贝尔曼误差(MSBE)</strong> 做全梯度下降，但是这样得到的损失函数中会存在两个期望算子，需要两次独立采样，一次用于估计误差项，一次用于估计梯度项，而现实中我们显然无法回溯到上个时刻去采样，这称为双样本问题。</p>
+<p>进一步地，残差梯度算法本质上就是希望对
+<strong>平均平方贝尔曼误差(MSBE)</strong>
+做全梯度下降，但是这样得到的损失函数中会存在两个期望算子，需要两次独立采样，一次用于估计误差项，一次用于估计梯度项，而现实中我们显然无法回溯到上个时刻去采样，这称为双样本问题。</p>
 <p>更通俗地说，这就像射箭。在确定性的环境下，靶子是固定的，我们只需要关心射箭的偏离位置，单次采样的结果就是期望值本身。而在随机环境下，靶子的位置也会动（包括<strong>环境影响和策略影响</strong>，就像风的影响和拉弓姿势的影响），我们需要同时采集靶子的平均位置和射箭的平均偏差，这需要两次独立采样。</p>
-<p>我们将样本表示为：<br>$$样本&#x3D;信号+噪声$$</p>
-<p>第一次采样用来确定靶子的位置（误差项），第二次采样用于确定梯度的方向（梯度项）。需要注意的是，两次采样并不是对环境影响和策略影响的各自采样，而是得到了两个<strong>同时受到环境和策略影响的样本</strong>。噪声的期望各自为0，所以 $\boldsymbol{2ab}$ 可以消掉，由于两个噪声是独立的，$\boldsymbol{b^2}$ 的期望等于两个噪声期望的乘积，0​×0&#x3D;0，也可以消掉。最终我们得到了 $\boldsymbol{信号^2}$：<br>$$(信号+噪声1​)×(信号+噪声2​)&#x3D;信号2+(信号×噪声2​)+(信号×噪声1​)+(噪声1​×噪声2​)$$</p>
-<p>如果使用同一个样本计算两次，就可能把靶子偶然出现的位置当成平均位置，这次采样既包含平均位置，又包含随机噪声。而噪声虽然期望为0，但平方始终非负，所以消不掉。全梯度实际上是希望把整个分布（未来的所有可能）当成样本，如果我们错误地把样本当成了整个分布，就会带偏所有直觉：<br>$$(信号+噪声)×(信号+噪声)&#x3D;信号^2+2(信号×噪声)+噪声^2$$</p>
+<p>我们将样本表示为：</p>
+<p><span
+class="math display"><em>样</em><em>本</em> = <em>信</em><em>号</em> + <em>噪</em><em>声</em></span></p>
+<p>第一次采样用来确定靶子的位置（误差项），第二次采样用于确定梯度的方向（梯度项）。需要注意的是，两次采样并不是对环境影响和策略影响的各自采样，而是得到了两个<strong>同时受到环境和策略影响的样本</strong>。噪声的期望各自为0，所以
+<span
+class="math inline"><strong>2</strong><strong>a</strong><strong>b</strong></span>
+可以消掉，由于两个噪声是独立的，<span
+class="math inline"><strong>b</strong><sup><strong>2</strong></sup></span>
+的期望等于两个噪声期望的乘积，0​×0=0，也可以消掉。最终我们得到了 <span
+class="math inline"><strong>信</strong><strong>号</strong><sup><strong>2</strong></sup></span>：
+<span
+class="math display">(<em>信</em><em>号</em> + <em>噪</em><em>声</em>1​) × (<em>信</em><em>号</em> + <em>噪</em><em>声</em>2​) = <em>信</em><em>号</em>2 + (<em>信</em><em>号</em> × <em>噪</em><em>声</em>2​) + (<em>信</em><em>号</em> × <em>噪</em><em>声</em>1​) + (<em>噪</em><em>声</em>1​ × <em>噪</em><em>声</em>2​)</span></p>
+<p>如果使用同一个样本计算两次，就可能把靶子偶然出现的位置当成平均位置，这次采样既包含平均位置，又包含随机噪声。而噪声虽然期望为0，但平方始终非负，所以消不掉。全梯度实际上是希望把整个分布（未来的所有可能）当成样本，如果我们错误地把样本当成了整个分布，就会带偏所有直觉：
+<span
+class="math display">(<em>信</em><em>号</em> + <em>噪</em><em>声</em>) × (<em>信</em><em>号</em> + <em>噪</em><em>声</em>) = <em>信</em><em>号</em><sup>2</sup> + 2(<em>信</em><em>号</em> × <em>噪</em><em>声</em>) + <em>噪</em><em>声</em><sup>2</sup></span></p>
 <p>为了解决双样本问题，有如下几种解决方案：半梯度下降（SG），引入双时间尺度（GTD），环境模型，经验回放（采样重利用），对偶强化学习</p>
-<h2 id="半梯度下降（SG）"><a href="#半梯度下降（SG）" class="headerlink" title="半梯度下降（SG）"></a>半梯度下降（SG）</h2><p>在全梯度中，假设我们要优化的损失函数是：​​<br>$$L(w)&#x3D;\frac12​(\underbrace{R+γV_w​(s′)}<em>{Target}​​−\underbrace{V_w​(s)}</em>{Prediction})^2$$<br>计算梯度，得到：<br>$$∇w​L(w)&#x3D;(\underbrace{Target−V_w​(s))}<em>{误差项}​​⋅\underbrace{∇w​(Target−V_w​(s))}</em>{梯度项}$$<br>​展开梯度项：<br>$$∇_w​(Target−V_w​(s))&#x3D;\underbrace{∇<em>w​(R+γV_w​(s′))}</em>{靶子的变动}​​-\underbrace{∇<em>w​V_w​(s)}</em>{箭的变动}​​$$<br>半梯度的核心思想是，完整保留误差项，但是将梯度项中靶子的导数丢掉，认为梯度仅仅是 $(−∇_w​V_w​(s))$ 。丢掉的部分恰恰代表对下一个状态求期望，忽略掉这个项后，我们只需要一个样本来评估当前状态。<br>通俗的讲，在射箭的一瞬间假设靶子是静止的，只考虑箭靠近靶子。但靶子事实上是在移动的，在下一步更新时，针对靶子新的位置再射箭，也即<strong>自举</strong>。<br>半梯度每次迭代时，基于现有参数采样一个未来的可能状态，定为临时目标，调整当前参数以靠近目标，然后进入下一次迭代，目标的位置也小幅移动。虽然每次更新目标的位置都不一样，但只要步长足够小，最终会收敛到贝尔曼不动点。<br>半梯度通过这种自举的机制，绕过了双样本问题，从而实现用单次交互反馈实现在线学习。然而，对于全梯度来说，严格求导追求的是损失函数的极小值点，半梯度却只能收敛到不动点。在复杂的函数拟合中（如神经网络），真实的贝尔曼目标可能不在神经网络能表达的范围内，这意味这不动点和极小值点不总是重合的。半梯度在不动点上的收敛，意味着系统可能只是在逻辑上自洽，而离正确答案很远。<br>从逻辑意义看，损失函数的极小值点意味着真理，而不动点则意味着输入经过算子（可以理解为某种映射）不发生改变（也即 $F(x)&#x3D;x$ ），系统达到了平衡。从几何意义上看，极小值点是损失平面的谷底，而不动点却难以总结几何特征，可能没有任何几何特征性。不动点在数学上一定是参数空间内的某个坐标，但不在损失平面的逻辑体系内，他是从贝尔曼一致性投影下来的点。</p>
-<h2 id="收敛性证明"><a href="#收敛性证明" class="headerlink" title="收敛性证明"></a>收敛性证明</h2><p>收敛性证明的核心思想是证明损失函数的海森矩阵（二阶导数矩阵）是正定的。<br>先来回顾正定矩阵：对于一个实对称矩阵 $A$ ，如果对于任意一个非零向量 $x$ ，都有：<br>$$x^\top A x &gt; 0$$<br>那么矩阵就是正定的。这意味着 $A$ 对向量的任意旋转或拉伸都不会让向量反向或变成0。<br>证明矩阵正定：</p>
+<h2 id="半梯度下降sg">半梯度下降（SG）</h2>
+<p>在全梯度中，假设我们要优化的损失函数是：​​</p>
+<p><span
+class="math display">$$L(w)=\frac12​(\underbrace{R+γV_w​(s′)}_{Target}​​−\underbrace{V_w​(s)}_{Prediction})^2$$</span></p>
+<p>计算梯度，得到： <span
+class="math display">$$∇w​L(w)=(\underbrace{Target−V_w​(s))}_{误差项}​​⋅\underbrace{∇w​(Target−V_w​(s))}_{梯度项}$$</span></p>
+<p>​展开梯度项：</p>
+<p><span
+class="math display">$$∇_w​(Target−V_w​(s))=\underbrace{∇_w​(R+γV_w​(s′))}_{靶子的变动}​​-\underbrace{∇_w​V_w​(s)}_{箭的变动}​​$$</span>
+半梯度的核心思想是，完整保留误差项，但是将梯度项中靶子的导数丢掉，认为梯度仅仅是
+<span
+class="math inline">(−∇<sub><em>w</em></sub>​<em>V</em><sub><em>w</em></sub>​(<em>s</em>))</span>
+。丢掉的部分恰恰代表对下一个状态求期望，忽略掉这个项后，我们只需要一个样本来评估当前状态。
+通俗的讲，在射箭的一瞬间假设靶子是静止的，只考虑箭靠近靶子。但靶子事实上是在移动的，在下一步更新时，针对靶子新的位置再射箭，也即<strong>自举</strong>。
+半梯度每次迭代时，基于现有参数采样一个未来的可能状态，定为临时目标，调整当前参数以靠近目标，然后进入下一次迭代，目标的位置也小幅移动。虽然每次更新目标的位置都不一样，但只要步长足够小，最终会收敛到贝尔曼不动点。
+半梯度通过这种自举的机制，绕过了双样本问题，从而实现用单次交互反馈实现在线学习。然而，对于全梯度来说，严格求导追求的是损失函数的极小值点，半梯度却只能收敛到不动点。在复杂的函数拟合中（如神经网络），真实的贝尔曼目标可能不在神经网络能表达的范围内，这意味这不动点和极小值点不总是重合的。半梯度在不动点上的收敛，意味着系统可能只是在逻辑上自洽，而离正确答案很远。
+从逻辑意义看，损失函数的极小值点意味着真理，而不动点则意味着输入经过算子（可以理解为某种映射）不发生改变（也即
+<span class="math inline"><em>F</em>(<em>x</em>) = <em>x</em></span>
+），系统达到了平衡。从几何意义上看，极小值点是损失平面的谷底，而不动点却难以总结几何特征，可能没有任何几何特征性。不动点在数学上一定是参数空间内的某个坐标，但不在损失平面的逻辑体系内，他是从贝尔曼一致性投影下来的点。</p>
+<h2 id="收敛性证明">收敛性证明</h2>
+<p>收敛性证明的核心思想是证明损失函数的海森矩阵（二阶导数矩阵）是正定的。
+先来回顾正定矩阵：对于一个实对称矩阵 <span
+class="math inline"><em>A</em></span> ，如果对于任意一个非零向量 <span
+class="math inline"><em>x</em></span> ，都有： <span
+class="math display"><em>x</em><sup>⊤</sup><em>A</em><em>x</em> &gt; 0</span>
+那么矩阵就是正定的。这意味着 <span class="math inline"><em>A</em></span>
+对向量的任意旋转或拉伸都不会让向量反向或变成0。 证明矩阵正定：</p>
 <blockquote>
 <p>一个对称矩阵是正定的，当且仅当它的所有特征值都大于0。</p>
 </blockquote>
-<p>对于损失函数来说，如果其海森矩阵是正定的，那么他就是严格凸函数，其损失平面是单峰的，只有一个全局最低点。这意味着沿着梯度下降一定会收敛到那个最低点。<br>原始TD算法在 On-policy 情况下证明了$A$ 始终正定，一定收敛。但在Off-policy下不能保证。故我们通过重新设计目标函数，人为构造出一个保证正定的系统，证明其收敛性。</p>
-<h2 id="同策略与异策略"><a href="#同策略与异策略" class="headerlink" title="同策略与异策略"></a>同策略与异策略</h2><p>同策略与异策略的核心是：行为策略和目标策略是否为同一个。</p>
-<p>同策略：<br>按照当前认为最好的策略行动，并根据反馈更新策略。<br>因为学习的数据完全符合当前策略的分布，更新平稳。但如果策略更新，数据就不能再使用，收集到的数据只对产生他的策略负责。</p>
-<p>异策略：<br>使用一个行为策略或历史数据行动，改进另一个更优的目标策略。<br>通俗来说，看别人（或过去的自己）怎么做，从中学习更好的办法。<br>因为行为策略和目标策略分离，探索不会给智能体带来风险，可以更加大胆地探索。并且可以使用经验回放，反复利用过去产生的所有数据。缺点是由于数据分布与目标策略不一致，可能会导致估值函数难以收敛</p>
-<h2 id="贝尔曼误差"><a href="#贝尔曼误差" class="headerlink" title="贝尔曼误差"></a>贝尔曼误差</h2><p>在强化学习的理想状态中，值函数应该满足贝尔曼方程：<br>$$V(s) &#x3D; \mathbb{E}[R + \gamma V(s’)]$$<br>即：当前状态的价值，应该等于 即时奖励 + 下一状态价值的折现<br>然而现实中，值函数的估计值通常是不准确的，贝尔曼误差就是方程左右的差值：<br>$$\text{Bellman Error} &#x3D; \underbrace{\mathbb{E}[R + \gamma \hat{V}(s’)]}<em>{\text{目标（理想值）}} - \underbrace{\hat{V}(s)}</em>{\text{当前估计}}$$<br>当贝尔曼误差在所有状态下都为0时，说明我们找到了当前策略下的真实值函数。在一些算法中，损失函数往往就定义为最小化贝尔曼误差的平方（MSBE）。<br>贝尔曼误差往往有一个非零的均值，贝尔曼误差中心化的思想就是在更新前减去 $BE$ 的期望值，抵消这个系统偏差。<br>需要注意的是，TD误差是针对单次采样的，而贝尔曼误差则是针对全分布期望的。</p>
-<p>基于值的奖励中心化（VRC）是一种动态处理奖励的手段，不直接使用原始奖励 $R$ ，而是减去一个学习到的值，从而解决奖励偏移问题。利用随机逼近理论，可以证明 VRC 和 BEC 在数学本质上是相同的，从而引出算法在线性函数逼近和异策略情况下的收敛性是可行的。<br>简单奖励中心化（SRC）则是直接对奖励进行中心化，计算奖励的长期平均值，只修正的奖励信号的偏移。但函数逼近中，误差不仅来自于奖励，还来源于值函数的估计偏差和状态转移的噪声，这些被 SRC 忽略，但能被 BEC 所捕捉到。</p>
-<h2 id="从蒙特卡洛方法（MC）与动态规划方法（DP）到-TD-算法"><a href="#从蒙特卡洛方法（MC）与动态规划方法（DP）到-TD-算法" class="headerlink" title="从蒙特卡洛方法（MC）与动态规划方法（DP）到 TD 算法"></a>从蒙特卡洛方法（MC）与动态规划方法（DP）到 TD 算法</h2><p>MC 是一种通过重复随机采样来解决问题的方法。他不需要知道环境（即概率转移矩阵），而是直接求取episode结束后最终得分的平均值。DP 方法的核心是利用旧估计更新新估计，他假设环境是已知的，根据下一时刻状态的预估价值，来推算当前时刻的价值，利用贝尔曼方程反复迭代所有的状态直到全部稳定。<br>MC 的核心是采样，但需要episode结束才能更新。DP 的核心是自举，但需要了解环境。结合这两种思想，我们得到了 TD 方法。TD 根据单步采样更新策略，从而实现了实时更新，同时不需要了解模型。但相较于 DP 的全期望更新，TD 更像以偏概全，这带来了三个牺牲：</p>
-<ul>
-<li>单次采样相较于全期望采样，牺牲了精度</li>
-<li>未知环境的自举如果错误可能会导致越走越偏，牺牲了收敛的稳定性</li>
-<li>只利用单次采样的信息，牺牲了样本的利用率</li>
-</ul>
-<h2 id="回报"><a href="#回报" class="headerlink" title="回报"></a>回报</h2><p>回报（Return）指的是从时间步 $t$ 开始，智能体在未来所能获得的所有奖励的累计总和。奖励是即时的，局部的，回报是长远的，全局的。<br>在实际中，未来的奖励通常不如眼前的奖励值钱。为了体现时间价值，我们引入折现率 $\gamma$ 。有了回报，我们就能理解状态价值 $V(s)$ 指的就是在状态 $s$ 下回报的期望值。值函数的目标就是预测从当前状态出发，得到回报的均值。<br>由此延申，我们得到了多步回报的概念：定义一个超参数 $n$ ，此时计算的回报是未来 n 步的累计回报。当 n 取1，我们得到了 TD 方法中的单步回报，当 n 取 episode 的长度，我们得到了MC方法的完整回报。<br>为了平衡 $n$ ，我们引入 λ回报 的概念，使用另一个超参数 $\lambda$ ，将所有 n 步回报进行加权平均。λ 的意义不是去调整 n ，而是将所有 n 取值下的多步回报按照不同权重加权，λ 越接近0，短步回报权重越大；λ 越接近1，长步回报权重越大：<br>$$G_t^λ &#x3D; （1-λ）\sum_{n&#x3D;1}^∞λ^{n-1}G_{t:t+n}$$<br>其中（1-λ）的意义是归一化权重<br>将 TD 的目标值更换为 λ 回报，我们得到了 TD（λ）算法</p>
-<h2 id="资格迹"><a href="#资格迹" class="headerlink" title="资格迹"></a>资格迹</h2><p>资格迹的核心思想是责任分配。是用来记录哪些状态被访问过，以及</p>
-<h2 id="从单步到多步"><a href="#从单步到多步" class="headerlink" title="从单步到多步"></a>从单步到多步</h2><h2 id="不动点的推导"><a href="#不动点的推导" class="headerlink" title="不动点的推导"></a>不动点的推导</h2><p>推荐学习：</p>
-<iframe src="https://blog.csdn.net/zimiao552147572/article/details/104454471" width="100%" height="400"></iframe>
-<iframe src="https://zhuanlan.zhihu.com/p/18918326533" width="100%" height="400"></iframe>
+<p>对于损失函数来说，如果其海森矩阵是正定的，那么他就是严格凸函数，其损失平面是单峰的，只有一个全局最低点。这意味着沿着梯度下降一定会收敛到那个最低点。
+原始TD算法在 On-policy 情况下证明了<span
+class="math inline"><em>A</em></span>
+始终正定，一定收敛。但在Off-policy下不能保证。故我们通过重新设计目标函数，人为构造出一个保证正定的系统，证明其收敛性。</p>
+<h2 id="同策略与异策略">同策略与异策略</h2>
+<p>同策略与异策略的核心是：行为策略和目标策略是否为同一个。</p>
+<p>同策略： 按照当前认为最好的策略行动，并根据反馈更新策略。
+因为学习的数据完全符合当前策略的分布，更新平稳。但如果策略更新，数据就不能再使用，收集到的数据只对产生他的策略负责。</p>
+<p>异策略： 使用一个行为策略或历史数据行动，改进另一个更优的目标策略。
+通俗来说，看别人（或过去的自己）怎么做，从中学习更好的办法。
+因为行为策略和目标策略分离，探索不会给智能体带来风险，可以更加大胆地探索。并且可以使用经验回放，反复利用过去产生的所有数据。缺点是由于数据分布与目标策略不一致，可能会导致估值函数难以收敛</p>
+<h2 id="贝尔曼误差">贝尔曼误差</h2>
+<p>在强化学习的理想状态中，值函数应该满足贝尔曼方程： <span
+class="math display"><em>V</em>(<em>s</em>) = 𝔼[<em>R</em> + <em>γ</em><em>V</em>(<em>s</em><sup>′</sup>)]</span>
+即：当前状态的价值，应该等于 即时奖励 + 下一状态价值的折现
+然而现实中，值函数的估计值通常是不准确的，贝尔曼误差就是方程左右的差值：
+<span class="math display">$$\text{Bellman Error} =
+\underbrace{\mathbb{E}[R + \gamma \hat{V}(s')]}_{\text{目标（理想值）}}
+- \underbrace{\hat{V}(s)}_{\text{当前估计}}$$</span>
+当贝尔曼误差在所有状态下都为0时，说明我们找到了当前策略下的真实值函数。在一些算法中，损失函数往往就定义为最小化贝尔曼误差的平方（MSBE）。
+贝尔曼误差往往有一个非零的均值，贝尔曼误差中心化的思想就是在更新前减去
+<span class="math inline"><em>B</em><em>E</em></span>
+的期望值，抵消这个系统偏差。
+需要注意的是，TD误差是针对单次采样的，而贝尔曼误差则是针对全分布期望的。</p>
+<p>基于值的奖励中心化（VRC）是一种动态处理奖励的手段，不直接使用原始奖励
+<span class="math inline"><em>R</em></span>
+，而是减去一个学习到的值，从而解决奖励偏移问题。利用随机逼近理论，可以证明
+VRC 和 BEC
+在数学本质上是相同的，从而引出算法在线性函数逼近和异策略情况下的收敛性是可行的。
+简单奖励中心化（SRC）则是直接对奖励进行中心化，计算奖励的长期平均值，只修正的奖励信号的偏移。但函数逼近中，误差不仅来自于奖励，还来源于值函数的估计偏差和状态转移的噪声，这些被
+SRC 忽略，但能被 BEC 所捕捉到。</p>
+<h2
+id="从蒙特卡洛方法mc与动态规划方法dp到-td-算法">从蒙特卡洛方法（MC）与动态规划方法（DP）到
+TD 算法</h2>
+<p>MC
+是一种通过重复随机采样来解决问题的方法。他不需要知道环境（即概率转移矩阵），而是直接求取episode结束后最终得分的平均值。DP
+方法的核心是利用旧估计更新新估计，他假设环境是已知的，根据下一时刻状态的预估价值，来推算当前时刻的价值，利用贝尔曼方程反复迭代所有的状态直到全部稳定。
+MC 的核心是采样，但需要episode结束才能更新。DP
+的核心是自举，但需要了解环境。结合这两种思想，我们得到了 TD 方法。TD
+根据单步采样更新策略，从而实现了实时更新，同时不需要了解模型。但相较于
+DP 的全期望更新，TD 更像以偏概全，这带来了三个牺牲： -
+单次采样相较于全期望采样，牺牲了精度 -
+未知环境的自举如果错误可能会导致越走越偏，牺牲了收敛的稳定性 -
+只利用单次采样的信息，牺牲了样本的利用率</p>
+<h2 id="回报">回报</h2>
+<p>回报（Return）指的是从时间步 <span
+class="math inline"><em>t</em></span>
+开始，智能体在未来所能获得的所有奖励的累计总和。奖励是即时的，局部的，回报是长远的，全局的。
+在实际中，未来的奖励通常不如眼前的奖励值钱。为了体现时间价值，我们引入折现率
+<span class="math inline"><em>γ</em></span>
+。有了回报，我们就能理解状态价值 <span
+class="math inline"><em>V</em>(<em>s</em>)</span> 指的就是在状态 <span
+class="math inline"><em>s</em></span>
+下回报的期望值。值函数的目标就是预测从当前状态出发，得到回报的均值。
+由此延申，我们得到了多步回报的概念：定义一个超参数 <span
+class="math inline"><em>n</em></span> ，此时计算的回报是未来 n
+步的累计回报。当 n 取1，我们得到了 TD 方法中的单步回报，当 n 取 episode
+的长度，我们得到了MC方法的完整回报。 为了平衡 <span
+class="math inline"><em>n</em></span> ，我们引入 λ回报
+的概念，使用另一个超参数 <span class="math inline"><em>λ</em></span>
+，将所有 n 步回报进行加权平均。λ 的意义不是去调整 n ，而是将所有 n
+取值下的多步回报按照不同权重加权，λ 越接近0，短步回报权重越大；λ
+越接近1，长步回报权重越大： <span class="math display">$$G_t^λ =
+（1-λ）\sum_{n=1}^∞λ^{n-1}G_{t:t+n}$$</span>
+其中（1-λ）的意义是归一化权重 将 TD 的目标值更换为 λ 回报，我们得到了
+TD（λ）算法</p>
+<h2 id="资格迹">资格迹</h2>
+<p>资格迹的核心思想是责任分配。是用来记录哪些状态被访问过，以及</p>
+<h2 id="从单步到多步">从单步到多步</h2>
+<h2 id="不动点的推导">不动点的推导</h2>
+<p>推荐学习：</p>
+<iframe src="https://blog.csdn.net/zimiao552147572/article/details/104454471" width="100%" height="400">
+</iframe>
+<iframe src="https://zhuanlan.zhihu.com/p/18918326533" width="100%" height="400">
+</iframe>
+
                     
                 </div>
 
@@ -438,7 +537,8 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%EF%BC%88FG%EF%BC%89"><span class="nav-text">全梯度下降（FG）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%8A%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%EF%BC%88SG%EF%BC%89"><span class="nav-text">半梯度下降（SG）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%B6%E6%95%9B%E6%80%A7%E8%AF%81%E6%98%8E"><span class="nav-text">收敛性证明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E7%AD%96%E7%95%A5%E4%B8%8E%E5%BC%82%E7%AD%96%E7%95%A5"><span class="nav-text">同策略与异策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%9D%E5%B0%94%E6%9B%BC%E8%AF%AF%E5%B7%AE"><span class="nav-text">贝尔曼误差</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95%EF%BC%88MC%EF%BC%89%E4%B8%8E%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%96%B9%E6%B3%95%EF%BC%88DP%EF%BC%89%E5%88%B0-TD-%E7%AE%97%E6%B3%95"><span class="nav-text">从蒙特卡洛方法（MC）与动态规划方法（DP）到 TD 算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9E%E6%8A%A5"><span class="nav-text">回报</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%84%E6%A0%BC%E8%BF%B9"><span class="nav-text">资格迹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E5%8D%95%E6%AD%A5%E5%88%B0%E5%A4%9A%E6%AD%A5"><span class="nav-text">从单步到多步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E5%8A%A8%E7%82%B9%E7%9A%84%E6%8E%A8%E5%AF%BC"><span class="nav-text">不动点的推导</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8Dfg"><span class="nav-text">全梯度下降（FG）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%8A%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8Dsg"><span class="nav-text">半梯度下降（SG）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%B6%E6%95%9B%E6%80%A7%E8%AF%81%E6%98%8E"><span class="nav-text">收敛性证明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E7%AD%96%E7%95%A5%E4%B8%8E%E5%BC%82%E7%AD%96%E7%95%A5"><span class="nav-text">同策略与异策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%9D%E5%B0%94%E6%9B%BC%E8%AF%AF%E5%B7%AE"><span class="nav-text">贝尔曼误差</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95mc%E4%B8%8E%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%96%B9%E6%B3%95dp%E5%88%B0-td-%E7%AE%97%E6%B3%95"><span class="nav-text">从蒙特卡洛方法（MC）与动态规划方法（DP）到
+TD 算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9E%E6%8A%A5"><span class="nav-text">回报</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%84%E6%A0%BC%E8%BF%B9"><span class="nav-text">资格迹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E5%8D%95%E6%AD%A5%E5%88%B0%E5%A4%9A%E6%AD%A5"><span class="nav-text">从单步到多步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E5%8A%A8%E7%82%B9%E7%9A%84%E6%8E%A8%E5%AF%BC"><span class="nav-text">不动点的推导</span></a></li></ol>
     </div>
 </div>
 
@@ -480,7 +580,7 @@
             
                 <span class="count-item border-box word">
                     <span class="item-type border-box">总字数</span>
-                    <span class="item-value border-box word">25.9k</span>
+                    <span class="item-value border-box word">25.5k</span>
                 </span>
             
 
@@ -628,7 +728,8 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%EF%BC%88FG%EF%BC%89"><span class="nav-text">全梯度下降（FG）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%8A%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%EF%BC%88SG%EF%BC%89"><span class="nav-text">半梯度下降（SG）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%B6%E6%95%9B%E6%80%A7%E8%AF%81%E6%98%8E"><span class="nav-text">收敛性证明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E7%AD%96%E7%95%A5%E4%B8%8E%E5%BC%82%E7%AD%96%E7%95%A5"><span class="nav-text">同策略与异策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%9D%E5%B0%94%E6%9B%BC%E8%AF%AF%E5%B7%AE"><span class="nav-text">贝尔曼误差</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95%EF%BC%88MC%EF%BC%89%E4%B8%8E%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%96%B9%E6%B3%95%EF%BC%88DP%EF%BC%89%E5%88%B0-TD-%E7%AE%97%E6%B3%95"><span class="nav-text">从蒙特卡洛方法（MC）与动态规划方法（DP）到 TD 算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9E%E6%8A%A5"><span class="nav-text">回报</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%84%E6%A0%BC%E8%BF%B9"><span class="nav-text">资格迹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E5%8D%95%E6%AD%A5%E5%88%B0%E5%A4%9A%E6%AD%A5"><span class="nav-text">从单步到多步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E5%8A%A8%E7%82%B9%E7%9A%84%E6%8E%A8%E5%AF%BC"><span class="nav-text">不动点的推导</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8Dfg"><span class="nav-text">全梯度下降（FG）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%8A%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8Dsg"><span class="nav-text">半梯度下降（SG）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%B6%E6%95%9B%E6%80%A7%E8%AF%81%E6%98%8E"><span class="nav-text">收敛性证明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E7%AD%96%E7%95%A5%E4%B8%8E%E5%BC%82%E7%AD%96%E7%95%A5"><span class="nav-text">同策略与异策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%9D%E5%B0%94%E6%9B%BC%E8%AF%AF%E5%B7%AE"><span class="nav-text">贝尔曼误差</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95mc%E4%B8%8E%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%96%B9%E6%B3%95dp%E5%88%B0-td-%E7%AE%97%E6%B3%95"><span class="nav-text">从蒙特卡洛方法（MC）与动态规划方法（DP）到
+TD 算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9E%E6%8A%A5"><span class="nav-text">回报</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%84%E6%A0%BC%E8%BF%B9"><span class="nav-text">资格迹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E5%8D%95%E6%AD%A5%E5%88%B0%E5%A4%9A%E6%AD%A5"><span class="nav-text">从单步到多步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E5%8A%A8%E7%82%B9%E7%9A%84%E6%8E%A8%E5%AF%BC"><span class="nav-text">不动点的推导</span></a></li></ol>
     </div>
 </div>
 

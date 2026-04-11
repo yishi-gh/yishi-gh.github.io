@@ -299,60 +299,69 @@
                     
 
                     
-                         <h1 id="1-数据库基本概念"><a href="#1-数据库基本概念" class="headerlink" title="1 数据库基本概念"></a>1 数据库基本概念</h1><p>数据库是有组织，可共享，统一管理的数据集合。数据库解决了以下问题：</p>
-<ul>
-<li>减少数据重复存储的冗余</li>
-<li>利用事务机制，确保操作对不同对象的一致性</li>
-<li>允许多个用户同时访问操作数据而不会互相覆盖</li>
-<li>提供精细的权限控制</li>
-<li>使用索引技术提供高效的检索</li>
-</ul>
-<p>数据库包含以下三个层次：</p>
-<ul>
-<li>数据库（Database）：实际上存储在硬盘上的数据</li>
-<li>数据库管理系统（DBMS）：操作和管理数据库的软件</li>
-<li>数据库系统（DBS）：一个完整的运行环境，包括数据库、DBMS、硬件、软件以及管理员</li>
-</ul>
-<p>根据数据的逻辑关系，又可以分为关系型&#x2F;非关系型<br>关系型例如</p>
-<ul>
-<li>MySql（基于表，插件式存储引擎-应用于中小规模开发）</li>
-<li>Oracle（基于表-高性能高维护成本）<br>优点是格式一致，易于维护，SQL语言通用，支持复杂操作。缺点是读写性能较差，数据结构灵活度受限，高并发瓶颈</li>
-</ul>
-<p>非关系型例如</p>
-<ul>
-<li>Redis（基于键值对-应用于缓存）</li>
-<li>MongoDB（基于bson文档，类似json-应用于高性能低事务场景）<br>优点是数据结构灵活，易于扩展，高并发，缺点是缺乏统一标准，语言不通，迁移成本高，事务支持弱，数据存储冗余</li>
-</ul>
-<h1 id="2-数据库构成"><a href="#2-数据库构成" class="headerlink" title="2 数据库构成"></a>2 数据库构成</h1><h2 id="2-1-表-Table"><a href="#2-1-表-Table" class="headerlink" title="2.1 表 Table"></a>2.1 表 Table</h2><p>表是用于组织和存储数据的矩阵结构，包含一组字段（Columns）和记录（Rows）。一个表对应E-R模型中的一个实体集，一行对应一个实体，也叫一条记录，一个列对应一个属性，也叫一个字段。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE TABLE students ( <br>	id INT PRIMARY KEY, <br>	name VARCHAR(50), <br>	age INT, <br>	gender VARCHAR(10) <br>);<br></code></pre></td></tr></table></figure>
-<h2 id="2-2-关系-Relationship"><a href="#2-2-关系-Relationship" class="headerlink" title="2.2 关系 Relationship"></a>2.2 关系 Relationship</h2><p>关系通过公共字段连接不同的表，可以是一对一、一对多、多对多或自我引用。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE TABLE courses ( <br>	id INT PRIMARY KEY, <br>	name VARCHAR(50), <br>	instructor_id INT, <br>	FOREIGN KEY (instructor_id) REFERENCES instructors(id)<br>);<br></code></pre></td></tr></table></figure>
-<h3 id="2-2-1-一对一"><a href="#2-2-1-一对一" class="headerlink" title="2.2.1 一对一"></a>2.2.1 一对一</h3><p>一对一应用不多，因为可以创建为一张表，举例来说，比如将一张学生信息表拆分为两个表，二者通过 学号 相联系。<br>两种建表原则：</p>
-<ul>
-<li>外键唯一：主表的主键和从表的外键形成主外键关系，且外键唯一</li>
-<li>外键是主键：主表的主键和从表的主键形成主外键关系。<br>两个原则的目的都是确保主表的一条记录只能对应从表的一条记录。外键唯一原则下，主从表的主键可以各自增长。外键是主键原则下，从表没有独立的ID，只是从主表中借来，完全依附于主表</li>
-</ul>
-<h3 id="2-2-2-一对多"><a href="#2-2-2-一对多" class="headerlink" title="2.2.2 一对多"></a>2.2.2 一对多</h3><p>在从表创建一个字段，字段作为外键指向主表的主键</p>
-<h3 id="2-2-3-多对多"><a href="#2-2-3-多对多" class="headerlink" title="2.2.3 多对多"></a>2.2.3 多对多</h3><p>创建第三个表（联接表），将多对多关系拆分为两个一对多关系，将这两个表的主键插入到第三个表中。<br>举例：学生表+开课表-&gt;选课表，选课表中同时包含学生主键和课程信息主键，一个学生可以选多门课，一门课也可以有多个学生</p>
-<h3 id="2-2-4-自我引用"><a href="#2-2-4-自我引用" class="headerlink" title="2.2.4 自我引用"></a>2.2.4 自我引用</h3><p>举例：如员工表中，某些员工的主管可能也出现在这张表中，其主管编号同时也是员工编号</p>
-<h2 id="2-3-索引-Index"><a href="#2-3-索引-Index" class="headerlink" title="2.3 索引 Index"></a>2.3 索引 Index</h2><p>基于一个或多个列的值创建，用于提高数据的检索排序效率</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE INDEX idx_students_name ON students(name);<br></code></pre></td></tr></table></figure>
-
-<h2 id="2-4-查询语言-SQL"><a href="#2-4-查询语言-SQL" class="headerlink" title="2.4 查询语言 SQL"></a>2.4 查询语言 SQL</h2><p>用于与数据库交互</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT * FROM students WHERE age &gt; 20;<br></code></pre></td></tr></table></figure>
-
-<h2 id="2-5-字符集编码"><a href="#2-5-字符集编码" class="headerlink" title="2.5 字符集编码"></a>2.5 字符集编码</h2><h3 id="2-5-1-字符集简介"><a href="#2-5-1-字符集简介" class="headerlink" title="2.5.1 字符集简介"></a>2.5.1 字符集简介</h3><p>字符集用于描述某个字符范围的编码规则，解决了界定字符范围和映射规则的问题<br>常用字符集有：</p>
-<ul>
-<li>ASCII 字符集<br>共收录128字符，包括空格、标点、数字、大小写字母、不可见字符。采用1字节编码</li>
-<li>ISO 8859-1 字符集<br>共收录256字符，在ASCII基础上又扩充西欧常用字符，采用1字节编码</li>
-<li>GB2312 字符集<br>收录汉字、拉丁字母、希腊字母、日文、俄语，兼容ASCII，若字符在ASCII中则采用1字节编码，否则采用2字节编码。在这种变长编码方式中，若某字节在0-127内，则单字节编码，否则双字节编码。</li>
-<li>GBK 字符集<br>扩充GB2312，编码方式兼容GB2312</li>
-<li>Unicode 字符集<br>收录地球上几乎所有字符，兼容ASCII，采用变长编码，一个字符需要1-4个字节。Unicode可以采用UTF-8，UTF-16，UTF-32等编码。MySQL不区分字符集和编码方案的概念</li>
-</ul>
-<p>UTF-8 需要1-4个字节编码一个字符，但常用的字符只需要1-3个字节，故MySQL中默认utf8mb3为UTF8，采用1-3个字节编码，而真正的utf8则是utf8mb4</p>
-<h1 id="3-数据类型"><a href="#3-数据类型" class="headerlink" title="3 数据类型"></a>3 数据类型</h1><h2 id="3-1-整数"><a href="#3-1-整数" class="headerlink" title="3.1 整数"></a>3.1 整数</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE TABLE employees (<br>    id INT PRIMARY KEY,<br>    age TINYINT UNSIGNED,<br>    salary BIGINT NOT NULL,<br>    tenure SMALLINT<br>);<br></code></pre></td></tr></table></figure>
-
+                         <h1 id="数据库基本概念">1 数据库基本概念</h1>
+<p>数据库是有组织，可共享，统一管理的数据集合。数据库解决了以下问题： -
+减少数据重复存储的冗余 - 利用事务机制，确保操作对不同对象的一致性 -
+允许多个用户同时访问操作数据而不会互相覆盖 - 提供精细的权限控制 -
+使用索引技术提供高效的检索</p>
+<p>数据库包含以下三个层次： -
+数据库（Database）：实际上存储在硬盘上的数据 -
+数据库管理系统（DBMS）：操作和管理数据库的软件 -
+数据库系统（DBS）：一个完整的运行环境，包括数据库、DBMS、硬件、软件以及管理员</p>
+<p>根据数据的逻辑关系，又可以分为关系型/非关系型 关系型例如 -
+MySql（基于表，插件式存储引擎-应用于中小规模开发） -
+Oracle（基于表-高性能高维护成本）
+优点是格式一致，易于维护，SQL语言通用，支持复杂操作。缺点是读写性能较差，数据结构灵活度受限，高并发瓶颈</p>
+<p>非关系型例如 - Redis（基于键值对-应用于缓存） -
+MongoDB（基于bson文档，类似json-应用于高性能低事务场景）
+优点是数据结构灵活，易于扩展，高并发，缺点是缺乏统一标准，语言不通，迁移成本高，事务支持弱，数据存储冗余</p>
+<h1 id="数据库构成">2 数据库构成</h1>
+<h2 id="表-table">2.1 表 Table</h2>
+<p>表是用于组织和存储数据的矩阵结构，包含一组字段（Columns）和记录（Rows）。一个表对应E-R模型中的一个实体集，一行对应一个实体，也叫一条记录，一个列对应一个属性，也叫一个字段。
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE TABLE students ( <br>	id INT PRIMARY KEY, <br>	name VARCHAR(50), <br>	age INT, <br>	gender VARCHAR(10) <br>);<br></code></pre></td></tr></table></figure> ## 2.2 关系 Relationship
+关系通过公共字段连接不同的表，可以是一对一、一对多、多对多或自我引用。
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE TABLE courses ( <br>	id INT PRIMARY KEY, <br>	name VARCHAR(50), <br>	instructor_id INT, <br>	FOREIGN KEY (instructor_id) REFERENCES instructors(id)<br>);<br></code></pre></td></tr></table></figure> ### 2.2.1 一对一
+一对一应用不多，因为可以创建为一张表，举例来说，比如将一张学生信息表拆分为两个表，二者通过
+学号 相联系。 两种建表原则： -
+外键唯一：主表的主键和从表的外键形成主外键关系，且外键唯一 -
+外键是主键：主表的主键和从表的主键形成主外键关系。
+两个原则的目的都是确保主表的一条记录只能对应从表的一条记录。外键唯一原则下，主从表的主键可以各自增长。外键是主键原则下，从表没有独立的ID，只是从主表中借来，完全依附于主表</p>
+<h3 id="一对多">2.2.2 一对多</h3>
+<p>在从表创建一个字段，字段作为外键指向主表的主键</p>
+<h3 id="多对多">2.2.3 多对多</h3>
+<p>创建第三个表（联接表），将多对多关系拆分为两个一对多关系，将这两个表的主键插入到第三个表中。
+举例：学生表+开课表-&gt;选课表，选课表中同时包含学生主键和课程信息主键，一个学生可以选多门课，一门课也可以有多个学生</p>
+<h3 id="自我引用">2.2.4 自我引用</h3>
+<p>举例：如员工表中，某些员工的主管可能也出现在这张表中，其主管编号同时也是员工编号</p>
+<h2 id="索引-index">2.3 索引 Index</h2>
+<p>基于一个或多个列的值创建，用于提高数据的检索排序效率
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE INDEX idx_students_name ON students(name);<br></code></pre></td></tr></table></figure></p>
+<h2 id="查询语言-sql">2.4 查询语言 SQL</h2>
+<p>用于与数据库交互 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">SELECT * FROM students WHERE age &gt; 20;<br></code></pre></td></tr></table></figure></p>
+<h2 id="字符集编码">2.5 字符集编码</h2>
+<h3 id="字符集简介">2.5.1 字符集简介</h3>
+<p>字符集用于描述某个字符范围的编码规则，解决了界定字符范围和映射规则的问题
+常用字符集有： - ASCII 字符集
+共收录128字符，包括空格、标点、数字、大小写字母、不可见字符。采用1字节编码
+- ISO 8859-1 字符集
+共收录256字符，在ASCII基础上又扩充西欧常用字符，采用1字节编码 - GB2312
+字符集
+收录汉字、拉丁字母、希腊字母、日文、俄语，兼容ASCII，若字符在ASCII中则采用1字节编码，否则采用2字节编码。在这种变长编码方式中，若某字节在0-127内，则单字节编码，否则双字节编码。
+- GBK 字符集 扩充GB2312，编码方式兼容GB2312 - Unicode 字符集
+收录地球上几乎所有字符，兼容ASCII，采用变长编码，一个字符需要1-4个字节。Unicode可以采用UTF-8，UTF-16，UTF-32等编码。MySQL不区分字符集和编码方案的概念</p>
+<p>UTF-8
+需要1-4个字节编码一个字符，但常用的字符只需要1-3个字节，故MySQL中默认utf8mb3为UTF8，采用1-3个字节编码，而真正的utf8则是utf8mb4</p>
+<h1 id="数据类型">3 数据类型</h1>
+<h2 id="整数">3.1 整数</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE TABLE employees (<br>    id INT PRIMARY KEY,<br>    age TINYINT UNSIGNED,<br>    salary BIGINT NOT NULL,<br>    tenure SMALLINT<br>);<br></code></pre></td></tr></table></figure>
 <table>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 32%" />
+<col style="width: 21%" />
+<col style="width: 16%" />
+</colgroup>
 <thead>
 <tr>
 <th><strong>类型</strong></th>
@@ -362,7 +371,8 @@
 <th><strong>适用场景建议</strong></th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>TINYINT</strong></td>
 <td>1 Byte</td>
 <td>-128 ~ 127</td>
@@ -397,47 +407,48 @@
 <td>0 ~ 1.84e19</td>
 <td>全球级 ID、时间戳、财务总额</td>
 </tr>
-</tbody></table>
-<h2 id="3-2-浮点"><a href="#3-2-浮点" class="headerlink" title="3.2 浮点"></a>3.2 浮点</h2><h1 id="4-类型约束"><a href="#4-类型约束" class="headerlink" title="4 类型约束"></a>4 类型约束</h1><h2 id="4-1字段约束"><a href="#4-1字段约束" class="headerlink" title="4.1字段约束"></a>4.1字段约束</h2><ul>
+</tbody>
+</table>
+<h2 id="浮点">3.2 浮点</h2>
+<h1 id="类型约束">4 类型约束</h1>
+<h2 id="字段约束">4.1字段约束</h2>
+<ul>
 <li><code>unsigned</code> 表示无符号</li>
-<li>字符类型后加括号表示限制宽度。int默认无符号为11，有符号为10，只有在给int设置前导填零时，宽度才有意义，如 <code>int(4) unsigned zerofill</code></li>
-<li><code>not null</code> 表示不能为空，若输入<code>NULL</code>则报错</li>
+<li>字符类型后加括号表示限制宽度。int默认无符号为11，有符号为10，只有在给int设置前导填零时，宽度才有意义，如
+<code>int(4) unsigned zerofill</code></li>
+<li><code>not null</code>
+表示不能为空，若输入<code>NULL</code>则报错</li>
 <li><code>default</code>设置默认值</li>
 <li><code>primary key</code>主键唯一且不能为空</li>
 <li><code>auto_increment</code>定义列为自增，一般用于主键</li>
 <li><code>unique</code>为唯一索引，数据不能重复</li>
 </ul>
-<h2 id="4-2-主键"><a href="#4-2-主键" class="headerlink" title="4.2 主键"></a>4.2 主键</h2><p>主键是用于唯一标识每一行的一列，任意两行的主键值都不相同。主键可以不用但不能没有，方便日后扩展。<br>要求：</p>
-<ul>
-<li>主键最好不要修改</li>
-<li>不允许<code>NULL</code></li>
-<li>主键在逻辑上应该不变</li>
-<li>主键是唯一的，但可以使用多列作为主键，称为联合主键。在这种情况下，所有列值的组合必须是唯一的。</li>
-</ul>
-<h1 id="5-操作"><a href="#5-操作" class="headerlink" title="5 操作"></a>5 操作</h1><h2 id="5-1-数据库操作"><a href="#5-1-数据库操作" class="headerlink" title="5.1 数据库操作"></a>5.1 数据库操作</h2><h3 id="5-1-1-创建库"><a href="#5-1-1-创建库" class="headerlink" title="5.1.1 创建库"></a>5.1.1 创建库</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create database if not exists tlxy default charset=utf8;<br><br># 1. 数据库 tlxy 如果不存在则创建数据库，存在则不创建 <br># 2. 创建 tlxy 数据库，并设置字符集为utf8 <br># 3. 无特殊情况都要求字符集为utf8或者utf8mb4的字符编码<br></code></pre></td></tr></table></figure>
-
-<h3 id="5-1-2-查看库"><a href="#5-1-2-查看库" class="headerlink" title="5.1.2 查看库"></a>5.1.2 查看库</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">show databases;<br></code></pre></td></tr></table></figure>
-
-<h3 id="5-1-3-打开库"><a href="#5-1-3-打开库" class="headerlink" title="5.1.3 打开库"></a>5.1.3 打开库</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">use tlxy<br><br># 打开库是可以不加分号的<br></code></pre></td></tr></table></figure>
-
-<h3 id="5-1-4-删除库"><a href="#5-1-4-删除库" class="headerlink" title="5.1.4 删除库"></a>5.1.4 删除库</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">drop database 库名<br></code></pre></td></tr></table></figure>
-
-<h2 id="5-2-数据表操作"><a href="#5-2-数据表操作" class="headerlink" title="5.2 数据表操作"></a>5.2 数据表操作</h2><h3 id="5-2-1-创建表"><a href="#5-2-1-创建表" class="headerlink" title="5.2.1 创建表"></a>5.2.1 创建表</h3><p>创建表的原则：</p>
-<ul>
-<li>见名知义</li>
-<li>必须有主键标识，可以数字自增</li>
-<li>表引擎推荐innodb，一般都是utf8编码</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create table 表名(<br>	字段名 类型 字段约束,<br>	字段名 类型 字段约束<br>)；<br></code></pre></td></tr></table></figure>
-
+<h2 id="主键">4.2 主键</h2>
+<p>主键是用于唯一标识每一行的一列，任意两行的主键值都不相同。主键可以不用但不能没有，方便日后扩展。
+要求： - 主键最好不要修改 - 不允许<code>NULL</code> -
+主键在逻辑上应该不变 -
+主键是唯一的，但可以使用多列作为主键，称为联合主键。在这种情况下，所有列值的组合必须是唯一的。</p>
+<h1 id="操作">5 操作</h1>
+<h2 id="数据库操作">5.1 数据库操作</h2>
+<h3 id="创建库">5.1.1 创建库</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create database if not exists tlxy default charset=utf8;<br><br># 1. 数据库 tlxy 如果不存在则创建数据库，存在则不创建 <br># 2. 创建 tlxy 数据库，并设置字符集为utf8 <br># 3. 无特殊情况都要求字符集为utf8或者utf8mb4的字符编码<br></code></pre></td></tr></table></figure>
+<h3 id="查看库">5.1.2 查看库</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">show databases;<br></code></pre></td></tr></table></figure>
+<h3 id="打开库">5.1.3 打开库</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mysql">use tlxy<br><br># 打开库是可以不加分号的<br></code></pre></td></tr></table></figure>
+<h3 id="删除库">5.1.4 删除库</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mysql">drop database 库名<br></code></pre></td></tr></table></figure>
+<h2 id="数据表操作">5.2 数据表操作</h2>
+<h3 id="创建表">5.2.1 创建表</h3>
+<p>创建表的原则： - 见名知义 - 必须有主键标识，可以数字自增 -
+表引擎推荐innodb，一般都是utf8编码 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs mysql">create table 表名(<br>	字段名 类型 字段约束,<br>	字段名 类型 字段约束<br>)；<br></code></pre></td></tr></table></figure></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs mysql"># 以下创建一个 users 的表 <br>create table users( <br>    # 创建ID字段，为正整数，不允许为空 主键，自动递增 <br>    id int unsigned not null primary key auto_increment, <br><br>    # 创建 存储 名字的字段，为字符串类型，最大长度 5个字符，不允许为空 <br>    username varchar(5) not null, <br><br>    # 创建存储 密码 的字段，固定长度 32位字符， 不允许为空 <br>    # 数据库在存储用户密码时通常存储的是加密后的密码 使用md5加密算法后 密码均为32位 所以这里固定长度为32<br>    password char(32) not null, <br><br>    # 创建 年龄 字段，不允许为空，默认值为 20 <br>    age tinyint not null default 20 <br><br>)engine=innodb default charset=utf8; <br><br># 查看表结构 <br>desc users； <br><br>#查看建表语句 <br>show create table users;<br></code></pre></td></tr></table></figure>
-
-<h3 id="5-2-2-修改表结构"><a href="#5-2-2-修改表结构" class="headerlink" title="5.2.2 修改表结构"></a>5.2.2 修改表结构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs mysql">alter table 表名 更改的选项;<br><br># 添加add<br># 在user表中age字段后添加一个phone<br>alter table users add phone char(11) not null after age;<br><br># 删除drop<br># 删除aa<br>alter table users drop aa;<br><br># 修改字段modify/change<br># modify只改属性不改字段名，将num改为tinyint<br>alter table users modify num tinyint not null default 12;<br><br># change既改属性也改字段名，将num更名为nn，并且改类型为int<br>alter table users change num nn int;<br><br># 修改表名 rename as<br># 将表users更名为Users<br>alter table users rename as Users;<br><br># 修改自增值<br># 下一个插入的数据为1000，再下一个是1001<br>alter table users auto_increment = 1000;<br><br># 修改表引擎<br># 通过查看建表语句来获取当前引擎<br>show create table users\G;<br># 直接查看当前表状态信息<br>show table status from tlxy where name = &#x27;users&#x27;\G;<br># 修改表引擎<br>alter table users engine = &#x27;myisam&#x27;;<br><br># 删除表<br>drop table 表名;<br></code></pre></td></tr></table></figure>
-
-<h1 id="6-存储引擎"><a href="#6-存储引擎" class="headerlink" title="6 存储引擎"></a>6 存储引擎</h1><p>在MySQL中，数据的存储和提取都被封装到存储引擎中。存储引擎负责对于逻辑操作的物理实现、具体如何读取数据写入存储器。不同的引擎的存储结构不尽相同，存取算法也不尽相同。</p>
-<ul>
-<li>InnoDB<br>默认引擎，最常用。<br>支持事务、行级锁、支持外键、聚簇索引。<br>适用于需要事务支持，高并发的场景</li>
-</ul>
+<h3 id="修改表结构">5.2.2 修改表结构</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs mysql">alter table 表名 更改的选项;<br><br># 添加add<br># 在user表中age字段后添加一个phone<br>alter table users add phone char(11) not null after age;<br><br># 删除drop<br># 删除aa<br>alter table users drop aa;<br><br># 修改字段modify/change<br># modify只改属性不改字段名，将num改为tinyint<br>alter table users modify num tinyint not null default 12;<br><br># change既改属性也改字段名，将num更名为nn，并且改类型为int<br>alter table users change num nn int;<br><br># 修改表名 rename as<br># 将表users更名为Users<br>alter table users rename as Users;<br><br># 修改自增值<br># 下一个插入的数据为1000，再下一个是1001<br>alter table users auto_increment = 1000;<br><br># 修改表引擎<br># 通过查看建表语句来获取当前引擎<br>show create table users\G;<br># 直接查看当前表状态信息<br>show table status from tlxy where name = &#x27;users&#x27;\G;<br># 修改表引擎<br>alter table users engine = &#x27;myisam&#x27;;<br><br># 删除表<br>drop table 表名;<br></code></pre></td></tr></table></figure>
+<h1 id="存储引擎">6 存储引擎</h1>
+<p>在MySQL中，数据的存储和提取都被封装到存储引擎中。存储引擎负责对于逻辑操作的物理实现、具体如何读取数据写入存储器。不同的引擎的存储结构不尽相同，存取算法也不尽相同。
+- InnoDB 默认引擎，最常用。 支持事务、行级锁、支持外键、聚簇索引。
+适用于需要事务支持，高并发的场景</p>
 
                     
                 </div>
@@ -564,7 +575,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-text">1 数据库基本概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9E%84%E6%88%90"><span class="nav-text">2 数据库构成</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E8%A1%A8-Table"><span class="nav-text">2.1 表 Table</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E5%85%B3%E7%B3%BB-Relationship"><span class="nav-text">2.2 关系 Relationship</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-%E4%B8%80%E5%AF%B9%E4%B8%80"><span class="nav-text">2.2.1 一对一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-%E4%B8%80%E5%AF%B9%E5%A4%9A"><span class="nav-text">2.2.2 一对多</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3-%E5%A4%9A%E5%AF%B9%E5%A4%9A"><span class="nav-text">2.2.3 多对多</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-4-%E8%87%AA%E6%88%91%E5%BC%95%E7%94%A8"><span class="nav-text">2.2.4 自我引用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E7%B4%A2%E5%BC%95-Index"><span class="nav-text">2.3 索引 Index</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80-SQL"><span class="nav-text">2.4 查询语言 SQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-%E5%AD%97%E7%AC%A6%E9%9B%86%E7%BC%96%E7%A0%81"><span class="nav-text">2.5 字符集编码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-1-%E5%AD%97%E7%AC%A6%E9%9B%86%E7%AE%80%E4%BB%8B"><span class="nav-text">2.5.1 字符集简介</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">3 数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-%E6%95%B4%E6%95%B0"><span class="nav-text">3.1 整数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-%E6%B5%AE%E7%82%B9"><span class="nav-text">3.2 浮点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E7%B1%BB%E5%9E%8B%E7%BA%A6%E6%9D%9F"><span class="nav-text">4 类型约束</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1%E5%AD%97%E6%AE%B5%E7%BA%A6%E6%9D%9F"><span class="nav-text">4.1字段约束</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-%E4%B8%BB%E9%94%AE"><span class="nav-text">4.2 主键</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-%E6%93%8D%E4%BD%9C"><span class="nav-text">5 操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C"><span class="nav-text">5.1 数据库操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-1-%E5%88%9B%E5%BB%BA%E5%BA%93"><span class="nav-text">5.1.1 创建库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-2-%E6%9F%A5%E7%9C%8B%E5%BA%93"><span class="nav-text">5.1.2 查看库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-3-%E6%89%93%E5%BC%80%E5%BA%93"><span class="nav-text">5.1.3 打开库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-4-%E5%88%A0%E9%99%A4%E5%BA%93"><span class="nav-text">5.1.4 删除库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-%E6%95%B0%E6%8D%AE%E8%A1%A8%E6%93%8D%E4%BD%9C"><span class="nav-text">5.2 数据表操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-1-%E5%88%9B%E5%BB%BA%E8%A1%A8"><span class="nav-text">5.2.1 创建表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-2-%E4%BF%AE%E6%94%B9%E8%A1%A8%E7%BB%93%E6%9E%84"><span class="nav-text">5.2.2 修改表结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E"><span class="nav-text">6 存储引擎</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-text">1 数据库基本概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9E%84%E6%88%90"><span class="nav-text">2 数据库构成</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A8-table"><span class="nav-text">2.1 表 Table</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E5%AF%B9%E5%A4%9A"><span class="nav-text">2.2.2 一对多</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E5%AF%B9%E5%A4%9A"><span class="nav-text">2.2.3 多对多</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E6%88%91%E5%BC%95%E7%94%A8"><span class="nav-text">2.2.4 自我引用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95-index"><span class="nav-text">2.3 索引 Index</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80-sql"><span class="nav-text">2.4 查询语言 SQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E9%9B%86%E7%BC%96%E7%A0%81"><span class="nav-text">2.5 字符集编码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E9%9B%86%E7%AE%80%E4%BB%8B"><span class="nav-text">2.5.1 字符集简介</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">3 数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E6%95%B0"><span class="nav-text">3.1 整数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%AE%E7%82%B9"><span class="nav-text">3.2 浮点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%E7%BA%A6%E6%9D%9F"><span class="nav-text">4 类型约束</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E6%AE%B5%E7%BA%A6%E6%9D%9F"><span class="nav-text">4.1字段约束</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E9%94%AE"><span class="nav-text">4.2 主键</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C"><span class="nav-text">5 操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C"><span class="nav-text">5.1 数据库操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%BA%93"><span class="nav-text">5.1.1 创建库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%BA%93"><span class="nav-text">5.1.2 查看库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%93%E5%BC%80%E5%BA%93"><span class="nav-text">5.1.3 打开库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E5%BA%93"><span class="nav-text">5.1.4 删除库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%A1%A8%E6%93%8D%E4%BD%9C"><span class="nav-text">5.2 数据表操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E8%A1%A8"><span class="nav-text">5.2.1 创建表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E8%A1%A8%E7%BB%93%E6%9E%84"><span class="nav-text">5.2.2 修改表结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E"><span class="nav-text">6 存储引擎</span></a></li></ol>
     </div>
 </div>
 
@@ -606,7 +617,7 @@
             
                 <span class="count-item border-box word">
                     <span class="item-type border-box">总字数</span>
-                    <span class="item-value border-box word">25.9k</span>
+                    <span class="item-value border-box word">25.5k</span>
                 </span>
             
 
@@ -754,7 +765,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-text">1 数据库基本概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9E%84%E6%88%90"><span class="nav-text">2 数据库构成</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-%E8%A1%A8-Table"><span class="nav-text">2.1 表 Table</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-%E5%85%B3%E7%B3%BB-Relationship"><span class="nav-text">2.2 关系 Relationship</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-%E4%B8%80%E5%AF%B9%E4%B8%80"><span class="nav-text">2.2.1 一对一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-%E4%B8%80%E5%AF%B9%E5%A4%9A"><span class="nav-text">2.2.2 一对多</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3-%E5%A4%9A%E5%AF%B9%E5%A4%9A"><span class="nav-text">2.2.3 多对多</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-4-%E8%87%AA%E6%88%91%E5%BC%95%E7%94%A8"><span class="nav-text">2.2.4 自我引用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-%E7%B4%A2%E5%BC%95-Index"><span class="nav-text">2.3 索引 Index</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80-SQL"><span class="nav-text">2.4 查询语言 SQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-%E5%AD%97%E7%AC%A6%E9%9B%86%E7%BC%96%E7%A0%81"><span class="nav-text">2.5 字符集编码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-1-%E5%AD%97%E7%AC%A6%E9%9B%86%E7%AE%80%E4%BB%8B"><span class="nav-text">2.5.1 字符集简介</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">3 数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-%E6%95%B4%E6%95%B0"><span class="nav-text">3.1 整数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-%E6%B5%AE%E7%82%B9"><span class="nav-text">3.2 浮点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-%E7%B1%BB%E5%9E%8B%E7%BA%A6%E6%9D%9F"><span class="nav-text">4 类型约束</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1%E5%AD%97%E6%AE%B5%E7%BA%A6%E6%9D%9F"><span class="nav-text">4.1字段约束</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-%E4%B8%BB%E9%94%AE"><span class="nav-text">4.2 主键</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-%E6%93%8D%E4%BD%9C"><span class="nav-text">5 操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C"><span class="nav-text">5.1 数据库操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-1-%E5%88%9B%E5%BB%BA%E5%BA%93"><span class="nav-text">5.1.1 创建库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-2-%E6%9F%A5%E7%9C%8B%E5%BA%93"><span class="nav-text">5.1.2 查看库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-3-%E6%89%93%E5%BC%80%E5%BA%93"><span class="nav-text">5.1.3 打开库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-4-%E5%88%A0%E9%99%A4%E5%BA%93"><span class="nav-text">5.1.4 删除库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-%E6%95%B0%E6%8D%AE%E8%A1%A8%E6%93%8D%E4%BD%9C"><span class="nav-text">5.2 数据表操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-1-%E5%88%9B%E5%BB%BA%E8%A1%A8"><span class="nav-text">5.2.1 创建表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-2-%E4%BF%AE%E6%94%B9%E8%A1%A8%E7%BB%93%E6%9E%84"><span class="nav-text">5.2.2 修改表结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E"><span class="nav-text">6 存储引擎</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-text">1 数据库基本概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%9E%84%E6%88%90"><span class="nav-text">2 数据库构成</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A8-table"><span class="nav-text">2.1 表 Table</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E5%AF%B9%E5%A4%9A"><span class="nav-text">2.2.2 一对多</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E5%AF%B9%E5%A4%9A"><span class="nav-text">2.2.3 多对多</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E6%88%91%E5%BC%95%E7%94%A8"><span class="nav-text">2.2.4 自我引用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95-index"><span class="nav-text">2.3 索引 Index</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E8%AF%A2%E8%AF%AD%E8%A8%80-sql"><span class="nav-text">2.4 查询语言 SQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E9%9B%86%E7%BC%96%E7%A0%81"><span class="nav-text">2.5 字符集编码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E9%9B%86%E7%AE%80%E4%BB%8B"><span class="nav-text">2.5.1 字符集简介</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">3 数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B4%E6%95%B0"><span class="nav-text">3.1 整数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%AE%E7%82%B9"><span class="nav-text">3.2 浮点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%E7%BA%A6%E6%9D%9F"><span class="nav-text">4 类型约束</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E6%AE%B5%E7%BA%A6%E6%9D%9F"><span class="nav-text">4.1字段约束</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E9%94%AE"><span class="nav-text">4.2 主键</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C"><span class="nav-text">5 操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C"><span class="nav-text">5.1 数据库操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%BA%93"><span class="nav-text">5.1.1 创建库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E5%BA%93"><span class="nav-text">5.1.2 查看库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%93%E5%BC%80%E5%BA%93"><span class="nav-text">5.1.3 打开库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E5%BA%93"><span class="nav-text">5.1.4 删除库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%A1%A8%E6%93%8D%E4%BD%9C"><span class="nav-text">5.2 数据表操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E8%A1%A8"><span class="nav-text">5.2.1 创建表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E8%A1%A8%E7%BB%93%E6%9E%84"><span class="nav-text">5.2.2 修改表结构</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E"><span class="nav-text">6 存储引擎</span></a></li></ol>
     </div>
 </div>
 
