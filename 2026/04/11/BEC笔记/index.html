@@ -9,8 +9,6 @@
     
     <title>
         
-            计算机网络笔记 |
-        
         亦适yishi 的碎碎念
     </title>
     
@@ -228,7 +226,7 @@
             <div class="post-content-bottom border-box">
                 
                     <div class="post-title">
-                        计算机网络笔记
+                        
                     </div>
                 
 
@@ -254,13 +252,13 @@
         
             <span class="meta-info-item post-create-date">
                 <i class="icon fa-solid fa-calendar-plus"></i>&nbsp;
-                <span class="datetime">2026 年 03 月 31 日 16:42</span>
+                <span class="datetime">2026 年 04 月 11 日 17:53</span>
             </span>
 
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Thu Apr 09 2026 10:26:40 GMT+0800">2026 年 04 月 09 日 10:26</span>
+                    <span class="datetime" data-updated="Sat Apr 11 2026 17:52:56 GMT+0800">2026 年 04 月 11 日 17:52</span>
                 </span>
             
         
@@ -272,12 +270,12 @@
         
         
             <span class="meta-info-item post-wordcount">
-                <i class="icon fas fa-file-word"></i>&nbsp;<span>2.1k 字</span>
+                <i class="icon fas fa-file-word"></i>&nbsp;<span>3.1k 字</span>
             </span>
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>7 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>11 分钟</span>
             </span>
         
         
@@ -299,83 +297,36 @@
                     
 
                     
-                         <blockquote>
-<p>开发导向的计网主要集中在传输层、应用层和少量网络层</p>
-</blockquote>
-<h1 id="计网架构"><a href="#计网架构" class="headerlink" title="计网架构"></a>计网架构</h1><p>速记 OSI 七层架构：物联网叔会使用<br>物理层-&gt;数据链接层-&gt;网络层-&gt;运输层-&gt;会话层-&gt;表示层-&gt;应用层<br>TCP&#x2F;IP 四层：<br>网路接口层-&gt;</p>
-<p>下层为上层提供服务</p>
-<p>osi的会话和表示太空洞，物理和数据链接层又太复杂。<br>tcpip的物理层和数据层分不清，且没有区分服务接口协议等概念，链路层也只是一个接口，但是已经被广泛使用<br>故常用五层架构：物联网<br>物理层-&gt;链路层-&gt;网络层-&gt;运输层-&gt;应用层</p>
-<p>逻辑上各层之间都有互相通信的协议，但实际上是从上到下一直到物理层通信，再从下到上，走一个u字</p>
-<h1 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h1><p>OSI模型中，物理层是最底层，指的是物理信道，其作用是管理传输介质上的接口特性和规范，而不仅是传输介质本身</p>
-<h2 id="传输介质"><a href="#传输介质" class="headerlink" title="传输介质"></a>传输介质</h2><p>常见有线传输介质：</p>
-<ul>
-<li>双绞线（Twisted Pair）：两个铜线绞在一起，互相抵消波的影响。使用铝箔包裹的叫有屏蔽的双绞线（STP），没有的叫 UTP。入户一般是超5类的UTP，速率在1Gbps</li>
-<li>光纤（Fiber）：光纤传输系统由光源，传输介质和检测器组成</li>
-<li>同轴电缆（Co-axial）</li>
-</ul>
-<p>传输标准命名规则：<br>1000  BASE  - T  X<br>传输速率  调制方式  传输媒介  编码体系</p>
-<p>BASE ：baseband，基带信号，一根线缆只传输一个信号<br>BROAD：broadband，宽频信号，一根线缆可传输多个信号</p>
-<p>T：双绞线<br>F：光纤<br>C：同轴电缆</p>
-<p>空：曼彻斯特编码<br>x：快速以太网使用 4B&#x2F;5B 为分组码<br>X：千兆以太网使用 8B&#x2F;10B 为分组码<br>R： 使用 64B&#x2F;66B 为分组码</p>
-<h2 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h2><p>归零编码（RZ编码，Return-to-Zero Code）：正电平代表逻辑1，负电平代表逻辑0，输送完一位电平归零<br>不归零编码（NRZ）：输送完不归零<br>反向不归零编码（NRZI）：相比于前一电位，信号翻转表示0，不翻转表示1<br>曼彻斯特编码：升平表示1，降平表示0<br>差分曼彻斯特编码：相比于前一电位，有翻转为0，无翻转为1</p>
-<h2 id="数字调制"><a href="#数字调制" class="headerlink" title="数字调制"></a>数字调制</h2><p>使用模拟信号表示比特（数字信息），将比特和信号之间的映射过程称为数字调制</p>
-<p>码元是在固定时长里在信道上传输的电平状态，一个码元可以代表一或多个比特</p>
-<p>波特率：单位时间传输的码元个数，单位波特 Baud，表示物理信号的变化，即通信的速率。而比特率则关注实际传输的数据量，即有用信息的速率<br>$$C&#x3D; B\log_2(N)$$<br>其中 B 为波特率， C 为比特率， N 为码元的离散状态数（每个码元所能表示的不同状态数量）</p>
-<p>调平方法有：调幅（波动幅度），调频（频率），调相（波形平移）</p>
-<p>正交振幅调制（QAM）：频率相同，结合调幅和调相<br>$$C&#x3D; B\log_2(MN)$$<br>其中 M 是相位数， N 是振幅数</p>
-<p>奈奎斯特定理<br>$$B&#x3D;2H$$<br>无噪声下的码元速率极限值 B 和信道带宽 H 的关系<br>无噪声信道传输速率：<br>$$C&#x3D; 2H\log_2(N)$$<br>香农公式<br>$$C&#x3D; H\log_2(1+S&#x2F;N)$$<br>一条带宽为 H ，有噪声信道的最大传输速率。其中 S 是信号功率， N 是噪声功率， S&#x2F;N 是信噪比</p>
-<h1 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h1><p>负责寻址和路由</p>
-<ul>
-<li><p>无连接服务<br>每个数据包（数据报）都携带了足够的，独立的信息，不需要维护连接，每个数据包独立选择路径。但是缺点是不保证可靠性，数据包可能重复、丢失、乱序。常运用于能够接受丢包的场景，如视频通话或直播。</p>
-</li>
-<li><p>有连接服务<br>发送方和接收方确定一条虚拟的通信路径（虚电路）。虚电路在通信过程中始终存在。特点是建立连接、可靠传输、固定路径。适用于可靠性要求高的场景。</p>
-</li>
-<li><p>路由<br>指的是在网络层选择数据包从源到目的地的最佳路径的过程。路由涉及到路由表的维护和更新，通常由协议动态计算。由管理员手动修改路由表的，叫静态路由。</p>
-</li>
-<li><p>转发<br>在路由选择完成后，设备将数据包从一个接口转发到另一个接口的过程。</p>
-</li>
-<li><p>距离向量路由算法（DV）</p>
+                         <h2 id="全梯度下降（FG）"><a href="#全梯度下降（FG）" class="headerlink" title="全梯度下降（FG）"></a>全梯度下降（FG）</h2><p>是梯度下降法最常用的形式，具体做法是在更新参数时使用所有的样本来进行更新。计算训练集所有样本误差，对其求和再取平均值作为目标函数。由于求梯度的结果是精确的，得到的参数更新方向也是确定的，能够稳定收敛到最优解（若损失函数是非凸的，则有可能落到局部最优解）。</p>
+<p>然而缺点也很显著，一方面他需要计算所有样本的梯度，<strong>极其耗时</strong>；另一方面是不能中途添加样本，也即<strong>无法实现在线学习</strong>。</p>
+<p>进一步地，残差梯度算法本质上就是希望对 <strong>平均平方贝尔曼误差(MSBE)</strong> 做全梯度下降，但是这样得到的损失函数中会存在两个期望算子，需要两次独立采样，一次用于估计误差项，一次用于估计梯度项，而现实中我们显然无法回溯到上个时刻去采样，这称为双样本问题。</p>
+<p>更通俗地说，这就像射箭。在确定性的环境下，靶子是固定的，我们只需要关心射箭的偏离位置，单次采样的结果就是期望值本身。而在随机环境下，靶子的位置也会动（包括<strong>环境影响和策略影响</strong>，就像风的影响和拉弓姿势的影响），我们需要同时采集靶子的平均位置和射箭的平均偏差，这需要两次独立采样。</p>
+<p>我们将样本表示为：<br>$$样本&#x3D;信号+噪声$$</p>
+<p>第一次采样用来确定靶子的位置（误差项），第二次采样用于确定梯度的方向（梯度项）。需要注意的是，两次采样并不是对环境影响和策略影响的各自采样，而是得到了两个<strong>同时受到环境和策略影响的样本</strong>。噪声的期望各自为0，所以 $\boldsymbol{2ab}$ 可以消掉，由于两个噪声是独立的，$\boldsymbol{b^2}$ 的期望等于两个噪声期望的乘积，0​×0&#x3D;0，也可以消掉。最终我们得到了 $\boldsymbol{信号^2}$：<br>$$(信号+噪声1​)×(信号+噪声2​)&#x3D;信号2+(信号×噪声2​)+(信号×噪声1​)+(噪声1​×噪声2​)$$</p>
+<p>如果使用同一个样本计算两次，就可能把靶子偶然出现的位置当成平均位置，这次采样既包含平均位置，又包含随机噪声。而噪声虽然期望为0，但平方始终非负，所以消不掉。全梯度实际上是希望把整个分布（未来的所有可能）当成样本，如果我们错误地把样本当成了整个分布，就会带偏所有直觉：<br>$$(信号+噪声)×(信号+噪声)&#x3D;信号^2+2(信号×噪声)+噪声^2$$</p>
+<p>为了解决双样本问题，有如下几种解决方案：半梯度下降（SG），引入双时间尺度（GTD），环境模型，经验回放（采样重利用），对偶强化学习</p>
+<h2 id="半梯度下降（SG）"><a href="#半梯度下降（SG）" class="headerlink" title="半梯度下降（SG）"></a>半梯度下降（SG）</h2><p>在全梯度中，假设我们要优化的损失函数是：​​<br>$$L(w)&#x3D;\frac12​(\underbrace{R+γV_w​(s′)}<em>{Target}​​−\underbrace{V_w​(s)}</em>{Prediction})^2$$<br>计算梯度，得到：<br>$$∇w​L(w)&#x3D;(\underbrace{Target−V_w​(s))}<em>{误差项}​​⋅\underbrace{∇w​(Target−V_w​(s))}</em>{梯度项}$$<br>​展开梯度项：<br>$$∇_w​(Target−V_w​(s))&#x3D;\underbrace{∇<em>w​(R+γV_w​(s′))}</em>{靶子的变动}​​-\underbrace{∇<em>w​V_w​(s)}</em>{箭的变动}​​$$<br>半梯度的核心思想是，完整保留误差项，但是将梯度项中靶子的导数丢掉，认为梯度仅仅是 $(−∇_w​V_w​(s))$ 。丢掉的部分恰恰代表对下一个状态求期望，忽略掉这个项后，我们只需要一个样本来评估当前状态。<br>通俗的讲，在射箭的一瞬间假设靶子是静止的，只考虑箭靠近靶子。但靶子事实上是在移动的，在下一步更新时，针对靶子新的位置再射箭，也即<strong>自举</strong>。<br>半梯度每次迭代时，基于现有参数采样一个未来的可能状态，定为临时目标，调整当前参数以靠近目标，然后进入下一次迭代，目标的位置也小幅移动。虽然每次更新目标的位置都不一样，但只要步长足够小，最终会收敛到贝尔曼不动点。<br>半梯度通过这种自举的机制，绕过了双样本问题，从而实现用单次交互反馈实现在线学习。然而，对于全梯度来说，严格求导追求的是损失函数的极小值点，半梯度却只能收敛到不动点。在复杂的函数拟合中（如神经网络），真实的贝尔曼目标可能不在神经网络能表达的范围内，这意味这不动点和极小值点不总是重合的。半梯度在不动点上的收敛，意味着系统可能只是在逻辑上自洽，而离正确答案很远。<br>从逻辑意义看，损失函数的极小值点意味着真理，而不动点则意味着输入经过算子（可以理解为某种映射）不发生改变（也即 $F(x)&#x3D;x$ ），系统达到了平衡。从几何意义上看，极小值点是损失平面的谷底，而不动点却难以总结几何特征，可能没有任何几何特征性。不动点在数学上一定是参数空间内的某个坐标，但不在损失平面的逻辑体系内，他是从贝尔曼一致性投影下来的点。</p>
+<h2 id="收敛性证明"><a href="#收敛性证明" class="headerlink" title="收敛性证明"></a>收敛性证明</h2><p>收敛性证明的核心思想是证明损失函数的海森矩阵（二阶导数矩阵）是正定的。<br>先来回顾正定矩阵：对于一个实对称矩阵 $A$ ，如果对于任意一个非零向量 $x$ ，都有：<br>$$x^\top A x &gt; 0$$<br>那么矩阵就是正定的。这意味着 $A$ 对向量的任意旋转或拉伸都不会让向量反向或变成0。<br>证明矩阵正定：</p>
 <blockquote>
-<p>告诉邻居我所知道的全网信息（整张路由表）</p>
+<p>一个对称矩阵是正定的，当且仅当它的所有特征值都大于0。</p>
 </blockquote>
-</li>
-</ul>
-<p>每个路由器维护一个路由表，路由表中有到达其他路由器的最短路径。通过定期与邻居交换路由表信息更新自己的路由信息。本质上是基于贝尔曼算法</p>
-<ol>
-<li>初始化：每个路由器只知道直连网络距离为1，其余都为不可达</li>
-<li>周期性广播：定期把自己的路由表发给所有邻居</li>
-<li>路由表更新</li>
-<li>收敛：若干轮交换后，每个路由器都知道到达所有目标的最短路径<br>缺点是容易出现路由环路问题（无穷计数），收敛慢，对拓扑变化敏感（不具备快速检测故障和重新收敛的能力）</li>
-</ol>
+<p>对于损失函数来说，如果其海森矩阵是正定的，那么他就是严格凸函数，其损失平面是单峰的，只有一个全局最低点。这意味着沿着梯度下降一定会收敛到那个最低点。<br>原始TD算法在 On-policy 情况下证明了$A$ 始终正定，一定收敛。但在Off-policy下不能保证。故我们通过重新设计目标函数，人为构造出一个保证正定的系统，证明其收敛性。</p>
+<h2 id="同策略与异策略"><a href="#同策略与异策略" class="headerlink" title="同策略与异策略"></a>同策略与异策略</h2><p>同策略与异策略的核心是：行为策略和目标策略是否为同一个。</p>
+<p>同策略：<br>按照当前认为最好的策略行动，并根据反馈更新策略。<br>因为学习的数据完全符合当前策略的分布，更新平稳。但如果策略更新，数据就不能再使用，收集到的数据只对产生他的策略负责。</p>
+<p>异策略：<br>使用一个行为策略或历史数据行动，改进另一个更优的目标策略。<br>通俗来说，看别人（或过去的自己）怎么做，从中学习更好的办法。<br>因为行为策略和目标策略分离，探索不会给智能体带来风险，可以更加大胆地探索。并且可以使用经验回放，反复利用过去产生的所有数据。缺点是由于数据分布与目标策略不一致，可能会导致估值函数难以收敛</p>
+<h2 id="贝尔曼误差"><a href="#贝尔曼误差" class="headerlink" title="贝尔曼误差"></a>贝尔曼误差</h2><p>在强化学习的理想状态中，值函数应该满足贝尔曼方程：<br>$$V(s) &#x3D; \mathbb{E}[R + \gamma V(s’)]$$<br>即：当前状态的价值，应该等于 即时奖励 + 下一状态价值的折现<br>然而现实中，值函数的估计值通常是不准确的，贝尔曼误差就是方程左右的差值：<br>$$\text{Bellman Error} &#x3D; \underbrace{\mathbb{E}[R + \gamma \hat{V}(s’)]}<em>{\text{目标（理想值）}} - \underbrace{\hat{V}(s)}</em>{\text{当前估计}}$$<br>当贝尔曼误差在所有状态下都为0时，说明我们找到了当前策略下的真实值函数。在一些算法中，损失函数往往就定义为最小化贝尔曼误差的平方（MSBE）。<br>贝尔曼误差往往有一个非零的均值，贝尔曼误差中心化的思想就是在更新前减去 $BE$ 的期望值，抵消这个系统偏差。<br>需要注意的是，TD误差是针对单次采样的，而贝尔曼误差则是针对全分布期望的。</p>
+<p>基于值的奖励中心化（VRC）是一种动态处理奖励的手段，不直接使用原始奖励 $R$ ，而是减去一个学习到的值，从而解决奖励偏移问题。利用随机逼近理论，可以证明 VRC 和 BEC 在数学本质上是相同的，从而引出算法在线性函数逼近和异策略情况下的收敛性是可行的。<br>简单奖励中心化（SRC）则是直接对奖励进行中心化，计算奖励的长期平均值，只修正的奖励信号的偏移。但函数逼近中，误差不仅来自于奖励，还来源于值函数的估计偏差和状态转移的噪声，这些被 SRC 忽略，但能被 BEC 所捕捉到。</p>
+<h2 id="从蒙特卡洛方法（MC）与动态规划方法（DP）到-TD-算法"><a href="#从蒙特卡洛方法（MC）与动态规划方法（DP）到-TD-算法" class="headerlink" title="从蒙特卡洛方法（MC）与动态规划方法（DP）到 TD 算法"></a>从蒙特卡洛方法（MC）与动态规划方法（DP）到 TD 算法</h2><p>MC 是一种通过重复随机采样来解决问题的方法。他不需要知道环境（即概率转移矩阵），而是直接求取episode结束后最终得分的平均值。DP 方法的核心是利用旧估计更新新估计，他假设环境是已知的，根据下一时刻状态的预估价值，来推算当前时刻的价值，利用贝尔曼方程反复迭代所有的状态直到全部稳定。<br>MC 的核心是采样，但需要episode结束才能更新。DP 的核心是自举，但需要了解环境。结合这两种思想，我们得到了 TD 方法。TD 根据单步采样更新策略，从而实现了实时更新，同时不需要了解模型。但相较于 DP 的全期望更新，TD 更像以偏概全，这带来了三个牺牲：</p>
 <ul>
-<li>链路状态路由算法<blockquote>
-<p>告诉全网我所知道的邻居信息（和邻居的链路状态）</p>
-</blockquote>
-</li>
+<li>单次采样相较于全期望采样，牺牲了精度</li>
+<li>未知环境的自举如果错误可能会导致越走越偏，牺牲了收敛的稳定性</li>
+<li>只利用单次采样的信息，牺牲了样本的利用率</li>
 </ul>
-<p>每个路由器向全网广播自己与邻居的链路状态（如带宽、延迟），所有路由器都最终构建出相同的网络拓扑图。每个路由器用 D 算法计算出到各节点的最短路径即路由表</p>
-<ol>
-<li>邻居发现，找出谁是自己的邻居</li>
-<li>测量链路状态，路由器到达邻居的成本可以自动设置，也可以由运营商配置</li>
-<li>生成链路状态数据包</li>
-<li>泛洪数据包给全网，其中每一个新数据包发出都有序号递增，从而管理包的先后顺序</li>
-<li>本地运行 D 算法构建最短路径树，生成路由表</li>
-</ol>
-<ul>
-<li>IP数据报<br>20~60字节的首部+65535字节的数据部分<br>首部构成：4bit版本+4bit首部长度+8bit服务类型+16bit数据报长度（字节）+16bit标识+3bit标志+13bit片偏移量+8bit生存时间+8bit上层协议+16bit首部校验和+32bit源IP地址+32bit目标IP地址+选项（可选，长度可变）<br>除了数据报中最后一个分片，其他分片都必须是8字节的倍数</li>
-</ul>
-<h2 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h2><p>32位二进制确定的网络中每台设备的唯一标识符。一个IP不是指向一个主机，而是一个网络接口。</p>
-<ul>
-<li><p>点分十进制表示法<br>四个0~255的十进制数组成，转换成二进制是32个数，分为网络号（标识子网归属）和主机号（标识具体设备），以子网掩码分界<br>将IP地址与子网掩码按位与，可以得到网络号</p>
-</li>
-<li><p>特殊IP地址：<br>0.0.0.0 本机地址，默认路由<br>255.255.255.255 表示网络中的所有主机（路由器不转发）<br>127.x.x.x 回环地址，用于本地软件的回环测试<br>有一部分地址保留用于内部网络，称为私有地址。这部分地址不被公共转发，也不在公共互联网使用，</p>
-</li>
-<li><p>子网划分<br>将一个地址块划分为几部分，将一个大的网络分割成多个小的子网，供多个内部网络使用，但对于外部仍然像单个网络</p>
-</li>
-<li><p>CIDR 无分类域间路由选择<br>CIDR使用一个斜杠后跟网络前缀长度（即网络部分的位数）来表示IP地址和子网的关系，这种方法不拘泥于以整个字节划分，而是可以落在32位中的任何位置</p>
-</li>
-</ul>
-
+<h2 id="回报"><a href="#回报" class="headerlink" title="回报"></a>回报</h2><p>回报（Return）指的是从时间步 $t$ 开始，智能体在未来所能获得的所有奖励的累计总和。奖励是即时的，局部的，回报是长远的，全局的。<br>在实际中，未来的奖励通常不如眼前的奖励值钱。为了体现时间价值，我们引入折现率 $\gamma$ 。有了回报，我们就能理解状态价值 $V(s)$ 指的就是在状态 $s$ 下回报的期望值。值函数的目标就是预测从当前状态出发，得到回报的均值。<br>由此延申，我们得到了多步回报的概念：定义一个超参数 $n$ ，此时计算的回报是未来 n 步的累计回报。当 n 取1，我们得到了 TD 方法中的单步回报，当 n 取 episode 的长度，我们得到了MC方法的完整回报。<br>为了平衡 $n$ ，我们引入 λ回报 的概念，使用另一个超参数 $\lambda$ ，将所有 n 步回报进行加权平均。λ 的意义不是去调整 n ，而是将所有 n 取值下的多步回报按照不同权重加权，λ 越接近0，短步回报权重越大；λ 越接近1，长步回报权重越大：<br>$$G_t^λ &#x3D; （1-λ）\sum_{n&#x3D;1}^∞λ^{n-1}G_{t:t+n}$$<br>其中（1-λ）的意义是归一化权重<br>将 TD 的目标值更换为 λ 回报，我们得到了 TD（λ）算法</p>
+<h2 id="资格迹"><a href="#资格迹" class="headerlink" title="资格迹"></a>资格迹</h2><p>资格迹的核心思想是责任分配。是用来记录哪些状态被访问过，以及</p>
+<h2 id="从单步到多步"><a href="#从单步到多步" class="headerlink" title="从单步到多步"></a>从单步到多步</h2><h2 id="不动点的推导"><a href="#不动点的推导" class="headerlink" title="不动点的推导"></a>不动点的推导</h2><p>推荐学习：</p>
+<iframe src="https://blog.csdn.net/zimiao552147572/article/details/104454471" width="100%" height="400"></iframe>
+<iframe src="https://zhuanlan.zhihu.com/p/18918326533" width="100%" height="400"></iframe>
                     
                 </div>
 
@@ -385,11 +336,11 @@
     <div class="copyright-info-content border-box">
         <div class="copyright-info-top border-box">
             <div class="copyright-post-title border-box text-ellipsis">
-                计算机网络笔记
+                
             </div>
 
             <div class="copyright-post-link border-box text-ellipsis">
-                2026/03/31/计算机网络/
+                2026/04/11/BEC笔记/
             </div>
         </div>
 
@@ -405,7 +356,7 @@
                 <div class="type">
                     发布于
                 </div>
-                <div class="content">2026-03-31 16:42</div>
+                <div class="content">2026-04-11 17:53</div>
             </div>
 
 
@@ -449,31 +400,15 @@
                 
                     <div class="post-nav border-box">
                         
-                            <div class="prev-post">
-                                <a class="prev"
-                                   rel="prev"
-                                   href="/2026/04/11/BEC%E7%AC%94%E8%AE%B0/"
-                                   title=""
-                                >
-                                    <span class="left arrow-icon flex-center">
-                                        <i class="fas fa-chevron-left"></i>
-                                    </span>
-                                    <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis"></span>
-                                        <span class="post-nav-item">上一篇</span>
-                                    </span>
-                                </a>
-                            </div>
-                        
                         
                             <div class="next-post">
                                 <a class="next"
                                    rel="next"
-                                   href="/2026/03/23/%E6%95%B0%E6%8D%AE%E5%BA%93/"
-                                   title="数据库笔记"
+                                   href="/2026/03/31/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"
+                                   title="计算机网络笔记"
                                 >
                                     <span class="title flex-center">
-                                        <span class="post-nav-title-item text-ellipsis">数据库笔记</span>
+                                        <span class="post-nav-title-item text-ellipsis">计算机网络笔记</span>
                                         <span class="post-nav-item">下一篇</span>
                                     </span>
                                     <span class="right arrow-icon flex-center">
@@ -501,7 +436,7 @@
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%A1%E7%BD%91%E6%9E%B6%E6%9E%84"><span class="nav-text">计网架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%89%A9%E7%90%86%E5%B1%82"><span class="nav-text">物理层</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%A0%E8%BE%93%E4%BB%8B%E8%B4%A8"><span class="nav-text">传输介质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E7%A0%81"><span class="nav-text">编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6"><span class="nav-text">数字调制</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82"><span class="nav-text">网络层</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IP%E5%9C%B0%E5%9D%80"><span class="nav-text">IP地址</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%EF%BC%88FG%EF%BC%89"><span class="nav-text">全梯度下降（FG）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%8A%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%EF%BC%88SG%EF%BC%89"><span class="nav-text">半梯度下降（SG）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%B6%E6%95%9B%E6%80%A7%E8%AF%81%E6%98%8E"><span class="nav-text">收敛性证明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E7%AD%96%E7%95%A5%E4%B8%8E%E5%BC%82%E7%AD%96%E7%95%A5"><span class="nav-text">同策略与异策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%9D%E5%B0%94%E6%9B%BC%E8%AF%AF%E5%B7%AE"><span class="nav-text">贝尔曼误差</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95%EF%BC%88MC%EF%BC%89%E4%B8%8E%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%96%B9%E6%B3%95%EF%BC%88DP%EF%BC%89%E5%88%B0-TD-%E7%AE%97%E6%B3%95"><span class="nav-text">从蒙特卡洛方法（MC）与动态规划方法（DP）到 TD 算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9E%E6%8A%A5"><span class="nav-text">回报</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%84%E6%A0%BC%E8%BF%B9"><span class="nav-text">资格迹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E5%8D%95%E6%AD%A5%E5%88%B0%E5%A4%9A%E6%AD%A5"><span class="nav-text">从单步到多步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E5%8A%A8%E7%82%B9%E7%9A%84%E6%8E%A8%E5%AF%BC"><span class="nav-text">不动点的推导</span></a></li></ol>
     </div>
 </div>
 
@@ -691,7 +626,7 @@
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%A1%E7%BD%91%E6%9E%B6%E6%9E%84"><span class="nav-text">计网架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%89%A9%E7%90%86%E5%B1%82"><span class="nav-text">物理层</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%A0%E8%BE%93%E4%BB%8B%E8%B4%A8"><span class="nav-text">传输介质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E7%A0%81"><span class="nav-text">编码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E8%B0%83%E5%88%B6"><span class="nav-text">数字调制</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82"><span class="nav-text">网络层</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IP%E5%9C%B0%E5%9D%80"><span class="nav-text">IP地址</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%A8%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%EF%BC%88FG%EF%BC%89"><span class="nav-text">全梯度下降（FG）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%8A%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%EF%BC%88SG%EF%BC%89"><span class="nav-text">半梯度下降（SG）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%B6%E6%95%9B%E6%80%A7%E8%AF%81%E6%98%8E"><span class="nav-text">收敛性证明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E7%AD%96%E7%95%A5%E4%B8%8E%E5%BC%82%E7%AD%96%E7%95%A5"><span class="nav-text">同策略与异策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B4%9D%E5%B0%94%E6%9B%BC%E8%AF%AF%E5%B7%AE"><span class="nav-text">贝尔曼误差</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%96%B9%E6%B3%95%EF%BC%88MC%EF%BC%89%E4%B8%8E%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E6%96%B9%E6%B3%95%EF%BC%88DP%EF%BC%89%E5%88%B0-TD-%E7%AE%97%E6%B3%95"><span class="nav-text">从蒙特卡洛方法（MC）与动态规划方法（DP）到 TD 算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9E%E6%8A%A5"><span class="nav-text">回报</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%84%E6%A0%BC%E8%BF%B9"><span class="nav-text">资格迹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8E%E5%8D%95%E6%AD%A5%E5%88%B0%E5%A4%9A%E6%AD%A5"><span class="nav-text">从单步到多步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8D%E5%8A%A8%E7%82%B9%E7%9A%84%E6%8E%A8%E5%AF%BC"><span class="nav-text">不动点的推导</span></a></li></ol>
     </div>
 </div>
 
