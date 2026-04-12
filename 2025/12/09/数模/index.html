@@ -372,7 +372,7 @@ mjx-container[display="true"] + br {
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Sat Apr 11 2026 19:37:33 GMT+0800">2026/04/11/ 19:37</span>
+                    <span class="datetime" data-updated="Sun Apr 12 2026 21:31:44 GMT+0800">2026/04/12/ 21:31</span>
                 </span>
             
         
@@ -411,9 +411,14 @@ mjx-container[display="true"] + br {
                     
 
                     
-                         <h1 id="数学建模">数学建模</h1>
-<p><img lazyload="" alt="image" data-src="media/image1.png" style="width:5.75in;height:3.875in"></p>
-<p><img lazyload="" alt="image" data-src="media/image2.png" style="width:5.75in;height:6.16667in"></p>
+                         <figure>
+<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412211356533.png">
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
+<figure>
+<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412211410625.png">
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
 <h2 id="一线性规划">一、线性规划：</h2>
 <p>解决资源有限，效率最大问题</p>
 <p>常见例子：中学求解线性不等式组，这也是名称中线性的由来</p>
@@ -425,35 +430,26 @@ mjx-container[display="true"] + br {
 <p>单纯形法的工作原理就是：从可行域的一个初始顶点出发，沿着多面体的棱边，系统地搜索相邻的顶点。每一次移动都必须使得目标函数值有所改善（例如，最大化问题中目标值变大）。当到达一个顶点，发现移动到任何相邻顶点都无法改善目标函数值时，就找到了最优解。</p>
 <p><strong>前提</strong>：线性规划问题都必须先转化为标准形式：</p>
 <p>目标函数统一为最大化。约束函数必须全部是等式约束，小于等于约束则添加松弛变量，大于等于则减去剩余变量。所有决策变量都必须是非负。</p>
-<p>1.初始化：找一个初始基本可行解。通常，松弛变量可以直接作为初始基变量。如果没有现成的基变量，则用大M法或两阶段法引入人工变量。</p>
-<p>2.查看目标函数行的检验数。对于最大化问题，如果非基变量的检验数全部小于等于零，则当前解为最优解</p>
-<p>3.确定进基变量和出基变量：选择一个最大且为正的非基变量作为进基变量，进入基变量集合，这将使目标函数增长最快，几何上相当于沿着最陡峭的边行动。将基变量值除以进基变量在约束行中的系数，找到最小的非负比值。对应最小比值的那一行所代表的基变量就是要离开基变量集合的出基变量。在几何上，这保证了移动不会冲出可行域的边界。</p>
-<p>4.以进基变量和出基变量交叉点上的元素为主元，通过行变换（高斯-约旦消元）更新单纯形表，使进基变量在新的基中只有它所在的位置系数为<br>
-1，其余为 0</p>
-<p>5.返回2，直至产生最优解</p>
+<ol type="1">
+<li><p>初始化：找一个初始基本可行解。通常，松弛变量可以直接作为初始基变量。如果没有现成的基变量，则用大M法或两阶段法引入人工变量。</p></li>
+<li><p>查看目标函数行的检验数。对于最大化问题，如果非基变量的检验数全部小于等于零，则当前解为最优解</p></li>
+<li><p>确定进基变量和出基变量：选择一个最大且为正的非基变量作为进基变量，进入基变量集合，这将使目标函数增长最快，几何上相当于沿着最陡峭的边行动。将基变量值除以进基变量在约束行中的系数，找到最小的非负比值。对应最小比值的那一行所代表的基变量就是要离开基变量集合的出基变量。在几何上，这保证了移动不会冲出可行域的边界。</p></li>
+<li><p>以进基变量和出基变量交叉点上的元素为主元，通过行变换（高斯-约旦消元）更新单纯形表，使进基变量在新的基中只有它所在的位置系数为1，其余为
+0</p></li>
+<li><p>返回2，直至产生最优解</p></li>
+</ol>
 <h3 id="对偶">1.2 对偶：</h3>
 <p>每个线性规划问题（P）都有其结构对偶，性质联系紧密的对偶问题（D）。</p>
-<table style="width:98%;">
-<colgroup>
-<col style="width: 49%">
-<col style="width: 49%">
-</colgroup>
-<tbody>
-<tr>
-<td style="text-align: left;"><img lazyload="" alt="image" data-src="media/image3.png" style="width:2.60417in;height:1.67708in"></td>
-<td style="text-align: center;"><img lazyload="" alt="image" data-src="media/image4.png" style="width:2.80208in;height:1.67708in"></td>
-</tr>
-</tbody>
-</table>
+<p><img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412211442309.png"><img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412211502033.png"></p>
 <p>弱对偶定理：对偶问题的任意一个可行解所对应的目标函数值，都是原问题最优目标值的一个上界（如果原问题是最大化）。这意味着我们可以通过对偶解来评估原问题的解有多接近最优。</p>
 <p>强对偶定理：两个问题的最优值完全相等。因此，求解其中任何一个问题，就能获得另一个问题的最优值。在实践中，如果对偶问题的约束较少，我们通常会选择求解对偶问题，以提高效率。</p>
 <p>互补松弛性定理：在一个最优解中，如果一个约束条件是松弛的（即&lt;=约束中&lt;成立），则对应的对偶变量必须为零；反之亦然。</p>
-<p>影子变量：影子价格表示在最优方案下，每增加一单位某种稀缺资源（对应原问题的一个约束的右端项<br>
+<p>影子变量：影子价格表示在最优方案下，每增加一单位某种稀缺资源（对应原问题的一个约束的右端项
 bi），能给目标函数值（例如利润）带来的最大增量。</p>
 <h3 id="衍生多目标线性规划">1.3 衍生：多目标线性规划：</h3>
 <p>由多个目标函数确定的线性规划，且通常目标冲突。</p>
 <p>一般求解有效解（帕累托最优解），即无法在不损害任何一个目标的前提下，改善任何一个目标的解一个有效解就是无法在不损害任何一个目标的前提下，改善任何一个目标的解。通常是一个解集</p>
-<p>主要求解思路有加权求和，目标规划（为每个目标函数设定一个期望），epsilon-约束（选择主要目标函数，然后把其他目标函数转化为约束条件）</p>
+<p>主要求解思路有加权求和，目标规划（为每个目标函数设定一个期望），ε-约束（选择主要目标函数，然后把其他目标函数转化为约束条件）</p>
 <h2 id="二整数规划">二、整数规划：</h2>
 <p>一般指变量限定为整数的线性规划，也即整数线性规划</p>
 <p>求解方法分类：</p>
@@ -471,16 +467,28 @@ bi），能给目标函数值（例如利润）带来的最大增量。</p>
 <p>3.割平面：如果非整数解，构造一个新的线性约束条件（即割平面），这个条件满足：切去非整数最优解且不能误伤其他整数解。</p>
 <p>4.将这个约束加入题目，重新求解，直到得出合法整数解</p>
 <p>Gomory 割平面的构造原理：将松弛后的最优解写成如下形式</p>
-<p><img lazyload="" alt="image" data-src="media/image5.png" style="width:2.86458in;height:1.0625in"></p>
+<figure>
+<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412211739192.png">
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
 <p>然后将左右的a拔 b拔拆成 |a拔+f|<br>
 （也即整数和小数部分），其中小数部分0&lt;=f&lt;1，带回原方程，得到下式</p>
-<p><img lazyload="" alt="image" data-src="media/image6.png" style="width:5.1875in;height:1.625in"></p>
+<figure>
+<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412211801394.png">
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
 <p>又x是整数解，且a拔 b拔为整数，则等式左边为整数，则右侧也为整数</p>
-<p>又f为正小数，且f<br>
+<p>又f为正小数，且f
 x为非负，则右sigma为非负，又右侧也为整数，所以右侧只能&lt;=0，故有下式</p>
-<p><img lazyload="" alt="image" data-src="media/image7.png" style="width:1.90625in;height:0.9375in"></p>
+<figure>
+<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412211831293.png">
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
 <p>引入松弛变量s，可以写成等式形式：</p>
-<p><img lazyload="" alt="image" data-src="media/image8.png" style="width:5.75in;height:0.85417in"></p>
+<figure>
+<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412211841328.png">
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
 <p>接下来求解s，根据s是否非负整数，即可得出解是否合法，如果不合法，继续对偶单纯形法</p>
 <h3 id="规划">2.3 0-1规划：</h3>
 <p>x只能取0或1的整数规划，适于描述一些互斥的条件。</p>
@@ -488,23 +496,23 @@ x为非负，则右sigma为非负，又右侧也为整数，所以右侧只能&l
 <p>只枚举变量取值组合的一部分，称为隐枚举法。</p>
 <h3 id="匈牙利法">2.5 匈牙利法：</h3>
 <p>指派问题可以用n*n的方阵成本矩阵描述其解。如果我们能将成本矩阵中的元素通过减去行最小值和列最小值的方式进行转换，而不改变问题的最优指派方案，并且最终能在零元素所在的位置找到一个覆盖所有行和列的最优指派，那么这个指派就是原问题的最优解。</p>
-<p>1.<strong>行约减</strong>：<br>
-找出矩阵中每一行的最小元素，将该行所有元素都减去这个最小值。处理后的矩阵至少每行会包含一个零元素。<strong>列约减</strong>：<br>
-对经过行约减后的矩阵，找出每一列的最小元素，将该列所有元素都减去这个最小值。处理后的矩阵每行每列都会包含零元素。</p>
-<p>2.用最少的直线（水平线或垂直线）去覆盖矩阵中所有的零元素。</p>
+<ol type="1">
+<li><p><strong>行约减</strong>：找出矩阵中每一行的最小元素，将该行所有元素都减去这个最小值。处理后的矩阵至少每行会包含一个零元素。<strong>列约减</strong>：对经过行约减后的矩阵，找出每一列的最小元素，将该列所有元素都减去这个最小值。处理后的矩阵每行每列都会包含零元素。</p></li>
+<li><p>用最少的直线（水平线或垂直线）去覆盖矩阵中所有的零元素。</p>
 <p>判断最优性：</p>
 <p>如果所需的最少直线数等于矩阵的阶数n（即n条线），说明已经找到了n个相互独立的零元素，可以进行最优指派，算法结束。</p>
-<p>如果所需的最少直线数小于矩阵的阶数n，说明当前零元素不足以构成最优解，需要进行下一步调整。</p>
-<p>3.如果直线数不足n：</p>
-<p>在未被直线覆盖的元素中，找出它们的最小值 delta。</p>
-<p>执行调整操作：</p>
+<p>如果所需的最少直线数小于矩阵的阶数n，说明当前零元素不足以构成最优解，需要进行下一步调整。</p></li>
+<li><p>如果直线数不足n：在未被直线覆盖的元素中，找出它们的最小值
+delta。执行调整操作：</p></li>
+</ol>
 <blockquote>
 <p>未被覆盖的元素：全部减去delta。</p>
 <p>被两条线覆盖（交叉点）的元素：全部加上delta。</p>
 <p>被一条线覆盖的元素：保持不变。</p>
 </blockquote>
-<p>调整后，返回2重新进行零元素覆盖检验。</p>
-<p>4.当找到n条直线覆盖所有零元素后，在零元素所在位置找到一个一一对应的指派方案，使得每个任务都被指派，这就是最优指派方案。</p>
+<p>调整后，返回2重新进行零元素覆盖检验。<br>
+4.
+当找到n条直线覆盖所有零元素后，在零元素所在位置找到一个一一对应的指派方案，使得每个任务都被指派，这就是最优指派方案。</p>
 <p>但实践上我们很少自己进行操作，python中的scipy.optimize.linear_sum_assignment函数就可以直接代劳</p>
 <h3 id="蒙特卡洛法">2.6 蒙特卡洛法：</h3>
 <p>通过随机抽样，统计数据来寻找近似解</p>
@@ -520,7 +528,10 @@ x为非负，则右sigma为非负，又右侧也为整数，所以右侧只能&l
 <h4 id="斐波那契法">3.1.1 斐波那契法：</h4>
 <p>目标函数在搜索区间内必须是单峰。必须预设迭代次数N</p>
 <p>1.初始化：</p>
-<p><img lazyload="" alt="image" data-src="media/image9.png" style="width:3.46875in;height:2.03125in"></p>
+<figure>
+<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212238057.png">
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
 <p>2.区间淘汰：</p>
 <p>如果 f(x_1) &lt; f(x_2)（以求最小值为例），则极值点在[a,<br>
 x_2]内，将新的搜索区间设为[a, x_2]，淘汰掉[x_2, b]部分。</p>
@@ -531,33 +542,54 @@ x_2]内，将新的搜索区间设为[a, x_2]，淘汰掉[x_2, b]部分。</p>
 在新的区间内，原来的x1或x2恰好位于新的斐波那契位置上，因此只需要计算一个新点。</p>
 <h5 id="衍生0.618法">3.1.1.1 衍生0.618法：</h5>
 <p>收缩比恒定为0.618，且无需预设迭代次数N</p>
-<p><img lazyload="" alt="image" data-src="media/image10.png" style="width:5.6875in;height:1.25in"></p>
+<figure>
+<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212250165.png">
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
 <h4 id="二次插值法">3.1.2 二次插值法：</h4>
 <p>在搜索区间中，不断用低次（通常不超过三次）多项式来近似目标函数，并逐步用插值多项式的极小点来逼近目标函数最优解。</p>
 <p>1.在搜索区间[a,b]内找x1，x2，x3，且满足f(x2)最小</p>
 <p>2.利用这三点构造二次函数phi(x) = Ax^2 + Bx + C</p>
 <p>3.对 phi(x)求导并令导数为零，得到抛物线的极值点 x*：</p>
-<p><img lazyload="" alt="image" data-src="media/image11.png" style="width:5.75in;height:0.86458in"></p>
+<figure>
+<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212307378.png">
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
 <p>4.计算f(x*)，淘汰掉三个点中最差的，形成新的搜索空间，继续迭代</p>
 <h4 id="梯度法">3.1.3 梯度法：</h4>
 <p>求解梯度，反向传播，得到最速下降方向</p>
 <h4 id="newton法">3.1.4 newton法：</h4>
 <p>考虑目标函数 f 在点 xk 处的二次逼近式</p>
-<p><img lazyload="" alt="image" data-src="media/image12.png" style="width:5.75in;height:0.40625in"></p>
+<figure>
+<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212318364.png">
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
 <p>假设海森矩阵（二阶导数）正定</p>
-<p><img lazyload="" alt="image" data-src="media/image13.png" style="width:4.34375in;height:2.10417in"></p>
+<figure>
+<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212327648.png">
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
 <p>令fx的梯度为0，可求出fx的最小值点。令dk=x-xk<br>
 为牛顿搜索方向，我们得到著名的牛顿迭代公式</p>
-<p><img lazyload="" alt="image" data-src="media/image14.png" style="width:4.39583in;height:0.5in"></p>
+<figure>
+<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212334913.png">
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
 <p>优势：收敛速度快</p>
 <p>劣势：计算开销大</p>
 <h3 id="约束极值问题">3.2 约束极值问题：</h3>
 <p>带有约束条件的极值问题称为约束极值问题，也叫规划问题。为了简化问题，通常把约束转为无约束，非线性转为线性。</p>
 <h4 id="kkt条件">3.2.1 KKT条件：</h4>
 <p>假设有如下最小化问题，为将约束融入目标函数，构造拉格朗日函数L如下</p>
-<p><img lazyload="" alt="image" data-src="media/image15.png" style="width:5.75in;height:2.66667in"></p>
+<figure>
+<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212344407.png">
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
 <p>为将约束融入目标函数，构造拉格朗日函数L如下</p>
-<p><img lazyload="" alt="image" data-src="media/image16.png" style="width:5.75in;height:1.16667in"></p>
+<figure>
+<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212353603.png">
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
 <p>则有如下四大KKT条件：</p>
 <p>1.L对x的梯度为0</p>
 <p>2.x*必须满足所有原约束</p>
@@ -567,35 +599,53 @@ x_2]内，将新的搜索区间设为[a, x_2]，淘汰掉[x_2, b]部分。</p>
 可以是任意非负值。</p>
 <p>约束处于松弛状态（Slack）： g(x*) &lt; 0，此时 lamda_i* 必须等于
 0</p>
-<p><img lazyload="" alt="image" data-src="media/image17.png" style="width:4.03125in;height:0.5625in"></p>
+<figure>
+<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212405932.png">
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
 <h4 id="罚函数法">3.2.2 罚函数法：</h4>
 <p>通过引入罚因子和惩罚项，构造增广目标函数P</p>
-<p><img lazyload="" alt="image" data-src="media/image18.png" style="width:5in;height:0.89583in"></p>
+<figure>
+<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212417069.png">
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
 <p>假设对最小化问题，惩罚项必须满足：当g(x)&gt;0,penalty&gt;0;g(x)&lt;=0,penalty=0</p>
 <p>又可分为外罚函数法和内罚函数法</p>
 <p>外罚函数法：对于违反可行域的解进行惩罚，比如违反程度的平方。迭代逐步增大罚因子r，当r-&gt;∞，得到最优解。迭代过程中的最优解往往落在可行域外</p>
-<p><img lazyload="" alt="image" data-src="media/image19.png" style="width:5.36458in;height:1.22917in"></p>
+<figure>
+<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212424676.png">
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
 <p>内罚函数法：对可行域内的解设置屏障，防止越过，比如倒数或对数。迭代逐步减小罚因子r，当r-&gt;0，得到最优解。迭代过程中的最优解始终可行。</p>
-<p><img lazyload="" alt="image" data-src="media/image20.png" style="width:4.64583in;height:1.25in"></p>
+<figure>
+<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212432005.png">
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
 <h2 id="四动态规划">四、动态规划</h2>
 <p>建模要素：阶段 状态变量 决策变量 策略 状态转移方程 指标函数
 最优策略<br>
 递归方程</p>
 <p>动态规划和静态规划本质都是求解在一定状态约束下的极值问题，可以互相转化。静态规划主要以代数方法（如单纯形法）一次性求解所有变量，而动态规划则是以递归方程形式逐阶段求解变量。动态规划问题可以看作，以最优值函数为目标函数，以状态转移函数、端点条件、允许状态集合、允许决策集合为约束条件的极值问题。而动态规划则可以通过引入适当的阶段和状态变量等，转变为动态规划。</p>
-<p>1.划分阶段</p>
-<p>2.选择状态变量，使其能够描述过程状态，且无后效性，确定允许状态集合</p>
-<p>3.选择决策变量，确定允许决策集合</p>
-<p>4.写出状态转移方程</p>
-<p>5.确定阶段指标和指标函数</p>
-<p>6.写出最优值函数满足的方程和端点条件</p>
+<ol type="1">
+<li><p>划分阶段</p></li>
+<li><p>选择状态变量，使其能够描述过程状态，且无后效性，确定允许状态集合</p></li>
+<li><p>选择决策变量，确定允许决策集合</p></li>
+<li><p>写出状态转移方程</p></li>
+<li><p>确定阶段指标和指标函数</p></li>
+<li><p>写出最优值函数满足的方程和端点条件</p></li>
+</ol>
 <p>优点：<br>
-<br>
-1.通过把复杂约束转化为小型递归子问题，简化求解，甚至提出枚举的可能性</p>
-<p>2.可以逐阶段解得一族最优解而非全局最优解，适用于求次优解</p>
-<p>3.适应实际问题，可以通过经验加快收敛</p>
+1.
+通过把复杂约束转化为小型递归子问题，简化求解，甚至提出枚举的可能性</p>
+<ol start="2" type="1">
+<li><p>可以逐阶段解得一族最优解而非全局最优解，适用于求次优解</p></li>
+<li><p>适应实际问题，可以通过经验加快收敛</p></li>
+</ol>
 <p>缺点：</p>
-<p>1.没有统一的方法和模型，具体问题具体分析</p>
-<p>2.维数灾难，可能性太多</p>
+<ol type="1">
+<li><p>没有统一的方法和模型，具体问题具体分析</p></li>
+<li><p>维数灾难，可能性太多</p></li>
+</ol>
 <p>常见题型：路线规划、生产策略、资源分配</p>
 <h3 id="背包问题">4.1 0-1背包问题</h3>
 <p>背包容量有限 物品不可分割 物品的体积和价值各异 求怎么装最多</p>
@@ -660,16 +710,58 @@ x_2]内，将新的搜索区间设为[a, x_2]，淘汰掉[x_2, b]部分。</p>
 <p>1.排队规则可以分为损失制（如果服务员占满则立刻离去）、等待制（排队等待接受服务，又可分为有限排队长度和有限排队时间）、混合制（兼有前两者）</p>
 <p>Kendall符号记法：</p>
 <p><span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="12.916ex" height="2.262ex" role="img" focusable="false" viewBox="0 -750 5709 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D434" d="M208 74Q208 50 254 46Q272 46 272 35Q272 34 270 22Q267 8 264 4T251 0Q249 0 239 0T205 1T141 2Q70 2 50 0H42Q35 7 35 11Q37 38 48 46H62Q132 49 164 96Q170 102 345 401T523 704Q530 716 547 716H555H572Q578 707 578 706L606 383Q634 60 636 57Q641 46 701 46Q726 46 726 36Q726 34 723 22Q720 7 718 4T704 0Q701 0 690 0T651 1T578 2Q484 2 455 0H443Q437 6 437 9T439 27Q443 40 445 43L449 46H469Q523 49 533 63L521 213H283L249 155Q208 86 208 74ZM516 260Q516 271 504 416T490 562L463 519Q447 492 400 412L310 260L413 259Q516 259 516 260Z"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(750,0)"><g data-mml-node="mo"><path data-c="2F" d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"></path></g></g><g data-mml-node="mi" transform="translate(1250,0)"><path data-c="1D435" d="M231 637Q204 637 199 638T194 649Q194 676 205 682Q206 683 335 683Q594 683 608 681Q671 671 713 636T756 544Q756 480 698 429T565 360L555 357Q619 348 660 311T702 219Q702 146 630 78T453 1Q446 0 242 0Q42 0 39 2Q35 5 35 10Q35 17 37 24Q42 43 47 45Q51 46 62 46H68Q95 46 128 49Q142 52 147 61Q150 65 219 339T288 628Q288 635 231 637ZM649 544Q649 574 634 600T585 634Q578 636 493 637Q473 637 451 637T416 636H403Q388 635 384 626Q382 622 352 506Q352 503 351 500L320 374H401Q482 374 494 376Q554 386 601 434T649 544ZM595 229Q595 273 572 302T512 336Q506 337 429 337Q311 337 310 336Q310 334 293 263T258 122L240 52Q240 48 252 48T333 46Q422 46 429 47Q491 54 543 105T595 229Z"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(2009,0)"><g data-mml-node="mo"><path data-c="2F" d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"></path></g></g><g data-mml-node="mi" transform="translate(2509,0)"><path data-c="1D450" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(2942,0)"><g data-mml-node="mo"><path data-c="2F" d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"></path></g></g><g data-mml-node="mi" transform="translate(3442,0)"><path data-c="1D43E" d="M285 628Q285 635 228 637Q205 637 198 638T191 647Q191 649 193 661Q199 681 203 682Q205 683 214 683H219Q260 681 355 681Q389 681 418 681T463 682T483 682Q500 682 500 674Q500 669 497 660Q496 658 496 654T495 648T493 644T490 641T486 639T479 638T470 637T456 637Q416 636 405 634T387 623L306 305Q307 305 490 449T678 597Q692 611 692 620Q692 635 667 637Q651 637 651 648Q651 650 654 662T659 677Q662 682 676 682Q680 682 711 681T791 680Q814 680 839 681T869 682Q889 682 889 672Q889 650 881 642Q878 637 862 637Q787 632 726 586Q710 576 656 534T556 455L509 418L518 396Q527 374 546 329T581 244Q656 67 661 61Q663 59 666 57Q680 47 717 46H738Q744 38 744 37T741 19Q737 6 731 0H720Q680 3 625 3Q503 3 488 0H478Q472 6 472 9T474 27Q478 40 480 43T491 46H494Q544 46 544 71Q544 75 517 141T485 216L427 354L359 301L291 248L268 155Q245 63 245 58Q245 51 253 49T303 46H334Q340 37 340 35Q340 19 333 5Q328 0 317 0Q314 0 280 1T180 2Q118 2 85 2T49 1Q31 1 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Z"></path></g><g data-mml-node="TeXAtom" data-mjx-texclass="ORD" transform="translate(4331,0)"><g data-mml-node="mo"><path data-c="2F" d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"></path></g></g><g data-mml-node="mi" transform="translate(4831,0)"><path data-c="1D45A" d="M21 287Q22 293 24 303T36 341T56 388T88 425T132 442T175 435T205 417T221 395T229 376L231 369Q231 367 232 367L243 378Q303 442 384 442Q401 442 415 440T441 433T460 423T475 411T485 398T493 385T497 373T500 364T502 357L510 367Q573 442 659 442Q713 442 746 415T780 336Q780 285 742 178T704 50Q705 36 709 31T724 26Q752 26 776 56T815 138Q818 149 821 151T837 153Q857 153 857 145Q857 144 853 130Q845 101 831 73T785 17T716 -10Q669 -10 648 17T627 73Q627 92 663 193T700 345Q700 404 656 404H651Q565 404 506 303L499 291L466 157Q433 26 428 16Q415 -11 385 -11Q372 -11 364 -4T353 8T350 18Q350 29 384 161L420 307Q423 322 423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 181Q151 335 151 342Q154 357 154 369Q154 405 129 405Q107 405 92 377T69 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path></g></g></g></svg></mjx-container></span></p>
-<p><img lazyload="" alt="image" data-src="media/image21.png"></p>
-<p><strong>点击图片可查看完整电子表格</strong></p>
+<table>
+<colgroup>
+<col style="width: 5%">
+<col style="width: 33%">
+<col style="width: 60%">
+</colgroup>
+<thead>
+<tr>
+<th>记号</th>
+<th>含义</th>
+<th>常见类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>顾客到达过程（Arrival）</td>
+<td>M (Poisson 分布/指数间隔), <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.05ex;" xmlns="http://www.w3.org/2000/svg" width="1.778ex" height="1.645ex" role="img" focusable="false" viewBox="0 -705 786 727"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D43A" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q492 659 471 656T418 643T357 615T294 567T236 496T189 394T158 260Q156 242 156 221Q156 173 170 136T206 79T256 45T308 28T353 24Q407 24 452 47T514 106Q517 114 529 161T541 214Q541 222 528 224T468 227H431Q425 233 425 235T427 254Q431 267 437 273H454Q494 271 594 271Q634 271 659 271T695 272T707 272Q721 272 721 263Q721 261 719 249Q714 230 709 228Q706 227 694 227Q674 227 653 224Q646 221 643 215T629 164Q620 131 614 108Q589 6 586 3Q584 1 581 1Q571 1 553 21T530 52Q530 53 528 52T522 47Q448 -22 322 -22Q201 -22 126 55T50 252Z"></path></g></g></g></svg></mjx-container></span>
+(一般分布)</td>
+</tr>
+<tr>
+<td>B</td>
+<td>服务时间分布（Service）</td>
+<td>M (指数分布), <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="1.873ex" height="1.545ex" role="img" focusable="false" viewBox="0 -683 828 683"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D437" d="M287 628Q287 635 230 637Q207 637 200 638T193 647Q193 655 197 667T204 682Q206 683 403 683Q570 682 590 682T630 676Q702 659 752 597T803 431Q803 275 696 151T444 3L430 1L236 0H125H72Q48 0 41 2T33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM703 469Q703 507 692 537T666 584T629 613T590 629T555 636Q553 636 541 636T512 636T479 637H436Q392 637 386 627Q384 623 313 339T242 52Q242 48 253 48T330 47Q335 47 349 47T373 46Q499 46 581 128Q617 164 640 212T683 339T703 469Z"></path></g></g></g></svg></mjx-container></span> (确定性), <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.05ex;" xmlns="http://www.w3.org/2000/svg" width="1.778ex" height="1.645ex" role="img" focusable="false" viewBox="0 -705 786 727"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D43A" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q492 659 471 656T418 643T357 615T294 567T236 496T189 394T158 260Q156 242 156 221Q156 173 170 136T206 79T256 45T308 28T353 24Q407 24 452 47T514 106Q517 114 529 161T541 214Q541 222 528 224T468 227H431Q425 233 425 235T427 254Q431 267 437 273H454Q494 271 594 271Q634 271 659 271T695 272T707 272Q721 272 721 263Q721 261 719 249Q714 230 709 228Q706 227 694 227Q674 227 653 224Q646 221 643 215T629 164Q620 131 614 108Q589 6 586 3Q584 1 581 1Q571 1 553 21T530 52Q530 53 528 52T522 47Q448 -22 322 -22Q201 -22 126 55T50 252Z"></path></g></g></g></svg></mjx-container></span> (一般分布)</td>
+</tr>
+<tr>
+<td>C</td>
+<td>服务台数量（Channels）</td>
+<td><span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.439ex;" xmlns="http://www.w3.org/2000/svg" width="11.426ex" height="1.946ex" role="img" focusable="false" viewBox="0 -666 5050.3 860"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path></g><g data-mml-node="mo" transform="translate(500,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="mn" transform="translate(944.7,0)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g><g data-mml-node="mo" transform="translate(1444.7,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="mn" transform="translate(1889.3,0)"><path data-c="33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"></path></g><g data-mml-node="mo" transform="translate(2389.3,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="mo" transform="translate(2834,0)"><path data-c="2026" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60ZM525 60Q525 84 542 102T585 120Q609 120 627 104T646 61Q646 36 629 18T586 0T543 17T525 60ZM972 60Q972 84 989 102T1032 120Q1056 120 1074 104T1093 61Q1093 36 1076 18T1033 0T990 17T972 60Z"></path></g><g data-mml-node="mo" transform="translate(4172.7,0)"><path data-c="2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path></g><g data-mml-node="mi" transform="translate(4617.3,0)"><path data-c="1D450" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z"></path></g></g></g></svg></mjx-container></span></td>
+</tr>
+<tr>
+<td>K</td>
+<td>系统容量（Capacity）</td>
+<td><span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.025ex" role="img" focusable="false" viewBox="0 -442 1000 453"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="221E" d="M55 217Q55 305 111 373T254 442Q342 442 419 381Q457 350 493 303L507 284L514 294Q618 442 747 442Q833 442 888 374T944 214Q944 128 889 59T743 -11Q657 -11 580 50Q542 81 506 128L492 147L485 137Q381 -11 252 -11Q166 -11 111 57T55 217ZM907 217Q907 285 869 341T761 397Q740 397 720 392T682 378T648 359T619 335T594 310T574 285T559 263T548 246L543 238L574 198Q605 158 622 138T664 94T714 61T765 51Q827 51 867 100T907 217ZM92 214Q92 145 131 89T239 33Q357 33 456 193L425 233Q364 312 334 337Q285 380 233 380Q171 380 132 331T92 214Z"></path></g></g></g></svg></mjx-container></span> (无限), <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="2.009ex" height="1.545ex" role="img" focusable="false" viewBox="0 -683 888 683"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D441" d="M234 637Q231 637 226 637Q201 637 196 638T191 649Q191 676 202 682Q204 683 299 683Q376 683 387 683T401 677Q612 181 616 168L670 381Q723 592 723 606Q723 633 659 637Q635 637 635 648Q635 650 637 660Q641 676 643 679T653 683Q656 683 684 682T767 680Q817 680 843 681T873 682Q888 682 888 672Q888 650 880 642Q878 637 858 637Q787 633 769 597L620 7Q618 0 599 0Q585 0 582 2Q579 5 453 305L326 604L261 344Q196 88 196 79Q201 46 268 46H278Q284 41 284 38T282 19Q278 6 272 0H259Q228 2 151 2Q123 2 100 2T63 2T46 1Q31 1 31 10Q31 14 34 26T39 40Q41 46 62 46Q130 49 150 85Q154 91 221 362L289 634Q287 635 234 637Z"></path></g></g></g></svg></mjx-container></span> (有限)</td>
+</tr>
+<tr>
+<td>M</td>
+<td>顾客源数量（Population）</td>
+<td><span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.025ex" role="img" focusable="false" viewBox="0 -442 1000 453"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="221E" d="M55 217Q55 305 111 373T254 442Q342 442 419 381Q457 350 493 303L507 284L514 294Q618 442 747 442Q833 442 888 374T944 214Q944 128 889 59T743 -11Q657 -11 580 50Q542 81 506 128L492 147L485 137Q381 -11 252 -11Q166 -11 111 57T55 217ZM907 217Q907 285 869 341T761 397Q740 397 720 392T682 378T648 359T619 335T594 310T574 285T559 263T548 246L543 238L574 198Q605 158 622 138T664 94T714 61T765 51Q827 51 867 100T907 217ZM92 214Q92 145 131 89T239 33Q357 33 456 193L425 233Q364 312 334 337Q285 380 233 380Q171 380 132 331T92 214Z"></path></g></g></g></svg></mjx-container></span> (无限), <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="2.378ex" height="1.545ex" role="img" focusable="false" viewBox="0 -683 1051 683"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D440" d="M289 629Q289 635 232 637Q208 637 201 638T194 648Q194 649 196 659Q197 662 198 666T199 671T201 676T203 679T207 681T212 683T220 683T232 684Q238 684 262 684T307 683Q386 683 398 683T414 678Q415 674 451 396L487 117L510 154Q534 190 574 254T662 394Q837 673 839 675Q840 676 842 678T846 681L852 683H948Q965 683 988 683T1017 684Q1051 684 1051 673Q1051 668 1048 656T1045 643Q1041 637 1008 637Q968 636 957 634T939 623Q936 618 867 340T797 59Q797 55 798 54T805 50T822 48T855 46H886Q892 37 892 35Q892 19 885 5Q880 0 869 0Q864 0 828 1T736 2Q675 2 644 2T609 1Q592 1 592 11Q592 13 594 25Q598 41 602 43T625 46Q652 46 685 49Q699 52 704 61Q706 65 742 207T813 490T848 631L654 322Q458 10 453 5Q451 4 449 3Q444 0 433 0Q418 0 415 7Q413 11 374 317L335 624L267 354Q200 88 200 79Q206 46 272 46H282Q288 41 289 37T286 19Q282 3 278 1Q274 0 267 0Q265 0 255 0T221 1T157 2Q127 2 95 1T58 0Q43 0 39 2T35 11Q35 13 38 25T43 40Q45 46 65 46Q135 46 154 86Q158 92 223 354T289 629Z"></path></g></g></g></svg></mjx-container></span> (有限)</td>
+</tr>
+</tbody>
+</table>
 <h2 id="topsis理想解法">TOPSIS理想解法：</h2>
-<p>1.将所有决策变量抽象为向量，确定收益正方向，</p>
-<p>2.然后矩阵归一化消除量纲影响，</p>
-<p>3.再引入权重矩阵，</p>
-<p>4.确定正理想解和负理想解，</p>
-<p>5.并常用欧氏距离衡量任一解到理想解的距离s+和s-，最终通过c=s+/（s+
+<ol type="1">
+<li><p>将所有决策变量抽象为向量，确定收益正方向，</p></li>
+<li><p>然后矩阵归一化消除量纲影响，</p></li>
+<li><p>再引入权重矩阵，</p></li>
+<li><p>确定正理想解和负理想解，</p></li>
+<li><p>并常用欧氏距离衡量任一解到理想解的距离s+和s-，最终通过c=s+/（s+
 +<br>
-s-）确定相对接近程度。</p>
+s-）确定相对接近程度。</p></li>
+</ol>
 <p>c是一个介于01之间的值，且越大越好</p>
 <p>适用题型：评价指标维度多，数据多，正负不同</p>
 <h2 id="熵权法">熵权法：</h2>
@@ -680,7 +772,10 @@ s-）确定相对接近程度。</p>
 <p>数据预处理：正向化，归一化</p>
 <p>计算方案比重：计算第i个方案在第j个指标中所占的比例，若是0则添加一个极小值，防止下一步出现ln0</p>
 <p>计算熵值：通过信息熵公式计算数据离散程度，当pij全部相等，E最大取1，表示信息熵最小。当pij差异极大，E趋向于0，表示信息熵无限大</p>
-<p><img lazyload="" alt="image" data-src="media/image22.png" style="width:3.91667in;height:1.1875in"></p>
+<figure>
+<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212640105.png">
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
 <p>计算差异系数：D=1-E，D越大，该指标区分度越大，重要性越大</p>
 <p>计算最终权重：将D重新归一化，得到W，即为最终权重，权重向量满足求和为1，分量&gt;0</p>
 <h2 id="指数传播模型">指数传播模型：</h2>
@@ -697,7 +792,10 @@ s-）确定相对接近程度。</p>
 s(t)，又此时病人总数N i(t)，</p>
 <p>有模型：N [i(t+delta t)-i(t)]/delta t = lamda N s(t)i(t)</p>
 <p>又s(t)=1-i(t)，令t-&gt;0，且设t=0时，i(0)=i0，求解微分方程得到：</p>
-<p><img lazyload="" alt="image" data-src="media/image23.jpeg" style="width:3.33333in;height:1.0625in"></p>
+<figure>
+<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212652519.png">
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
 <p>也即logistic模型。医学上称di(t)/dt为传染病曲线，当i=0.5，di/dt达到最大值，为传染病高发期，求解可得对应时刻tmax=（1/lamda）ln[(1/i0)-1]</p>
 <p>又tmax与lamda成反比，若减小lamda，则tmax会变大，在tmax之前做好预防</p>
 <h2 id="马尔科夫模型">马尔科夫模型：</h2>
@@ -706,82 +804,122 @@ s(t)，又此时病人总数N i(t)，</p>
 <p>适用情形：健康状况预测，销量预测，升职预测</p>
 <p>性质：</p>
 <p>时齐性：若第n天对象处于状态i，则经过m天后，对象处于状态j的概率满足：</p>
-<p><img lazyload="" alt="image" data-src="media/image24.jpeg" style="width:5.75in;height:1.03125in"></p>
+<figure>
+<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212702184.png">
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
 <p>则称{Xn,n=1,2...}为时齐的马尔科夫链</p>
 <h2 id="模拟退火算法">模拟退火算法：</h2>
 <p>一种启发式算法。在贪心算法得到局部最优解之后，随机尝试新解，如果更优则转向新解，否则概率选择新解，给出了一种跳出舒适圈的可能性</p>
 <p>关键：概率选择新解的概率怎么确定</p>
 <p>利用温度和内能来描述问题，退火过程中，温度逐渐降低，选择新解的概率逐渐减小，内能为目标函数值，我们希望他越小越好</p>
-<p><img lazyload="" alt="image" data-src="media/image25.png" style="width:5.75in;height:2.90625in"></p>
+<figure>
+<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212711904.png">
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
 <p>需要考虑：</p>
-<p>1.时间限制，如果时间不多就不再尝试</p>
-<p>2.当前解优越度，越优越，选择新解概率越小</p>
+<ol type="1">
+<li><p>时间限制，如果时间不多就不再尝试</p></li>
+<li><p>当前解优越度，越优越，选择新解概率越小</p></li>
+</ol>
 <p>适用情形：NP难，可行解过多，暴力求解不如求近似解</p>
 <p>流程：</p>
-<p>1.初始化：设定足够大的起始温度tstart，接近于零的终止温度tend，一般介于0.95-0.99的降温速率alpha</p>
-<p>2.外层条件：当t&gt;tend（降温之后进条件判断）</p>
-<p>3.内层执行：在保持某个温度的阶段内，尝试L次（马尔科夫链长度）在x附近产生一个随机扰动x’，然后计算deltaE，再通过上面的P判断保留与否</p>
-<p>4.降温：t=t*alpha</p>
+<ol type="1">
+<li><p>初始化：设定足够大的起始温度tstart，接近于零的终止温度tend，一般介于0.95-0.99的降温速率alpha</p></li>
+<li><p>外层条件：当t&gt;tend（降温之后进条件判断）</p></li>
+<li><p>内层执行：在保持某个温度的阶段内，尝试L次（马尔科夫链长度）在x附近产生一个随机扰动x’，然后计算deltaE，再通过上面的P判断保留与否</p></li>
+<li><p>降温：t=t*alpha</p></li>
+</ol>
 <p>参数设定技巧：</p>
-<p>1.tstart一般足够大，给解充分跳出局部最优的机会，在此基础上可以使用下式反推</p>
-<p><img lazyload="" alt="image" data-src="media/image26.png" style="width:3.08333in;height:1.30208in"></p>
-<p>2.降温速率alpha尽量慢，一般在0.90-0.99，数模一般0.95-0.98，越大遍历越充分，越小收敛越快</p>
-<p>3.L建议为决策变量数的整倍数如100n，1000n。L与alpha是互补的，如果alpha很小，则L应尽量大，以弥补收敛过快随机不彻底</p>
-<p>4.tend可以直接设为一个极小值，也可以用连续无优化法，添加一个计数器，在若干个温度下没有明显变化后，提前结束</p>
-<p>5.优化策略：连续函数优化，如下式，乘t可以在温度高时剧烈扰动，温度低时则小心尝试</p>
-<p><img lazyload="" alt="image" data-src="media/image27.png" style="width:5.75in;height:0.54167in"></p>
-<p>6.更进一步的优化：模拟退火比较玄学，可以在最外层再多套个循环，独立进行几十次退火，然后找结果最好的那一个。另外由于退火是随机跳出局部，故有可能过程点比终点更接近答案</p>
+<ol type="1">
+<li>tstart一般足够大，给解充分跳出局部最优的机会，在此基础上可以使用下式反推</li>
+</ol>
+<figure>
+<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212807998.png">
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
+<ol start="2" type="1">
+<li><p>降温速率alpha尽量慢，一般在0.90-0.99，数模一般0.95-0.98，越大遍历越充分，越小收敛越快</p></li>
+<li><p>L建议为决策变量数的整倍数如100n，1000n。L与alpha是互补的，如果alpha很小，则L应尽量大，以弥补收敛过快随机不彻底</p></li>
+<li><p>tend可以直接设为一个极小值，也可以用连续无优化法，添加一个计数器，在若干个温度下没有明显变化后，提前结束</p></li>
+<li><p>优化策略：连续函数优化，如下式，乘t可以在温度高时剧烈扰动，温度低时则小心尝试</p></li>
+</ol>
+<figure>
+<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212824117.png">
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
+<ol start="6" type="1">
+<li>更进一步的优化：模拟退火比较玄学，可以在最外层再多套个循环，独立进行几十次退火，然后找结果最好的那一个。另外由于退火是随机跳出局部，故有可能过程点比终点更接近答案</li>
+</ol>
 <h2 id="粒子群算法">粒子群算法：</h2>
 <p>自然场景：鸟群随机觅食，且共享视野，则每个鸟的决策基于：惯性（原有方向），个体经验（自己记录的最优解），群体经验（共享视野中的最优解）</p>
-<p><img lazyload="" alt="image" data-src="media/image28.png" style="width:5.75in;height:5.21875in"></p>
+<figure>
+<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212833788.png">
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
 <p>优点：收敛更快，实现简单（只有两个公式描述），核心参数需要调整的少（主要就是惯性权重omega，个体学习因子c1，群体学习因子c2</p>
 <p>缺点：收敛过快容易陷入局部最优，后期容易在最优点附近震荡，精度不高</p>
 <p>优化思路：动态调整Omega，如下式，k为当前迭代次数，kmax为最大迭代次数，使omega随着迭代次数增大而减小</p>
-<p><img lazyload="" alt="image" data-src="media/image29.png" style="width:3.80208in;height:0.95833in"></p>
+<figure>
+<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212846887.png">
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
 <h2 id="改进灰狼优化算法">改进灰狼优化算法</h2>
 <p>将狼群分为四个等级，alpha狼（最优解）、beta狼（第二优解）、delta狼（第三优解）、omega狼（其余）。执行过程中，狼群认为alpha、beta、delta最接近最优解，根据三者位置调整自身位置。</p>
 <p>流程：</p>
-<p>1.包围：根据欧氏距离等指标，逐步靠近猎物</p>
-<p>2.狩猎：先分别得到向三个领袖靠近的距离，再求平均得到最终移动距离</p>
-<p>3.攻击：当迭代次数增加，收敛因子α会从2线性减小到0，当alpha&gt;1，狼群四散，全局搜索；当alpha&lt;1，狼群收缩，包围猎物</p>
+<ol type="1">
+<li><p>包围：根据欧氏距离等指标，逐步靠近猎物</p></li>
+<li><p>狩猎：先分别得到向三个领袖靠近的距离，再求平均得到最终移动距离</p></li>
+<li><p>攻击：当迭代次数增加，收敛因子α会从2线性减小到0，当alpha&gt;1，狼群四散，全局搜索；当alpha&lt;1，狼群收缩，包围猎物</p></li>
+</ol>
 <p>应用场景与PSO完全相同</p>
 <p>优点：参数更少，追随多领袖更稳定，代码实现较简单</p>
 <p>缺点：由于取三者平均，后期收敛可能较慢（被另两者拖累）</p>
 <h2 id="遗传算法">遗传算法：</h2>
-<p><img lazyload="" alt="image" data-src="media/image30.png" style="width:5.75in;height:2.5in"></p>
+<figure>
+<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212906789.png">
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
 <p>核心三要素：选择、交叉、变异</p>
 <p>选择：适应度越高，保留概率越大，但不为1</p>
 <p>交叉：随机提取若干解中的不同特征进行组合</p>
 <p>变异：以极小的概率随机改变某特征</p>
 <p>流程：</p>
-<p>1.初始化，确定参数，随机生成若干个初始个体</p>
-<p>2.计算适应度函数值</p>
-<p>3.选择</p>
-<p>4.交叉</p>
-<p>5.变异</p>
-<p>6.若达到最大迭代代数，则输出最优解，否则回到第二步</p>
+<ol type="1">
+<li><p>初始化，确定参数，随机生成若干个初始个体</p></li>
+<li><p>计算适应度函数值</p></li>
+<li><p>选择</p></li>
+<li><p>交叉</p></li>
+<li><p>变异</p></li>
+<li><p>若达到最大迭代代数，则输出最优解，否则回到第二步</p></li>
+</ol>
 <p>优点：二进制编码适合离散问题，适合复杂约束（若选择实数编码也可适应连续问题）</p>
 <p>缺点：编码复杂，代码实现困难，参数很多</p>
 <p>调参技巧：</p>
-<p>1.种群规模N：50-200，与决策变量数成正比</p>
-<p>2.交叉概率Pc：0.7-0.9，是遗传算法的主要动力，越小收敛越慢，通常希望更大</p>
-<p>3.变异概率Pm：0.001-0.1，太小容易陷入局部最优，且单纯GA没有跳出局部的能力，如果太大则会退化为纯随机搜索，失去遗传意义</p>
-<p>4.最大迭代代数：尽量大，并且结合早停策略提前跳出</p>
-<p>5.精英保留策略：强制复制每代中表现最好的个体到下一代，确保表现不会下降</p>
-<p>6.自适应概率参数：根据迭代代数，动态调整两个概率</p>
-<p><img lazyload="" alt="image" data-src="media/image31.png" style="width:4.91667in;height:0.76042in"></p>
+<ol type="1">
+<li><p>种群规模N：50-200，与决策变量数成正比</p></li>
+<li><p>交叉概率Pc：0.7-0.9，是遗传算法的主要动力，越小收敛越慢，通常希望更大</p></li>
+<li><p>变异概率Pm：0.001-0.1，太小容易陷入局部最优，且单纯GA没有跳出局部的能力，如果太大则会退化为纯随机搜索，失去遗传意义</p></li>
+<li><p>最大迭代代数：尽量大，并且结合早停策略提前跳出</p></li>
+<li><p>精英保留策略：强制复制每代中表现最好的个体到下一代，确保表现不会下降</p></li>
+<li><p>自适应概率参数：根据迭代代数，动态调整两个概率</p></li>
+</ol>
+<figure>
+<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212934761.png">
+<figcaption aria-hidden="true">image.png</figcaption>
+</figure>
 <h2 id="moead算法">MOEA/D算法：</h2>
 <h2 id="数据">数据：</h2>
-<p>CNKI 中国知网经济社会大数据研究平台:https://data.cnki.net/</p>
-<p>大数据导航(各国统计局/世界银行/世界卫生组织/粮农组织数据中心等):http:<br>
-//hao.199it.com/EPSDATA: https://www.epsnet.com.cn/index.html#/Index</p>
-<p>联合国数据:https://data.un.org/Default.aspx</p>
-<p>Github: https://github.com/awesomedata/awesome-public-datasets</p>
-<p>ICPSR: https://www.icpsr.umich.edu/web/pages/ICPSR/index</p>
-<p>数据世界:https://ourworldindata.org/</p>
-<p>Kaggle数据集:https://www.kaggle.com/datasets</p>
-<p>天池数据集:https://tianchi.aliyun.com/dataset/</p>
-<h2 id="建模之外">建模之外：</h2>
+<p><a target="_blank" href="https://data.cnki.net/" style="position: relative; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; box-sizing: border-box; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-align-items: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 390px; min-height: 84px; border-radius: 8px; max-width: 100%; overflow: hidden; margin: 16px auto; padding: 12px 12px 9px 12px; background-color: #F6F6F6;"><span class="LinkCard-contents"><span style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; max-height: 40px; line-height: 1.25; color: #121212;">CNKI
+中国知网经济社会大数据研究平台</span><span style="display: -webkit-box; font-size: 13px; height: 18px; line-height: 18px; color: #999; word-break: break-all; text-overflow: ellipsis; overflow: hidden; -webkit-line-clamp: 1; -webkit-box-orient: vertical;"><span style="display: inline-flex; align-items: center;"><svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="14" height="14"><path d="M13.414 4.222a4.5 4.5 0 1 1 6.364 6.364l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005a2.5 2.5 0 1 0-3.536-3.536l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005zm-6.187 6.187a.5.5 0 0 1 .638-.058l.07.058.706.707a.5.5 0 0 1 .058.638l-.058.07-3.005 3.004a2.5 2.5 0 0 0 3.405 3.658l.13-.122 3.006-3.005a.5.5 0 0 1 .638-.058l.069.058.707.707a.5.5 0 0 1 .058.638l-.058.069-3.005 3.005a4.5 4.5 0 0 1-6.524-6.196l.16-.168 3.005-3.005zm8.132-3.182a.25.25 0 0 1 .353 0l1.061 1.06a.25.25 0 0 1 0 .354l-8.132 8.132a.25.25 0 0 1-.353 0l-1.061-1.06a.25.25 0 0 1 0-.354l8.132-8.132z"></path></svg></span><span>https://data.cnki.net/</span></span></span></a><br>
+<a target="_blank" href="https://www.epsnet.com.cn/index.html#/Index" style="position: relative; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; box-sizing: border-box; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-align-items: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 390px; min-height: 84px; border-radius: 8px; max-width: 100%; overflow: hidden; margin: 16px auto; padding: 12px 12px 9px 12px; background-color: #F6F6F6;"><span class="LinkCard-contents"><span style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; max-height: 40px; line-height: 1.25; color: #121212;">大数据导航(各国统计局/世界银行/世界卫生组织/粮农组织数据中心等)</span><span style="display: -webkit-box; font-size: 13px; height: 18px; line-height: 18px; color: #999; word-break: break-all; text-overflow: ellipsis; overflow: hidden; -webkit-line-clamp: 1; -webkit-box-orient: vertical;"><span style="display: inline-flex; align-items: center;"><svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="14" height="14"><path d="M13.414 4.222a4.5 4.5 0 1 1 6.364 6.364l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005a2.5 2.5 0 1 0-3.536-3.536l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005zm-6.187 6.187a.5.5 0 0 1 .638-.058l.07.058.706.707a.5.5 0 0 1 .058.638l-.058.07-3.005 3.004a2.5 2.5 0 0 0 3.405 3.658l.13-.122 3.006-3.005a.5.5 0 0 1 .638-.058l.069.058.707.707a.5.5 0 0 1 .058.638l-.058.069-3.005 3.005a4.5 4.5 0 0 1-6.524-6.196l.16-.168 3.005-3.005zm8.132-3.182a.25.25 0 0 1 .353 0l1.061 1.06a.25.25 0 0 1 0 .354l-8.132 8.132a.25.25 0 0 1-.353 0l-1.061-1.06a.25.25 0 0 1 0-.354l8.132-8.132z"></path></svg></span><span>https://www.epsnet.com.cn/index.html#/Index</span></span></span></a><br>
+<a target="_blank" href="https://data.un.org/Default.aspx" style="position: relative; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; box-sizing: border-box; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-align-items: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 390px; min-height: 84px; border-radius: 8px; max-width: 100%; overflow: hidden; margin: 16px auto; padding: 12px 12px 9px 12px; background-color: #F6F6F6;"><span class="LinkCard-contents"><span style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; max-height: 40px; line-height: 1.25; color: #121212;">联合国数据</span><span style="display: -webkit-box; font-size: 13px; height: 18px; line-height: 18px; color: #999; word-break: break-all; text-overflow: ellipsis; overflow: hidden; -webkit-line-clamp: 1; -webkit-box-orient: vertical;"><span style="display: inline-flex; align-items: center;"><svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="14" height="14"><path d="M13.414 4.222a4.5 4.5 0 1 1 6.364 6.364l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005a2.5 2.5 0 1 0-3.536-3.536l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005zm-6.187 6.187a.5.5 0 0 1 .638-.058l.07.058.706.707a.5.5 0 0 1 .058.638l-.058.07-3.005 3.004a2.5 2.5 0 0 0 3.405 3.658l.13-.122 3.006-3.005a.5.5 0 0 1 .638-.058l.069.058.707.707a.5.5 0 0 1 .058.638l-.058.069-3.005 3.005a4.5 4.5 0 0 1-6.524-6.196l.16-.168 3.005-3.005zm8.132-3.182a.25.25 0 0 1 .353 0l1.061 1.06a.25.25 0 0 1 0 .354l-8.132 8.132a.25.25 0 0 1-.353 0l-1.061-1.06a.25.25 0 0 1 0-.354l8.132-8.132z"></path></svg></span><span>https://data.un.org/Default.aspx</span></span></span></a><br>
+<a target="_blank" href="https://github.com/awesomedata/awesome-public-datasets" style="position: relative; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; box-sizing: border-box; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-align-items: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 390px; min-height: 84px; border-radius: 8px; max-width: 100%; overflow: hidden; margin: 16px auto; padding: 12px 12px 9px 12px; background-color: #F6F6F6;"><span class="LinkCard-contents"><span style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; max-height: 40px; line-height: 1.25; color: #121212;">Github</span><span style="display: -webkit-box; font-size: 13px; height: 18px; line-height: 18px; color: #999; word-break: break-all; text-overflow: ellipsis; overflow: hidden; -webkit-line-clamp: 1; -webkit-box-orient: vertical;"><span style="display: inline-flex; align-items: center;"><svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="14" height="14"><path d="M13.414 4.222a4.5 4.5 0 1 1 6.364 6.364l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005a2.5 2.5 0 1 0-3.536-3.536l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005zm-6.187 6.187a.5.5 0 0 1 .638-.058l.07.058.706.707a.5.5 0 0 1 .058.638l-.058.07-3.005 3.004a2.5 2.5 0 0 0 3.405 3.658l.13-.122 3.006-3.005a.5.5 0 0 1 .638-.058l.069.058.707.707a.5.5 0 0 1 .058.638l-.058.069-3.005 3.005a4.5 4.5 0 0 1-6.524-6.196l.16-.168 3.005-3.005zm8.132-3.182a.25.25 0 0 1 .353 0l1.061 1.06a.25.25 0 0 1 0 .354l-8.132 8.132a.25.25 0 0 1-.353 0l-1.061-1.06a.25.25 0 0 1 0-.354l8.132-8.132z"></path></svg></span><span>https://github.com/awesomedata/awesome-public-datasets</span></span></span></a><br>
+<a target="_blank" href="https://www.icpsr.umich.edu/web/pages/ICPSR/index" style="position: relative; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; box-sizing: border-box; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-align-items: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 390px; min-height: 84px; border-radius: 8px; max-width: 100%; overflow: hidden; margin: 16px auto; padding: 12px 12px 9px 12px; background-color: #F6F6F6;"><span class="LinkCard-contents"><span style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; max-height: 40px; line-height: 1.25; color: #121212;">ICPSR</span><span style="display: -webkit-box; font-size: 13px; height: 18px; line-height: 18px; color: #999; word-break: break-all; text-overflow: ellipsis; overflow: hidden; -webkit-line-clamp: 1; -webkit-box-orient: vertical;"><span style="display: inline-flex; align-items: center;"><svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="14" height="14"><path d="M13.414 4.222a4.5 4.5 0 1 1 6.364 6.364l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005a2.5 2.5 0 1 0-3.536-3.536l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005zm-6.187 6.187a.5.5 0 0 1 .638-.058l.07.058.706.707a.5.5 0 0 1 .058.638l-.058.07-3.005 3.004a2.5 2.5 0 0 0 3.405 3.658l.13-.122 3.006-3.005a.5.5 0 0 1 .638-.058l.069.058.707.707a.5.5 0 0 1 .058.638l-.058.069-3.005 3.005a4.5 4.5 0 0 1-6.524-6.196l.16-.168 3.005-3.005zm8.132-3.182a.25.25 0 0 1 .353 0l1.061 1.06a.25.25 0 0 1 0 .354l-8.132 8.132a.25.25 0 0 1-.353 0l-1.061-1.06a.25.25 0 0 1 0-.354l8.132-8.132z"></path></svg></span><span>https://www.icpsr.umich.edu/web/pages/ICPSR/index</span></span></span></a><br>
+<a target="_blank" href="https://ourworldindata.org/" style="position: relative; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; box-sizing: border-box; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-align-items: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 390px; min-height: 84px; border-radius: 8px; max-width: 100%; overflow: hidden; margin: 16px auto; padding: 12px 12px 9px 12px; background-color: #F6F6F6;"><span class="LinkCard-contents"><span style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; max-height: 40px; line-height: 1.25; color: #121212;">数据世界</span><span style="display: -webkit-box; font-size: 13px; height: 18px; line-height: 18px; color: #999; word-break: break-all; text-overflow: ellipsis; overflow: hidden; -webkit-line-clamp: 1; -webkit-box-orient: vertical;"><span style="display: inline-flex; align-items: center;"><svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="14" height="14"><path d="M13.414 4.222a4.5 4.5 0 1 1 6.364 6.364l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005a2.5 2.5 0 1 0-3.536-3.536l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005zm-6.187 6.187a.5.5 0 0 1 .638-.058l.07.058.706.707a.5.5 0 0 1 .058.638l-.058.07-3.005 3.004a2.5 2.5 0 0 0 3.405 3.658l.13-.122 3.006-3.005a.5.5 0 0 1 .638-.058l.069.058.707.707a.5.5 0 0 1 .058.638l-.058.069-3.005 3.005a4.5 4.5 0 0 1-6.524-6.196l.16-.168 3.005-3.005zm8.132-3.182a.25.25 0 0 1 .353 0l1.061 1.06a.25.25 0 0 1 0 .354l-8.132 8.132a.25.25 0 0 1-.353 0l-1.061-1.06a.25.25 0 0 1 0-.354l8.132-8.132z"></path></svg></span><span>https://ourworldindata.org/</span></span></span></a><br>
+<a target="_blank" href="https://www.kaggle.com/datasets" style="position: relative; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; box-sizing: border-box; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-align-items: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 390px; min-height: 84px; border-radius: 8px; max-width: 100%; overflow: hidden; margin: 16px auto; padding: 12px 12px 9px 12px; background-color: #F6F6F6;"><span class="LinkCard-contents"><span style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; max-height: 40px; line-height: 1.25; color: #121212;">Kaggle数据集</span><span style="display: -webkit-box; font-size: 13px; height: 18px; line-height: 18px; color: #999; word-break: break-all; text-overflow: ellipsis; overflow: hidden; -webkit-line-clamp: 1; -webkit-box-orient: vertical;"><span style="display: inline-flex; align-items: center;"><svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="14" height="14"><path d="M13.414 4.222a4.5 4.5 0 1 1 6.364 6.364l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005a2.5 2.5 0 1 0-3.536-3.536l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005zm-6.187 6.187a.5.5 0 0 1 .638-.058l.07.058.706.707a.5.5 0 0 1 .058.638l-.058.07-3.005 3.004a2.5 2.5 0 0 0 3.405 3.658l.13-.122 3.006-3.005a.5.5 0 0 1 .638-.058l.069.058.707.707a.5.5 0 0 1 .058.638l-.058.069-3.005 3.005a4.5 4.5 0 0 1-6.524-6.196l.16-.168 3.005-3.005zm8.132-3.182a.25.25 0 0 1 .353 0l1.061 1.06a.25.25 0 0 1 0 .354l-8.132 8.132a.25.25 0 0 1-.353 0l-1.061-1.06a.25.25 0 0 1 0-.354l8.132-8.132z"></path></svg></span><span>https://www.kaggle.com/datasets</span></span></span></a><br>
+<a target="_blank" href="https://tianchi.aliyun.com/dataset/" style="position: relative; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; box-sizing: border-box; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-align-items: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 390px; min-height: 84px; border-radius: 8px; max-width: 100%; overflow: hidden; margin: 16px auto; padding: 12px 12px 9px 12px; background-color: #F6F6F6;"><span class="LinkCard-contents"><span style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; max-height: 40px; line-height: 1.25; color: #121212;">天池数据集</span><span style="display: -webkit-box; font-size: 13px; height: 18px; line-height: 18px; color: #999; word-break: break-all; text-overflow: ellipsis; overflow: hidden; -webkit-line-clamp: 1; -webkit-box-orient: vertical;"><span style="display: inline-flex; align-items: center;"><svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="14" height="14"><path d="M13.414 4.222a4.5 4.5 0 1 1 6.364 6.364l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005a2.5 2.5 0 1 0-3.536-3.536l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005zm-6.187 6.187a.5.5 0 0 1 .638-.058l.07.058.706.707a.5.5 0 0 1 .058.638l-.058.07-3.005 3.004a2.5 2.5 0 0 0 3.405 3.658l.13-.122 3.006-3.005a.5.5 0 0 1 .638-.058l.069.058.707.707a.5.5 0 0 1 .058.638l-.058.069-3.005 3.005a4.5 4.5 0 0 1-6.524-6.196l.16-.168 3.005-3.005zm8.132-3.182a.25.25 0 0 1 .353 0l1.061 1.06a.25.25 0 0 1 0 .354l-8.132 8.132a.25.25 0 0 1-.353 0l-1.061-1.06a.25.25 0 0 1 0-.354l8.132-8.132z"></path></svg></span><span>https://tianchi.aliyun.com/dataset/</span></span></span></a><br>
+## 建模之外：</p>
 <p>建模的前提通常是对一些条件的简化和假设，如果不严谨，可以在模型改进部分补足</p>
 <p>建模拟合的时候，对于实际问题，偏离较大的点不一定是错误，也可能需要特殊讨论，比如疫情</p>
 
@@ -910,8 +1048,8 @@ s(t)，又此时病人总数N i(t)，</p>
             <div class="pc-post-toc right-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1"><span class="nav-number">1.</span> <span class="nav-text">数学建模</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92"><span class="nav-number">1.1.</span> <span class="nav-text">一、线性规划：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E7%BA%AF%E5%BD%A2%E6%B3%95"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 单纯形法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E5%81%B6"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 对偶：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%8D%E7%94%9F%E5%A4%9A%E7%9B%AE%E6%A0%87%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 衍生：多目标线性规划：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E6%95%B4%E6%95%B0%E8%A7%84%E5%88%92"><span class="nav-number">1.2.</span> <span class="nav-text">二、整数规划：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%9E%9D%E5%AE%9A%E7%95%8C%E6%B3%95"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 分枝定界法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%B2%E5%B9%B3%E9%9D%A2%E6%B3%95"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 割平面法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%84%E5%88%92"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 0-1规划：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%90%E6%9E%9A%E4%B8%BE%E6%B3%95"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 隐枚举法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8C%88%E7%89%99%E5%88%A9%E6%B3%95"><span class="nav-number">1.2.5.</span> <span class="nav-text">2.5 匈牙利法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%B3%95"><span class="nav-number">1.2.6.</span> <span class="nav-text">2.6 蒙特卡洛法：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92"><span class="nav-number">1.3.</span> <span class="nav-text">三、非线性规划：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E7%BA%A6%E6%9D%9F%E9%97%AE%E9%A2%98"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 无约束问题：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%B3%95"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">3.1.1 斐波那契法：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A1%8D%E7%94%9F0.618%E6%B3%95"><span class="nav-number">1.3.1.1.1.</span> <span class="nav-text">3.1.1.1 衍生0.618法：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E6%AC%A1%E6%8F%92%E5%80%BC%E6%B3%95"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">3.1.2 二次插值法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E6%B3%95"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">3.1.3 梯度法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#newton%E6%B3%95"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">3.1.4 newton法：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%A6%E6%9D%9F%E6%9E%81%E5%80%BC%E9%97%AE%E9%A2%98"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 约束极值问题：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#kkt%E6%9D%A1%E4%BB%B6"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">3.2.1 KKT条件：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%9A%E5%87%BD%E6%95%B0%E6%B3%95"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">3.2.2 罚函数法：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-number">1.4.</span> <span class="nav-text">四、动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1 0-1背包问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E5%9B%BE%E8%AE%BA%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.5.</span> <span class="nav-text">五、图论基本概念：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84-%E5%9F%BA%E4%BA%8E%E5%9B%BE%E6%90%9C%E7%B4%A2%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E7%AE%97%E6%B3%95"><span class="nav-number">1.5.1.</span> <span class="nav-text">5.1
-最短路径-基于图搜索的最短路径算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#dijkstra%E7%AE%97%E6%B3%95"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">5.1.1 Dijkstra算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#a%E7%AE%97%E6%B3%95"><span class="nav-number">1.5.1.2.</span> <span class="nav-text">5.1.2 A*算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#floyd-warshall%E7%AE%97%E6%B3%95"><span class="nav-number">1.5.1.3.</span> <span class="nav-text">5.1.3 Floyd-Warshall算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E7%BA%BF%E9%97%AE%E9%A2%98-%E6%9E%84%E9%80%A0%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91"><span class="nav-number">1.5.2.</span> <span class="nav-text">5.2 连线问题-构造最小生成树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#prim%E7%AE%97%E6%B3%95"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">5.2.1 prim算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#kruscal%E7%AE%97%E6%B3%95"><span class="nav-number">1.5.2.2.</span> <span class="nav-text">5.2.2 Kruscal算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#boruvka%E7%AE%97%E6%B3%95"><span class="nav-number">1.5.2.3.</span> <span class="nav-text">5.2.3 Boruvka算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E4%BC%98%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98"><span class="nav-number">1.5.3.</span> <span class="nav-text">5.3 最优匹配问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E6%8E%92%E9%98%9F%E8%AE%BA%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.6.</span> <span class="nav-text">六、排队论模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#topsis%E7%90%86%E6%83%B3%E8%A7%A3%E6%B3%95"><span class="nav-number">1.7.</span> <span class="nav-text">TOPSIS理想解法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%86%B5%E6%9D%83%E6%B3%95"><span class="nav-number">1.8.</span> <span class="nav-text">熵权法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E6%95%B0%E4%BC%A0%E6%92%AD%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.9.</span> <span class="nav-text">指数传播模型：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%B9%E8%BF%9Bsi%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.10.</span> <span class="nav-text">改进SI模型：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.11.</span> <span class="nav-text">马尔科夫模型：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E7%AE%97%E6%B3%95"><span class="nav-number">1.12.</span> <span class="nav-text">模拟退火算法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B2%92%E5%AD%90%E7%BE%A4%E7%AE%97%E6%B3%95"><span class="nav-number">1.13.</span> <span class="nav-text">粒子群算法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%B9%E8%BF%9B%E7%81%B0%E7%8B%BC%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95"><span class="nav-number">1.14.</span> <span class="nav-text">改进灰狼优化算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95"><span class="nav-number">1.15.</span> <span class="nav-text">遗传算法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#moead%E7%AE%97%E6%B3%95"><span class="nav-number">1.16.</span> <span class="nav-text">MOEA&#x2F;D算法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE"><span class="nav-number">1.17.</span> <span class="nav-text">数据：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E6%A8%A1%E4%B9%8B%E5%A4%96"><span class="nav-number">1.18.</span> <span class="nav-text">建模之外：</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92"><span class="nav-number">1.</span> <span class="nav-text">一、线性规划：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E7%BA%AF%E5%BD%A2%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 单纯形法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E5%81%B6"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 对偶：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%8D%E7%94%9F%E5%A4%9A%E7%9B%AE%E6%A0%87%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 衍生：多目标线性规划：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E6%95%B4%E6%95%B0%E8%A7%84%E5%88%92"><span class="nav-number">2.</span> <span class="nav-text">二、整数规划：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%9E%9D%E5%AE%9A%E7%95%8C%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 分枝定界法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%B2%E5%B9%B3%E9%9D%A2%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 割平面法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%84%E5%88%92"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 0-1规划：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%90%E6%9E%9A%E4%B8%BE%E6%B3%95"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 隐枚举法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8C%88%E7%89%99%E5%88%A9%E6%B3%95"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 匈牙利法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%B3%95"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 蒙特卡洛法：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92"><span class="nav-number">3.</span> <span class="nav-text">三、非线性规划：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E7%BA%A6%E6%9D%9F%E9%97%AE%E9%A2%98"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 无约束问题：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%B3%95"><span class="nav-number">3.1.1.</span> <span class="nav-text">3.1.1 斐波那契法：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A1%8D%E7%94%9F0.618%E6%B3%95"><span class="nav-number">3.1.1.1.</span> <span class="nav-text">3.1.1.1 衍生0.618法：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E6%AC%A1%E6%8F%92%E5%80%BC%E6%B3%95"><span class="nav-number">3.1.2.</span> <span class="nav-text">3.1.2 二次插值法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E6%B3%95"><span class="nav-number">3.1.3.</span> <span class="nav-text">3.1.3 梯度法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#newton%E6%B3%95"><span class="nav-number">3.1.4.</span> <span class="nav-text">3.1.4 newton法：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%A6%E6%9D%9F%E6%9E%81%E5%80%BC%E9%97%AE%E9%A2%98"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 约束极值问题：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#kkt%E6%9D%A1%E4%BB%B6"><span class="nav-number">3.2.1.</span> <span class="nav-text">3.2.1 KKT条件：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%9A%E5%87%BD%E6%95%B0%E6%B3%95"><span class="nav-number">3.2.2.</span> <span class="nav-text">3.2.2 罚函数法：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-number">4.</span> <span class="nav-text">四、动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 0-1背包问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E5%9B%BE%E8%AE%BA%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">5.</span> <span class="nav-text">五、图论基本概念：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84-%E5%9F%BA%E4%BA%8E%E5%9B%BE%E6%90%9C%E7%B4%A2%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E7%AE%97%E6%B3%95"><span class="nav-number">5.1.</span> <span class="nav-text">5.1
+最短路径-基于图搜索的最短路径算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#dijkstra%E7%AE%97%E6%B3%95"><span class="nav-number">5.1.1.</span> <span class="nav-text">5.1.1 Dijkstra算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#a%E7%AE%97%E6%B3%95"><span class="nav-number">5.1.2.</span> <span class="nav-text">5.1.2 A*算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#floyd-warshall%E7%AE%97%E6%B3%95"><span class="nav-number">5.1.3.</span> <span class="nav-text">5.1.3 Floyd-Warshall算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E7%BA%BF%E9%97%AE%E9%A2%98-%E6%9E%84%E9%80%A0%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 连线问题-构造最小生成树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#prim%E7%AE%97%E6%B3%95"><span class="nav-number">5.2.1.</span> <span class="nav-text">5.2.1 prim算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#kruscal%E7%AE%97%E6%B3%95"><span class="nav-number">5.2.2.</span> <span class="nav-text">5.2.2 Kruscal算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#boruvka%E7%AE%97%E6%B3%95"><span class="nav-number">5.2.3.</span> <span class="nav-text">5.2.3 Boruvka算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E4%BC%98%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 最优匹配问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E6%8E%92%E9%98%9F%E8%AE%BA%E6%A8%A1%E5%9E%8B"><span class="nav-number">6.</span> <span class="nav-text">六、排队论模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#topsis%E7%90%86%E6%83%B3%E8%A7%A3%E6%B3%95"><span class="nav-number">7.</span> <span class="nav-text">TOPSIS理想解法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%86%B5%E6%9D%83%E6%B3%95"><span class="nav-number">8.</span> <span class="nav-text">熵权法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E6%95%B0%E4%BC%A0%E6%92%AD%E6%A8%A1%E5%9E%8B"><span class="nav-number">9.</span> <span class="nav-text">指数传播模型：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%B9%E8%BF%9Bsi%E6%A8%A1%E5%9E%8B"><span class="nav-number">10.</span> <span class="nav-text">改进SI模型：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B"><span class="nav-number">11.</span> <span class="nav-text">马尔科夫模型：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E7%AE%97%E6%B3%95"><span class="nav-number">12.</span> <span class="nav-text">模拟退火算法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B2%92%E5%AD%90%E7%BE%A4%E7%AE%97%E6%B3%95"><span class="nav-number">13.</span> <span class="nav-text">粒子群算法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%B9%E8%BF%9B%E7%81%B0%E7%8B%BC%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95"><span class="nav-number">14.</span> <span class="nav-text">改进灰狼优化算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95"><span class="nav-number">15.</span> <span class="nav-text">遗传算法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#moead%E7%AE%97%E6%B3%95"><span class="nav-number">16.</span> <span class="nav-text">MOEA&#x2F;D算法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE"><span class="nav-number">17.</span> <span class="nav-text">数据：</span></a></li></ol>
     </div>
 </div>
 
@@ -953,7 +1091,7 @@ s(t)，又此时病人总数N i(t)，</p>
             
                 <span class="count-item border-box word">
                     <span class="item-type border-box">总字数</span>
-                    <span class="item-value border-box word">26.8k</span>
+                    <span class="item-value border-box word">26.9k</span>
                 </span>
             
 
@@ -1101,8 +1239,8 @@ s(t)，又此时病人总数N i(t)，</p>
             <div class="tablet-post-toc">
                 <div class="post-toc-wrap border-box">
     <div class="post-toc border-box">
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1"><span class="nav-number">1.</span> <span class="nav-text">数学建模</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92"><span class="nav-number">1.1.</span> <span class="nav-text">一、线性规划：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E7%BA%AF%E5%BD%A2%E6%B3%95"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 单纯形法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E5%81%B6"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.2 对偶：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%8D%E7%94%9F%E5%A4%9A%E7%9B%AE%E6%A0%87%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92"><span class="nav-number">1.1.3.</span> <span class="nav-text">1.3 衍生：多目标线性规划：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E6%95%B4%E6%95%B0%E8%A7%84%E5%88%92"><span class="nav-number">1.2.</span> <span class="nav-text">二、整数规划：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%9E%9D%E5%AE%9A%E7%95%8C%E6%B3%95"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 分枝定界法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%B2%E5%B9%B3%E9%9D%A2%E6%B3%95"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 割平面法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%84%E5%88%92"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3 0-1规划：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%90%E6%9E%9A%E4%B8%BE%E6%B3%95"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4 隐枚举法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8C%88%E7%89%99%E5%88%A9%E6%B3%95"><span class="nav-number">1.2.5.</span> <span class="nav-text">2.5 匈牙利法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%B3%95"><span class="nav-number">1.2.6.</span> <span class="nav-text">2.6 蒙特卡洛法：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92"><span class="nav-number">1.3.</span> <span class="nav-text">三、非线性规划：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E7%BA%A6%E6%9D%9F%E9%97%AE%E9%A2%98"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 无约束问题：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%B3%95"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">3.1.1 斐波那契法：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A1%8D%E7%94%9F0.618%E6%B3%95"><span class="nav-number">1.3.1.1.1.</span> <span class="nav-text">3.1.1.1 衍生0.618法：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E6%AC%A1%E6%8F%92%E5%80%BC%E6%B3%95"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">3.1.2 二次插值法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E6%B3%95"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">3.1.3 梯度法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#newton%E6%B3%95"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">3.1.4 newton法：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%A6%E6%9D%9F%E6%9E%81%E5%80%BC%E9%97%AE%E9%A2%98"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 约束极值问题：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#kkt%E6%9D%A1%E4%BB%B6"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">3.2.1 KKT条件：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%9A%E5%87%BD%E6%95%B0%E6%B3%95"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">3.2.2 罚函数法：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-number">1.4.</span> <span class="nav-text">四、动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1 0-1背包问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E5%9B%BE%E8%AE%BA%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.5.</span> <span class="nav-text">五、图论基本概念：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84-%E5%9F%BA%E4%BA%8E%E5%9B%BE%E6%90%9C%E7%B4%A2%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E7%AE%97%E6%B3%95"><span class="nav-number">1.5.1.</span> <span class="nav-text">5.1
-最短路径-基于图搜索的最短路径算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#dijkstra%E7%AE%97%E6%B3%95"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">5.1.1 Dijkstra算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#a%E7%AE%97%E6%B3%95"><span class="nav-number">1.5.1.2.</span> <span class="nav-text">5.1.2 A*算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#floyd-warshall%E7%AE%97%E6%B3%95"><span class="nav-number">1.5.1.3.</span> <span class="nav-text">5.1.3 Floyd-Warshall算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E7%BA%BF%E9%97%AE%E9%A2%98-%E6%9E%84%E9%80%A0%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91"><span class="nav-number">1.5.2.</span> <span class="nav-text">5.2 连线问题-构造最小生成树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#prim%E7%AE%97%E6%B3%95"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">5.2.1 prim算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#kruscal%E7%AE%97%E6%B3%95"><span class="nav-number">1.5.2.2.</span> <span class="nav-text">5.2.2 Kruscal算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#boruvka%E7%AE%97%E6%B3%95"><span class="nav-number">1.5.2.3.</span> <span class="nav-text">5.2.3 Boruvka算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E4%BC%98%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98"><span class="nav-number">1.5.3.</span> <span class="nav-text">5.3 最优匹配问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E6%8E%92%E9%98%9F%E8%AE%BA%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.6.</span> <span class="nav-text">六、排队论模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#topsis%E7%90%86%E6%83%B3%E8%A7%A3%E6%B3%95"><span class="nav-number">1.7.</span> <span class="nav-text">TOPSIS理想解法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%86%B5%E6%9D%83%E6%B3%95"><span class="nav-number">1.8.</span> <span class="nav-text">熵权法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E6%95%B0%E4%BC%A0%E6%92%AD%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.9.</span> <span class="nav-text">指数传播模型：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%B9%E8%BF%9Bsi%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.10.</span> <span class="nav-text">改进SI模型：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.11.</span> <span class="nav-text">马尔科夫模型：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E7%AE%97%E6%B3%95"><span class="nav-number">1.12.</span> <span class="nav-text">模拟退火算法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B2%92%E5%AD%90%E7%BE%A4%E7%AE%97%E6%B3%95"><span class="nav-number">1.13.</span> <span class="nav-text">粒子群算法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%B9%E8%BF%9B%E7%81%B0%E7%8B%BC%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95"><span class="nav-number">1.14.</span> <span class="nav-text">改进灰狼优化算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95"><span class="nav-number">1.15.</span> <span class="nav-text">遗传算法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#moead%E7%AE%97%E6%B3%95"><span class="nav-number">1.16.</span> <span class="nav-text">MOEA&#x2F;D算法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE"><span class="nav-number">1.17.</span> <span class="nav-text">数据：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E6%A8%A1%E4%B9%8B%E5%A4%96"><span class="nav-number">1.18.</span> <span class="nav-text">建模之外：</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92"><span class="nav-number">1.</span> <span class="nav-text">一、线性规划：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E7%BA%AF%E5%BD%A2%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 单纯形法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E5%81%B6"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 对偶：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%8D%E7%94%9F%E5%A4%9A%E7%9B%AE%E6%A0%87%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 衍生：多目标线性规划：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E6%95%B4%E6%95%B0%E8%A7%84%E5%88%92"><span class="nav-number">2.</span> <span class="nav-text">二、整数规划：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E6%9E%9D%E5%AE%9A%E7%95%8C%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 分枝定界法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%B2%E5%B9%B3%E9%9D%A2%E6%B3%95"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 割平面法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%84%E5%88%92"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 0-1规划：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9A%90%E6%9E%9A%E4%B8%BE%E6%B3%95"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 隐枚举法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8C%88%E7%89%99%E5%88%A9%E6%B3%95"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 匈牙利法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%B3%95"><span class="nav-number">2.6.</span> <span class="nav-text">2.6 蒙特卡洛法：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E9%9D%9E%E7%BA%BF%E6%80%A7%E8%A7%84%E5%88%92"><span class="nav-number">3.</span> <span class="nav-text">三、非线性规划：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A0%E7%BA%A6%E6%9D%9F%E9%97%AE%E9%A2%98"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 无约束问题：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%B3%95"><span class="nav-number">3.1.1.</span> <span class="nav-text">3.1.1 斐波那契法：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A1%8D%E7%94%9F0.618%E6%B3%95"><span class="nav-number">3.1.1.1.</span> <span class="nav-text">3.1.1.1 衍生0.618法：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E6%AC%A1%E6%8F%92%E5%80%BC%E6%B3%95"><span class="nav-number">3.1.2.</span> <span class="nav-text">3.1.2 二次插值法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E6%B3%95"><span class="nav-number">3.1.3.</span> <span class="nav-text">3.1.3 梯度法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#newton%E6%B3%95"><span class="nav-number">3.1.4.</span> <span class="nav-text">3.1.4 newton法：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%A6%E6%9D%9F%E6%9E%81%E5%80%BC%E9%97%AE%E9%A2%98"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 约束极值问题：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#kkt%E6%9D%A1%E4%BB%B6"><span class="nav-number">3.2.1.</span> <span class="nav-text">3.2.1 KKT条件：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%9A%E5%87%BD%E6%95%B0%E6%B3%95"><span class="nav-number">3.2.2.</span> <span class="nav-text">3.2.2 罚函数法：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-number">4.</span> <span class="nav-text">四、动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 0-1背包问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E5%9B%BE%E8%AE%BA%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">5.</span> <span class="nav-text">五、图论基本概念：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84-%E5%9F%BA%E4%BA%8E%E5%9B%BE%E6%90%9C%E7%B4%A2%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E7%AE%97%E6%B3%95"><span class="nav-number">5.1.</span> <span class="nav-text">5.1
+最短路径-基于图搜索的最短路径算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#dijkstra%E7%AE%97%E6%B3%95"><span class="nav-number">5.1.1.</span> <span class="nav-text">5.1.1 Dijkstra算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#a%E7%AE%97%E6%B3%95"><span class="nav-number">5.1.2.</span> <span class="nav-text">5.1.2 A*算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#floyd-warshall%E7%AE%97%E6%B3%95"><span class="nav-number">5.1.3.</span> <span class="nav-text">5.1.3 Floyd-Warshall算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9E%E7%BA%BF%E9%97%AE%E9%A2%98-%E6%9E%84%E9%80%A0%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 连线问题-构造最小生成树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#prim%E7%AE%97%E6%B3%95"><span class="nav-number">5.2.1.</span> <span class="nav-text">5.2.1 prim算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#kruscal%E7%AE%97%E6%B3%95"><span class="nav-number">5.2.2.</span> <span class="nav-text">5.2.2 Kruscal算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#boruvka%E7%AE%97%E6%B3%95"><span class="nav-number">5.2.3.</span> <span class="nav-text">5.2.3 Boruvka算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E4%BC%98%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 最优匹配问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E6%8E%92%E9%98%9F%E8%AE%BA%E6%A8%A1%E5%9E%8B"><span class="nav-number">6.</span> <span class="nav-text">六、排队论模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#topsis%E7%90%86%E6%83%B3%E8%A7%A3%E6%B3%95"><span class="nav-number">7.</span> <span class="nav-text">TOPSIS理想解法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%86%B5%E6%9D%83%E6%B3%95"><span class="nav-number">8.</span> <span class="nav-text">熵权法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8C%87%E6%95%B0%E4%BC%A0%E6%92%AD%E6%A8%A1%E5%9E%8B"><span class="nav-number">9.</span> <span class="nav-text">指数传播模型：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%B9%E8%BF%9Bsi%E6%A8%A1%E5%9E%8B"><span class="nav-number">10.</span> <span class="nav-text">改进SI模型：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A9%AC%E5%B0%94%E7%A7%91%E5%A4%AB%E6%A8%A1%E5%9E%8B"><span class="nav-number">11.</span> <span class="nav-text">马尔科夫模型：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E7%AE%97%E6%B3%95"><span class="nav-number">12.</span> <span class="nav-text">模拟退火算法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B2%92%E5%AD%90%E7%BE%A4%E7%AE%97%E6%B3%95"><span class="nav-number">13.</span> <span class="nav-text">粒子群算法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%94%B9%E8%BF%9B%E7%81%B0%E7%8B%BC%E4%BC%98%E5%8C%96%E7%AE%97%E6%B3%95"><span class="nav-number">14.</span> <span class="nav-text">改进灰狼优化算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95"><span class="nav-number">15.</span> <span class="nav-text">遗传算法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#moead%E7%AE%97%E6%B3%95"><span class="nav-number">16.</span> <span class="nav-text">MOEA&#x2F;D算法：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE"><span class="nav-number">17.</span> <span class="nav-text">数据：</span></a></li></ol>
     </div>
 </div>
 
