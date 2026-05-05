@@ -1,4 +1,28 @@
 :root {
-  --base-font-family: 'STZHONGS';
-  --first-screen-font-family: 'STZHONGS';
+  --base-font-size: 18px;
+
+  --base-font-family: 'NotoSerifCJKsc';
+  --first-screen-font-family: 'NotoSerifCJKsc';
+  --md-heading-font-family: 'NotoSerifCJKsc';
+  --md-body-font-family: 'NotoSansCJKsc';
+}
+
+.post-content.keep-markdown-body {
+  font-family: var(--md-body-font-family);
+}
+
+.post-content.keep-markdown-body h1,
+.post-content.keep-markdown-body h2,
+.post-content.keep-markdown-body h3,
+.post-content.keep-markdown-body h4,
+.post-content.keep-markdown-body h5,
+.post-content.keep-markdown-body h6 {
+  font-family: var(--md-heading-font-family);
+}
+
+.post-content.keep-markdown-body code,
+.post-content.keep-markdown-body pre,
+.post-content.keep-markdown-body .highlight code,
+.post-content.keep-markdown-body .highlight pre {
+  font-family: "Source Code Pro", consolas, Menlo;
 }

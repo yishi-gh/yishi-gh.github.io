@@ -41,7 +41,7 @@
     <script class="keep-theme-configurations">
     const KEEP = window.KEEP || {}
     KEEP.hexo_config = {"hostname":"yishi-gh.github.io","root":"/","language":"zh-CN","path":"search.json"}
-    KEEP.theme_config = {"base_info":{"primary_color":"0096c7","title":"亦适yishi 的碎碎念","author":"亦适yishi","avatar":"/images/yishi_favicon.svg","logo":"/images/yishi_favicon.svg","favicon":"/images/yishi_favicon.svg"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories","about":"/about"},"first_screen":{"enable":true,"background_img":"/images/IMG_20250926_223509.jpg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/yishi-gh","weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":"yishi.alr@gmail.com"}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"updated","post_datetime_format":"YYYY/MM/DD/ HH:mm"},"post":{"author_badge":{"enable":false,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY/MM/DD/ HH:mm","copyright_info":true,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2025,"word_count":true,"site_deploy":{"enable":true,"provider":"vercel","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":true,"css":["/css/font.css","/css/custom.css"],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
+    KEEP.theme_config = {"base_info":{"primary_color":"#00afb9","title":"亦适yishi 的碎碎念","author":"亦适yishi","avatar":"/images/yishi_favicon.svg","logo":"/images/yishi_favicon.svg","favicon":"/images/yishi_favicon.svg"},"menu":{"home":"/","archives":"/archives","tags":"/tags","categories":"/categories","about":"/about"},"first_screen":{"enable":true,"background_img":"/images/IMG_20250926_223509.jpg","background_img_dark":"/images/bg.svg","description":"Keep writing and Keep loving.","hitokoto":false},"social_contact":{"enable":true,"links":{"github":"https://github.com/yishi-gh","weixin":null,"qq":null,"weibo":null,"zhihu":null,"twitter":null,"x":null,"facebook":null,"email":"yishi.alr@gmail.com"}},"scroll":{"progress_bar":false,"percent":false,"hide_header":true},"home":{"announcement":null,"category":true,"tag":true,"post_datetime":"updated","post_datetime_format":"YYYY/MM/DD/ HH:mm"},"post":{"author_badge":{"enable":false,"level_badge":true,"custom_badge":["One","Two","Three"]},"word_count":{"wordcount":true,"min2read":true},"datetime_format":"YYYY/MM/DD/ HH:mm","copyright_info":true,"share":false,"reward":{"enable":false,"img_link":null,"text":null,"icon":null}},"code_block":{"tools":{"enable":true,"style":"default"},"highlight_theme":"default"},"toc":{"enable":true,"number":true,"expand_all":false,"init_open":true,"layout":"right"},"website_count":{"busuanzi_count":{"enable":true,"site_uv":true,"site_pv":true,"page_pv":true}},"local_search":{"enable":true,"preload":true},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.39"},"waline":{"server_url":null,"reaction":false,"version":"3.3.2"},"giscus":{"repo":null,"repo_id":null,"category":"Announcements","category_id":null,"reactions_enabled":false},"artalk":{"server":null},"disqus":{"shortname":null}},"rss":{"enable":false},"lazyload":{"enable":true},"cdn":{"enable":true,"provider":"cdnjs"},"pjax":{"enable":true},"footer":{"since":2025,"word_count":true,"site_deploy":{"enable":true,"provider":"vercel","url":null},"record":{"enable":false,"list":[{"code":null,"link":null}]}},"inject":{"enable":true,"css":["/css/font.css","/css/custom.css"],"js":[null]},"root":"","source_data":{},"version":"4.2.5"}
     KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"}
     KEEP.language_code_block = {"copy":"复制代码","copied":"已复制","fold":"折叠代码块","folded":"已折叠"}
     KEEP.language_copy_copyright = {"copy":"复制版权信息","copied":"已复制","title":"原文标题","author":"原文作者","link":"原文链接"}
@@ -350,12 +350,19 @@ mjx-container[display="true"] + br {
     <div class="post-page-container border-box">
         <div class="post-content-container border-box">
             
-
-            <div class="post-content-bottom border-box">
-                
-                    <div class="post-title">
+                <div class="post-content-top border-box"
+                     style="height: 13.8rem"
+                >
+                    <div class="cover-post-title">
                         数据库笔记
                     </div>
+                    <img class="post-cover" src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260505203047125.png"
+                         onerror="this.style.display='none'"
+                    >
+                </div>
+            
+
+            <div class="post-content-bottom border-box has-cover">
                 
 
                 
@@ -386,7 +393,7 @@ mjx-container[display="true"] + br {
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Tue Apr 14 2026 17:31:03 GMT+0800">2026/04/14/ 17:31</span>
+                    <span class="datetime" data-updated="Tue May 05 2026 20:51:05 GMT+0800">2026/05/05/ 20:51</span>
                 </span>
             
         
@@ -467,7 +474,9 @@ mjx-container[display="true"] + br {
 <h1 id="数据库构成">2 数据库构成</h1>
 <h2 id="表-table">2.1 表 Table</h2>
 <p>表是用于组织和存储数据的矩阵结构，包含一组字段（Columns）和记录（Rows）。一个表对应E-R模型中的一个实体集，一行对应一个实体，也叫一条记录，一个列对应一个属性，也叫一个字段。<br>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE TABLE students ( <br>	id INT PRIMARY KEY, <br>	name VARCHAR(50), <br>	age INT, <br>	gender VARCHAR(10) <br>);<br></code></pre></td></tr></table></figure><br>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE TABLE students ( <br>	id INT PRIMARY KEY, <br>	name VARCHAR(50), <br>	age INT, <br>	gender VARCHAR(10) <br>);<br></code></pre></td></tr></table></figure></p>
+<p><code>swsw</code><br>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> params = {<br>    <span class="hljs-title class_">TableName</span>: <span class="hljs-string">"demo"</span>,<br>    <span class="hljs-title class_">Item</span>: {<br>        <span class="hljs-string">"id"</span>: <span class="hljs-string">"1000"</span><br>    }<br>};<br><br>docClient.<span class="hljs-title function_">put</span>(params, <span class="hljs-keyword">function</span>(<span class="hljs-params">err, data</span>) {<br>    <span class="hljs-keyword">if</span> (err) {<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">error</span>(err);<br>    } <span class="hljs-keyword">else</span> {<br>        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(data, <span class="hljs-literal">null</span>, <span class="hljs-number">2</span>));<br>    }<br>});<br></code></pre></td></tr></table></figure><br>
 ## 2.2 关系 Relationship<br>
 关系通过公共字段连接不同的表，可以是一对一、一对多、多对多或自我引用。<br>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">CREATE TABLE courses ( <br>	id INT PRIMARY KEY, <br>	name VARCHAR(50), <br>	instructor_id INT, <br>	FOREIGN KEY (instructor_id) REFERENCES instructors(id)<br>);<br></code></pre></td></tr></table></figure><br>

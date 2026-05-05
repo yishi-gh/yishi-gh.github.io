@@ -1,6 +1,27 @@
 @font-face {
-   font-family: 'STZHONGS';
-   src: url('../font/STZHONGS.TTF') format('truetype');
-   font-weight: normal;
-   font-style: normal;
+    font-family: 'NotoSerifCJKsc';
+    src: url('../font/NotoSerifCJKsc-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NotoSerifCJKsc';
+    src: url('../font/NotoSerifCJKsc-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NotoSansCJKsc';
+    src: url('../font/NotoSansCJKsc-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'NotoSansCJKsc';
+    src: url('../font/NotoSansCJKsc-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
 }
