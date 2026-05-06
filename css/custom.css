@@ -19,10 +19,3 @@
 .post-content.keep-markdown-body h6 {
   font-family: var(--md-heading-font-family);
 }
-
-.post-content.keep-markdown-body code,
-.post-content.keep-markdown-body pre,
-.post-content.keep-markdown-body .highlight code,
-.post-content.keep-markdown-body .highlight pre {
-  font-family: "Source Code Pro", consolas, Menlo;
-}
