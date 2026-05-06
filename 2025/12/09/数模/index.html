@@ -393,7 +393,7 @@ mjx-container[display="true"] + br {
             
                 <span class="meta-info-item post-update-date">
                     <i class="icon fa-solid fa-file-pen"></i>&nbsp;
-                    <span class="datetime" data-updated="Tue May 05 2026 20:07:59 GMT+0800">2026/05/05/ 20:07</span>
+                    <span class="datetime" data-updated="Wed May 06 2026 11:19:30 GMT+0800">2026/05/06/ 11:19</span>
                 </span>
             
         
@@ -437,7 +437,7 @@ mjx-container[display="true"] + br {
         
         
             <span class="meta-info-item post-min2read">
-                <i class="icon fas fa-clock"></i>&nbsp;<span>28 分钟</span>
+                <i class="icon fas fa-clock"></i>&nbsp;<span>27 分钟</span>
             </span>
         
         
@@ -459,8 +459,8 @@ mjx-container[display="true"] + br {
                     
 
                     
-                         <p><img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412211356533.png"><br>
-<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412211410625.png"></p>
+                         <p><img lazyload="" alt="image" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412211356533.png"><br>
+<img lazyload="" alt="image" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412211410625.png"></p>
 <h2 id="一线性规划">一、线性规划：</h2>
 <p>解决资源有限，效率最大问题</p>
 <p>常见例子：中学求解线性不等式组，这也是名称中线性的由来</p>
@@ -482,7 +482,7 @@ mjx-container[display="true"] + br {
 </ol>
 <h3 id="对偶">1.2 对偶：</h3>
 <p>每个线性规划问题（P）都有其结构对偶，性质联系紧密的对偶问题（D）。</p>
-<p><img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412211442309.png"><img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412211502033.png"></p>
+<p><img lazyload="" alt="image" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412211442309.png"><img lazyload="" alt="image" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412211502033.png"></p>
 <p>弱对偶定理：对偶问题的任意一个可行解所对应的目标函数值，都是原问题最优目标值的一个上界（如果原问题是最大化）。这意味着我们可以通过对偶解来评估原问题的解有多接近最优。</p>
 <p>强对偶定理：两个问题的最优值完全相等。因此，求解其中任何一个问题，就能获得另一个问题的最优值。在实践中，如果对偶问题的约束较少，我们通常会选择求解对偶问题，以提高效率。</p>
 <p>互补松弛性定理：在一个最优解中，如果一个约束条件是松弛的（即&lt;=约束中&lt;成立），则对应的对偶变量必须为零；反之亦然。</p>
@@ -509,28 +509,16 @@ bi），能给目标函数值（例如利润）带来的最大增量。</p>
 <p>3.割平面：如果非整数解，构造一个新的线性约束条件（即割平面），这个条件满足：切去非整数最优解且不能误伤其他整数解。</p>
 <p>4.将这个约束加入题目，重新求解，直到得出合法整数解</p>
 <p>Gomory 割平面的构造原理：将松弛后的最优解写成如下形式</p>
-<figure>
-<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412211739192.png">
-<figcaption aria-hidden="true">image.png</figcaption>
-</figure>
+<p><img lazyload="" alt="image" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412211739192.png"></p>
 <p>然后将左右的a拔 b拔拆成 |a拔+f|<br>
 （也即整数和小数部分），其中小数部分0&lt;=f&lt;1，带回原方程，得到下式</p>
-<figure>
-<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412211801394.png">
-<figcaption aria-hidden="true">image.png</figcaption>
-</figure>
+<p><img lazyload="" alt="image" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412211801394.png"></p>
 <p>又x是整数解，且a拔 b拔为整数，则等式左边为整数，则右侧也为整数</p>
 <p>又f为正小数，且f
 x为非负，则右sigma为非负，又右侧也为整数，所以右侧只能&lt;=0，故有下式</p>
-<figure>
-<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412211831293.png">
-<figcaption aria-hidden="true">image.png</figcaption>
-</figure>
+<p><img lazyload="" alt="image" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412211831293.png"></p>
 <p>引入松弛变量s，可以写成等式形式：</p>
-<figure>
-<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412211841328.png">
-<figcaption aria-hidden="true">image.png</figcaption>
-</figure>
+<p><img lazyload="" alt="image" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412211841328.png"></p>
 <p>接下来求解s，根据s是否非负整数，即可得出解是否合法，如果不合法，继续对偶单纯形法</p>
 <h3 id="规划">2.3 0-1规划：</h3>
 <p>x只能取0或1的整数规划，适于描述一些互斥的条件。</p>
@@ -570,10 +558,7 @@ delta。执行调整操作：</p></li>
 <h4 id="斐波那契法">3.1.1 斐波那契法：</h4>
 <p>目标函数在搜索区间内必须是单峰。必须预设迭代次数N</p>
 <p>1.初始化：</p>
-<figure>
-<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212238057.png">
-<figcaption aria-hidden="true">image.png</figcaption>
-</figure>
+<p><img lazyload="" alt="image" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212238057.png"></p>
 <p>2.区间淘汰：</p>
 <p>如果 f(x_1) &lt; f(x_2)（以求最小值为例），则极值点在[a,<br>
 x_2]内，将新的搜索区间设为[a, x_2]，淘汰掉[x_2, b]部分。</p>
@@ -584,54 +569,33 @@ x_2]内，将新的搜索区间设为[a, x_2]，淘汰掉[x_2, b]部分。</p>
 在新的区间内，原来的x1或x2恰好位于新的斐波那契位置上，因此只需要计算一个新点。</p>
 <h5 id="衍生0.618法">3.1.1.1 衍生0.618法：</h5>
 <p>收缩比恒定为0.618，且无需预设迭代次数N</p>
-<figure>
-<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212250165.png">
-<figcaption aria-hidden="true">image.png</figcaption>
-</figure>
+<p><img lazyload="" alt="image" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212250165.png"></p>
 <h4 id="二次插值法">3.1.2 二次插值法：</h4>
 <p>在搜索区间中，不断用低次（通常不超过三次）多项式来近似目标函数，并逐步用插值多项式的极小点来逼近目标函数最优解。</p>
 <p>1.在搜索区间[a,b]内找x1，x2，x3，且满足f(x2)最小</p>
 <p>2.利用这三点构造二次函数phi(x) = Ax^2 + Bx + C</p>
 <p>3.对 phi(x)求导并令导数为零，得到抛物线的极值点 x*：</p>
-<figure>
-<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212307378.png">
-<figcaption aria-hidden="true">image.png</figcaption>
-</figure>
+<p><img lazyload="" alt="image" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212307378.png"></p>
 <p>4.计算f(x*)，淘汰掉三个点中最差的，形成新的搜索空间，继续迭代</p>
 <h4 id="梯度法">3.1.3 梯度法：</h4>
 <p>求解梯度，反向传播，得到最速下降方向</p>
 <h4 id="newton法">3.1.4 newton法：</h4>
 <p>考虑目标函数 f 在点 xk 处的二次逼近式</p>
-<figure>
-<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212318364.png">
-<figcaption aria-hidden="true">image.png</figcaption>
-</figure>
+<p><img lazyload="" alt="image" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212318364.png"></p>
 <p>假设海森矩阵（二阶导数）正定</p>
-<figure>
-<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212327648.png">
-<figcaption aria-hidden="true">image.png</figcaption>
-</figure>
+<p><img lazyload="" alt="image" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212327648.png"></p>
 <p>令fx的梯度为0，可求出fx的最小值点。令dk=x-xk<br>
 为牛顿搜索方向，我们得到著名的牛顿迭代公式</p>
-<figure>
-<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212334913.png">
-<figcaption aria-hidden="true">image.png</figcaption>
-</figure>
+<p><img lazyload="" alt="image" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212334913.png"></p>
 <p>优势：收敛速度快</p>
 <p>劣势：计算开销大</p>
 <h3 id="约束极值问题">3.2 约束极值问题：</h3>
 <p>带有约束条件的极值问题称为约束极值问题，也叫规划问题。为了简化问题，通常把约束转为无约束，非线性转为线性。</p>
 <h4 id="kkt条件">3.2.1 KKT条件：</h4>
 <p>假设有如下最小化问题，为将约束融入目标函数，构造拉格朗日函数L如下</p>
-<figure>
-<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212344407.png">
-<figcaption aria-hidden="true">image.png</figcaption>
-</figure>
+<p><img lazyload="" alt="image" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212344407.png"></p>
 <p>为将约束融入目标函数，构造拉格朗日函数L如下</p>
-<figure>
-<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212353603.png">
-<figcaption aria-hidden="true">image.png</figcaption>
-</figure>
+<p><img lazyload="" alt="image" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212353603.png"></p>
 <p>则有如下四大KKT条件：</p>
 <p>1.L对x的梯度为0</p>
 <p>2.x*必须满足所有原约束</p>
@@ -641,28 +605,16 @@ x_2]内，将新的搜索区间设为[a, x_2]，淘汰掉[x_2, b]部分。</p>
 可以是任意非负值。</p>
 <p>约束处于松弛状态（Slack）： g(x*) &lt; 0，此时 lamda_i* 必须等于
 0</p>
-<figure>
-<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212405932.png">
-<figcaption aria-hidden="true">image.png</figcaption>
-</figure>
+<p><img lazyload="" alt="image" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212405932.png"></p>
 <h4 id="罚函数法">3.2.2 罚函数法：</h4>
 <p>通过引入罚因子和惩罚项，构造增广目标函数P</p>
-<figure>
-<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212417069.png">
-<figcaption aria-hidden="true">image.png</figcaption>
-</figure>
+<p><img lazyload="" alt="image" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212417069.png"></p>
 <p>假设对最小化问题，惩罚项必须满足：当g(x)&gt;0,penalty&gt;0;g(x)&lt;=0,penalty=0</p>
 <p>又可分为外罚函数法和内罚函数法</p>
 <p>外罚函数法：对于违反可行域的解进行惩罚，比如违反程度的平方。迭代逐步增大罚因子r，当r-&gt;∞，得到最优解。迭代过程中的最优解往往落在可行域外</p>
-<figure>
-<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212424676.png">
-<figcaption aria-hidden="true">image.png</figcaption>
-</figure>
+<p><img lazyload="" alt="image" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212424676.png"></p>
 <p>内罚函数法：对可行域内的解设置屏障，防止越过，比如倒数或对数。迭代逐步减小罚因子r，当r-&gt;0，得到最优解。迭代过程中的最优解始终可行。</p>
-<figure>
-<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212432005.png">
-<figcaption aria-hidden="true">image.png</figcaption>
-</figure>
+<p><img lazyload="" alt="image" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212432005.png"></p>
 <h2 id="四动态规划">四、动态规划</h2>
 <p>建模要素：阶段 状态变量 决策变量 策略 状态转移方程 指标函数
 最优策略<br>
@@ -814,10 +766,7 @@ s-）确定相对接近程度。</p></li>
 <p>数据预处理：正向化，归一化</p>
 <p>计算方案比重：计算第i个方案在第j个指标中所占的比例，若是0则添加一个极小值，防止下一步出现ln0</p>
 <p>计算熵值：通过信息熵公式计算数据离散程度，当pij全部相等，E最大取1，表示信息熵最小。当pij差异极大，E趋向于0，表示信息熵无限大</p>
-<figure>
-<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212640105.png">
-<figcaption aria-hidden="true">image.png</figcaption>
-</figure>
+<p><img lazyload="" alt="image" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212640105.png"></p>
 <p>计算差异系数：D=1-E，D越大，该指标区分度越大，重要性越大</p>
 <p>计算最终权重：将D重新归一化，得到W，即为最终权重，权重向量满足求和为1，分量&gt;0</p>
 <h2 id="指数传播模型">指数传播模型：</h2>
@@ -834,10 +783,7 @@ s-）确定相对接近程度。</p></li>
 s(t)，又此时病人总数N i(t)，</p>
 <p>有模型：N [i(t+delta t)-i(t)]/delta t = lamda N s(t)i(t)</p>
 <p>又s(t)=1-i(t)，令t-&gt;0，且设t=0时，i(0)=i0，求解微分方程得到：</p>
-<figure>
-<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212652519.png">
-<figcaption aria-hidden="true">image.png</figcaption>
-</figure>
+<p><img lazyload="" alt="image" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212652519.png"></p>
 <p>也即logistic模型。医学上称di(t)/dt为传染病曲线，当i=0.5，di/dt达到最大值，为传染病高发期，求解可得对应时刻tmax=（1/lamda）ln[(1/i0)-1]</p>
 <p>又tmax与lamda成反比，若减小lamda，则tmax会变大，在tmax之前做好预防</p>
 <h2 id="马尔科夫模型">马尔科夫模型：</h2>
@@ -846,19 +792,13 @@ s(t)，又此时病人总数N i(t)，</p>
 <p>适用情形：健康状况预测，销量预测，升职预测</p>
 <p>性质：</p>
 <p>时齐性：若第n天对象处于状态i，则经过m天后，对象处于状态j的概率满足：</p>
-<figure>
-<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212702184.png">
-<figcaption aria-hidden="true">image.png</figcaption>
-</figure>
+<p><img lazyload="" alt="image" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212702184.png"></p>
 <p>则称{Xn,n=1,2...}为时齐的马尔科夫链</p>
 <h2 id="模拟退火算法">模拟退火算法：</h2>
 <p>一种启发式算法。在贪心算法得到局部最优解之后，随机尝试新解，如果更优则转向新解，否则概率选择新解，给出了一种跳出舒适圈的可能性</p>
 <p>关键：概率选择新解的概率怎么确定</p>
 <p>利用温度和内能来描述问题，退火过程中，温度逐渐降低，选择新解的概率逐渐减小，内能为目标函数值，我们希望他越小越好</p>
-<figure>
-<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212711904.png">
-<figcaption aria-hidden="true">image.png</figcaption>
-</figure>
+<p><img lazyload="" alt="image" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212711904.png"></p>
 <p>需要考虑：</p>
 <ol type="1">
 <li><p>时间限制，如果时间不多就不再尝试</p></li>
@@ -876,36 +816,24 @@ s(t)，又此时病人总数N i(t)，</p>
 <ol type="1">
 <li>tstart一般足够大，给解充分跳出局部最优的机会，在此基础上可以使用下式反推</li>
 </ol>
-<figure>
-<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212807998.png">
-<figcaption aria-hidden="true">image.png</figcaption>
-</figure>
+<p><img lazyload="" alt="image" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212807998.png"></p>
 <ol start="2" type="1">
 <li><p>降温速率alpha尽量慢，一般在0.90-0.99，数模一般0.95-0.98，越大遍历越充分，越小收敛越快</p></li>
 <li><p>L建议为决策变量数的整倍数如100n，1000n。L与alpha是互补的，如果alpha很小，则L应尽量大，以弥补收敛过快随机不彻底</p></li>
 <li><p>tend可以直接设为一个极小值，也可以用连续无优化法，添加一个计数器，在若干个温度下没有明显变化后，提前结束</p></li>
 <li><p>优化策略：连续函数优化，如下式，乘t可以在温度高时剧烈扰动，温度低时则小心尝试</p></li>
 </ol>
-<figure>
-<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212824117.png">
-<figcaption aria-hidden="true">image.png</figcaption>
-</figure>
+<p><img lazyload="" alt="image" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212824117.png"></p>
 <ol start="6" type="1">
 <li>更进一步的优化：模拟退火比较玄学，可以在最外层再多套个循环，独立进行几十次退火，然后找结果最好的那一个。另外由于退火是随机跳出局部，故有可能过程点比终点更接近答案</li>
 </ol>
 <h2 id="粒子群算法">粒子群算法：</h2>
 <p>自然场景：鸟群随机觅食，且共享视野，则每个鸟的决策基于：惯性（原有方向），个体经验（自己记录的最优解），群体经验（共享视野中的最优解）</p>
-<figure>
-<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212833788.png">
-<figcaption aria-hidden="true">image.png</figcaption>
-</figure>
+<p><img lazyload="" alt="image" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212833788.png"></p>
 <p>优点：收敛更快，实现简单（只有两个公式描述），核心参数需要调整的少（主要就是惯性权重omega，个体学习因子c1，群体学习因子c2</p>
 <p>缺点：收敛过快容易陷入局部最优，后期容易在最优点附近震荡，精度不高</p>
 <p>优化思路：动态调整Omega，如下式，k为当前迭代次数，kmax为最大迭代次数，使omega随着迭代次数增大而减小</p>
-<figure>
-<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212846887.png">
-<figcaption aria-hidden="true">image.png</figcaption>
-</figure>
+<p><img lazyload="" alt="image" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212846887.png"></p>
 <h2 id="改进灰狼优化算法">改进灰狼优化算法</h2>
 <p>将狼群分为四个等级，alpha狼（最优解）、beta狼（第二优解）、delta狼（第三优解）、omega狼（其余）。执行过程中，狼群认为alpha、beta、delta最接近最优解，根据三者位置调整自身位置。</p>
 <p>流程：</p>
@@ -918,10 +846,7 @@ s(t)，又此时病人总数N i(t)，</p>
 <p>优点：参数更少，追随多领袖更稳定，代码实现较简单</p>
 <p>缺点：由于取三者平均，后期收敛可能较慢（被另两者拖累）</p>
 <h2 id="遗传算法">遗传算法：</h2>
-<figure>
-<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212906789.png">
-<figcaption aria-hidden="true">image.png</figcaption>
-</figure>
+<p><img lazyload="" alt="image" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212906789.png"></p>
 <p>核心三要素：选择、交叉、变异</p>
 <p>选择：适应度越高，保留概率越大，但不为1</p>
 <p>交叉：随机提取若干解中的不同特征进行组合</p>
@@ -946,10 +871,7 @@ s(t)，又此时病人总数N i(t)，</p>
 <li><p>精英保留策略：强制复制每代中表现最好的个体到下一代，确保表现不会下降</p></li>
 <li><p>自适应概率参数：根据迭代代数，动态调整两个概率</p></li>
 </ol>
-<figure>
-<img lazyload="" alt="image.png" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212934761.png">
-<figcaption aria-hidden="true">image.png</figcaption>
-</figure>
+<p><img lazyload="" alt="image" data-src="https://raw.githubusercontent.com/yishi-gh/MyImageHostingRepo/main/posts/20260412212934761.png"></p>
 <h2 id="moead算法">MOEA/D算法：</h2>
 <h2 id="数据">数据：</h2>
 <p><a target="_blank" href="https://data.cnki.net/" style="position: relative; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; box-sizing: border-box; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-align-items: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 390px; min-height: 84px; border-radius: 8px; max-width: 100%; overflow: hidden; margin: 16px auto; padding: 12px 12px 9px 12px; background-color: #F6F6F6;"><span class="LinkCard-contents"><span style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; max-height: 40px; line-height: 1.25; color: #121212;">CNKI
@@ -1153,7 +1075,7 @@ s(t)，又此时病人总数N i(t)，</p>
             
                 <span class="count-item border-box word">
                     <span class="item-type border-box">总字数</span>
-                    <span class="item-value border-box word">32k</span>
+                    <span class="item-value border-box word">32.4k</span>
                 </span>
             
 
