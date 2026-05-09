@@ -8,6 +8,8 @@
 
   /* 亮色模式下的首屏一言字体颜色 */
   --first-screen-font-color-light: #fefae0;
+  /* 亮色模式下的首屏头部字体颜色 */
+  --first-screen-header-font-color-light: #fefae0;
 }
 
 .post-content.keep-markdown-body {
