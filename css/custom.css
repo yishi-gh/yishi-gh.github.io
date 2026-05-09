@@ -5,6 +5,9 @@
   --first-screen-font-family: 'NotoSerifCJKsc';
   --md-heading-font-family: 'NotoSerifCJKsc';
   --md-body-font-family: 'NotoSansCJKsc';
+
+  /* 亮色模式下的首屏一言字体颜色 */
+  --first-screen-font-color-light: #fefae0;
 }
 
 .post-content.keep-markdown-body {
